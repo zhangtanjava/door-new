@@ -21,6 +21,8 @@ public interface ParametersInfoDao {
 
 	public int updateById(Parametersinfo Parametersinfo);
 
+	
+	
 	//分页模糊查询
     public List<Parametersinfo> pageFuzzyselect(@Param("start") int start, @Param("pageSize") int pageSize,
                                              @Param("beginDate") Date beginDate, @Param("endDate") Date endDate,
