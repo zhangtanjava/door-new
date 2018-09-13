@@ -243,7 +243,7 @@
 						<label class="yanseblue">${list.surveyorPhotoDes}</label>
 					</div>
 					<div class="span4">
-						<label class="floatont">测量图片描述：</label>
+						<label class="floatont">合同图片描述：</label>
 						<label class="yanseblue">${list.agreementPhotoDes}</label>
 					</div>
 				</div>
