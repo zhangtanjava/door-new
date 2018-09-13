@@ -186,9 +186,11 @@
                 <tr>
                     <th>选择</th>
                     <th>订货日期</th>
-                    <th>联系电话</th>
                     <th>客户住址</th>
-                    <th>门的型号</th>
+                    <th>联系电话1</th>
+                    <th>型号</th>
+                    <th>尺寸</th>
+                    <th>方向</th>
                     <th>价格</th>
                     <th>测量</th>
                     <th>安装</th>
@@ -200,23 +202,25 @@
                     <tr>
                         <td><input type="radio" name="id" value="${item.id}"></td>
                         <td><fmt:formatDate value="${item.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-                        <td>${item.contactPhoneNumber}</td>
                         <td>${item.unitsOrAddress}</td>
+                        <td>${item.contactPhoneNumber}</td>
                         <td>${item.model}</td>
+                        <td>${item.doorSize}</td>
+                        <td>${item.direction}</td>
                         <td>${item.price}</td>
                         <td>
                             <a id="downloadsurvery" href="${ctx}/Download/download.do?filepath=${item.surveyorPhotoPath}" onclick="downloadSurVal()">
-                                    下载
+                                    <c:if test="${not empty item.surveyorPhotoName}">下载</c:if>
                             </a>
                         </td>
                         <td>
                             <a id="downloadistall" href="${ctx}/Download/download.do?filepath=${item.istallPhotoPath}" onclick="downloadIstallVal()">
-                                    下载
+                                    <c:if test="${not empty item.istallPhotoName}">下载</c:if>
                             </a>
                         </td>
                         <td>
                             <a id="downloadistall" href="${ctx}/Download/download.do?filepath=${item.agreementPhotoPath}" onclick="downloadIstallVal()">
-                                    下载
+                                    <c:if test="${not empty item.agreementPhotoName}">下载</c:if>
                             </a>
                         </td>
                         </td>
