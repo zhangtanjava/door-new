@@ -7,20 +7,30 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.gx.po.Parametersinfo;
+import com.gx.po.UserPo;
 import com.gx.service.ParametersHandleService;
 import com.gx.service.PassengerService;
 import com.gx.service.TranInfoService;
+import com.gx.service.UserService;
 @Service(value="convert2map")
 public class Convert2map {
 	@Autowired
 	ParametersHandleService parametersHandleService;
-	
+	@Autowired
+	private UserService userService;
 	
 	Logger logger = Logger.getLogger(Convert2map.class);
 	
 	public Map<String, Object> wlInstall(Map<String, Object> map,Integer id) {
 		
 		Parametersinfo parametersinfo = parametersHandleService.selectById(id);
+		
+		UserPo userPo = new UserPo();
+		userPo.setUserName(parametersinfo.getOperatorID());
+		UserPo userRes  = userService.selectByName(userPo);
+		if (userRes != null) {
+			map.put("storeID", userRes.getStoreID()==null?"":userRes.getStoreID());
+		}
 		
 		map.put("installDate", DateUtils.get8Str(parametersinfo.getInstallDate()==null?new Date():parametersinfo.getInstallDate()));
 		map.put("createDate",  DateUtils.get8Str(parametersinfo.getCreateDate()==null?new Date():parametersinfo.getCreateDate()));
@@ -30,7 +40,6 @@ public class Convert2map {
 		map.put("dm", parametersinfo.getDateMoney()==null?"":parametersinfo.getDateMoney());
 		map.put("indoorInfo", parametersinfo.getIndoorInfo()==null?"":parametersinfo.getIndoorInfo());
 		map.put("payment", parametersinfo.getPaymentID()==null?"":parametersinfo.getPaymentID());
-		map.put("storeID", parametersinfo.getStoreID()==null?"":parametersinfo.getStoreID());//
 		map.put("unitsOrAddress", parametersinfo.getUnitsOrAddress()==null?"":parametersinfo.getUnitsOrAddress());
 		map.put("contactPhoneNumber", parametersinfo.getContactPhoneNumber()==null?"":parametersinfo.getContactPhoneNumber());
 		map.put("secondPhoneNumber", parametersinfo.getSecondPhoneNumber()==null?"":parametersinfo.getSecondPhoneNumber());
@@ -42,8 +51,13 @@ public class Convert2map {
 		
 		Parametersinfo parametersinfo = parametersHandleService.selectById(id);
 		
+		UserPo userPo = new UserPo();
+		userPo.setUserName(parametersinfo.getOperatorID());
+		UserPo userRes  = userService.selectByName(userPo);
+		if (userRes != null) {
+			map.put("storeID", userRes.getStoreID()==null?"":userRes.getStoreID());
+		}
 		map.put("createDate",  DateUtils.get8Str(parametersinfo.getCreateDate()==null?new Date():parametersinfo.getCreateDate()));
-		map.put("storeID", parametersinfo.getStoreID()==null?"":parametersinfo.getStoreID());
 		map.put("doorMod", parametersinfo.getModel()==null?"":parametersinfo.getModel());
 		map.put("price", parametersinfo.getPrice()==null?"":parametersinfo.getPrice());
 		logger.info("定金："+parametersinfo.getDeposit()==null?"":parametersinfo.getDeposit());
@@ -65,12 +79,18 @@ public class Convert2map {
 		
 		Parametersinfo parametersinfo = parametersHandleService.selectById(id);
 		
+		UserPo userPo = new UserPo();
+		userPo.setUserName(parametersinfo.getOperatorID());
+		UserPo userRes  = userService.selectByName(userPo);
+		if (userRes != null) {
+			map.put("storeID", userRes.getStoreID()==null?"":userRes.getStoreID());
+		}
+		
 		map.put("fxiDate", DateUtils.get8Str(parametersinfo.getFixDate()==null?new Date():parametersinfo.getFixDate()));
 		map.put("createDate",  DateUtils.get8Str(parametersinfo.getCreateDate()==null?new Date():parametersinfo.getCreateDate()));
 		map.put("doorMod", parametersinfo.getModel()==null?"":parametersinfo.getModel());
 		map.put("installDate",  DateUtils.get8Str(parametersinfo.getInstallDate()==null?new Date():parametersinfo.getInstallDate()));
 		map.put("direction", parametersinfo.getDirection()==null?"":parametersinfo.getDirection());
-		map.put("storeID", parametersinfo.getStoreID()==null?"":parametersinfo.getStoreID());
 		map.put("surveyor", parametersinfo.getSurveyor()==null?"":parametersinfo.getSurveyor());
 		map.put("installPerson", parametersinfo.getInstallPerson()==null?"":parametersinfo.getInstallPerson());
 		map.put("unitsOrAddress", parametersinfo.getUnitsOrAddress()==null?"":parametersinfo.getUnitsOrAddress());
@@ -86,10 +106,16 @@ public class Convert2map {
 		
 		Parametersinfo parametersinfo = parametersHandleService.selectById(id);
 		
+		UserPo userPo = new UserPo();
+		userPo.setUserName(parametersinfo.getOperatorID());
+		UserPo userRes  = userService.selectByName(userPo);
+		if (userRes != null) {
+			map.put("storeID", userRes.getStoreID()==null?"":userRes.getStoreID());
+		}
+		
 		map.put("installDate",  DateUtils.get8Str(parametersinfo.getInstallDate()==null?new Date():parametersinfo.getInstallDate()));
 		map.put("createDate",  DateUtils.get8Str(parametersinfo.getCreateDate()==null?new Date():parametersinfo.getCreateDate()));
 		map.put("doorMod", parametersinfo.getModel()==null?"":parametersinfo.getModel());
-		map.put("storeID", parametersinfo.getStoreID()==null?"":parametersinfo.getStoreID());
 		map.put("unitsOrAddress", parametersinfo.getUnitsOrAddress()==null?"":parametersinfo.getUnitsOrAddress());
 		map.put("contactPhoneNumber", parametersinfo.getContactPhoneNumber()==null?"":parametersinfo.getContactPhoneNumber());
 		map.put("secondPhoneNumber", parametersinfo.getSecondPhoneNumber()==null?"":parametersinfo.getSecondPhoneNumber());

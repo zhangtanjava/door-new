@@ -32,4 +32,7 @@ public interface UserService {
     
     //ajax 验证是否存在 此用户名
     public int selectByUserName(String userName);
+    
+    //根据用户名查找
+    public UserPo selectByName(UserPo userPo);
 }

@@ -27,11 +27,13 @@ public interface ParametersInfoDao {
     public List<Parametersinfo> pageFuzzyselect(@Param("start") int start, @Param("pageSize") int pageSize,
                                              @Param("beginDate") Date beginDate, @Param("endDate") Date endDate,
                                              @Param("unitsOrAddress") String unitsOrAddress,@Param("storeID") String storeID
-                                             ,@Param("contactPhoneNumber") String contactPhoneNumber);
+                                             ,@Param("contactPhoneNumber") String contactPhoneNumber
+                                             ,@Param("roleID") String roleID);
 
     //分页模糊查询总条数
     public int countFuzzyselect(@Param("beginDate") Date beginDate, @Param("endDate") Date endDate,
-                                @Param("agreementID") String agreementID,@Param("storeID") String storeID);
+                                @Param("agreementID") String agreementID,@Param("storeID") String storeID
+                                ,@Param("roleID") String roleID);
     
     
    //ajax 验证是否存在 此身份证号码

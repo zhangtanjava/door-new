@@ -74,9 +74,9 @@ public class ParametersHandle {
 		UserPo userPo = userService.selectById(userID);
 		if (userPo != null){
 			req.setStoreID(userPo.getStoreID());
-		}else{
-			req.setStoreID("0");
+			req.setRoleID(userPo.getRoleID());
 		}
+		
 		req.setUnitsOrAddress(unitsOrAddress);
 		req.setContactPhoneNumber(contactPhoneNumber);
 		vo=this.parametersHandleService.pageFuzzyselect(vo,req);
@@ -248,7 +248,7 @@ public class ParametersHandle {
 			parametersinfo.setStoreID(userPo.getStoreID());
 			parametersinfo.setRoleID(userPo.getRoleID());
 		}else{
-			parametersinfo.setStoreID("0");//1-8正常店
+			//parametersinfo.setStoreID("0");//1-8正常店
 			parametersinfo.setRoleID("2");//0 领导 1 员工
 		}
 

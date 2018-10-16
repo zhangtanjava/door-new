@@ -195,7 +195,8 @@
 		     </div>
 			  <div class="span3">
 				  <label>店铺：</label>
-				  <select id="storeID" name="storeID" style="width:100%;height:27px;">
+				  <input id="storeID" name="storeID"  type="text" style="width:97%;height:27px;float:left;" >
+				  <!-- <select id="storeID" name="storeID" style="width:100%;height:27px;">
 					  <option value="1">
 						  1号店
 					  </option>
@@ -220,7 +221,7 @@
 					  <option value="8">
 						  8号店
 					  </option>
-				  </select>
+				  </select> -->
 			  </div>
 		  </div>
 	    </div>
@@ -273,7 +274,11 @@
 	       return false;
 	    }else if(document.getElementById("storeID").value==""){
             alert("店铺  是必填项，不能为空哦！");
-            document.getElementById("roleID").focus();
+            document.getElementById("storeID").focus();
+            return false;
+        }else if(document.getElementById("storeID").value.length>32){
+            alert("店铺  不要超出  32  位长度！");
+            document.getElementById("storeID").focus();
             return false;
         }else{
 	       return true;

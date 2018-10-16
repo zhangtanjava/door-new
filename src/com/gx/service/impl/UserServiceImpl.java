@@ -81,4 +81,9 @@ public class UserServiceImpl implements UserService {
 		return userDao.selectByUserName(userName);
 	}
 
+	@Override
+	public UserPo selectByName(UserPo userPo) {
+		return userDao.selectByname(userPo);
+	}
+
 }

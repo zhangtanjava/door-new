@@ -224,7 +224,7 @@
             <if test="contactPhoneNumber != null  and contactPhoneNumber != '' ">
                 AND contactPhoneNumber like CONCAT('%',#{contactPhoneNumber},'%') 
             </if>
-            <if test="storeID != null  and storeID != '' and storeID != 1 ">
+            <if test="storeID != null  and storeID != '' and roleID != 0 ">
                 AND storeID = #{storeID}
             </if>
         </where>
@@ -246,7 +246,7 @@
             <if test="merName != null  and merName != '' ">
                 AND merName = #{merName}
             </if>
-            <if test="storeID != null and storeID != '' and storeID != 1 ">
+            <if test="storeID != null  and storeID != '' and roleID != 0 ">
                 AND storeID = #{storeID}
             </if>
         </where>
@@ -265,7 +265,7 @@
             <if test="endDate != null">
                 AND surveyorDate &lt;= #{endDate}
             </if>
-            <if test="storeID != null  and storeID != '' and storeID != 1 ">
+            <if test="storeID != null  and storeID != '' and roleID != 0 ">
                 AND storeID = #{storeID}
             </if>
         </where>
