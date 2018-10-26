@@ -249,6 +249,12 @@
             <if test="storeID != null  and storeID != '' and roleID != 0 ">
                 AND storeID = #{storeID}
             </if>
+             <if test="contactPhoneNumber != null  and contactPhoneNumber != '' ">
+                AND contactPhoneNumber like CONCAT('%',#{contactPhoneNumber},'%') 
+            </if>
+            <if test="unitsOrAddress != null and unitsOrAddress != '' ">
+                unitsOrAddress like CONCAT('%',#{unitsOrAddress},'%') 
+            </if>
         </where>
    </select>
    
