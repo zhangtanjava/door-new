@@ -234,9 +234,6 @@
 	<select id="statisticsInfo" resultType="com.gx.po.Parametersinfo" parameterType="com.gx.po.Parametersinfo" >
     SELECT count(*) as counts,sum(price) as sumMoney,sum(deposit) as sumDepositMoney from parametersInfo
         <where>
-            <if test="agreementID != null and agreementID != '' ">
-                agreementID = #{agreementID}
-            </if>
             <if test="beginDate != null">
                 and createDate &gt;= #{beginDate}
             </if>
@@ -262,9 +259,6 @@
     <select id="countFuzzyselect" resultType="java.lang.Integer">
        SELECT count(*) FROM parametersInfo
         <where>
-            <if test="agreementID != null and agreementID != '' ">
-                agreementID = #{agreementID}
-            </if>
             <if test="beginDate != null">
                 and createDate &gt;= #{beginDate}
             </if>
