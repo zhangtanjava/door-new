@@ -187,13 +187,13 @@
 			   <div class="span3">
 				  <label>客户住址：</label>
 				  <input id="unitsOrAddress" name="unitsOrAddress" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.unitsOrAddress}">
+				  value="${list.unitsOrAddress}" <c:if test="${sessionScope.userPo.roleID ==1}">readonly="readonly"</c:if>>
 			  </div>
 			  <div class="span3">
 				  <label>联系电话1：</label>
 				  <input id="contactPhoneNumber" name="contactPhoneNumber" type="text"
 						 style="width:97%;height:27px;float:left;" onchange="checkTel()"
-						 value="${list.contactPhoneNumber}">
+						 value="${list.contactPhoneNumber}" <c:if test="${sessionScope.userPo.roleID ==1}">readonly="readonly"</c:if>>
 			  </div>
 		  </div>
 		  <div class="row-fluid">
@@ -201,7 +201,7 @@
 					  <label>联系电话2：</label>
 					  <input id="secondPhoneNumber" name="secondPhoneNumber" type="text"
 							 style="width:100%;height:27px;"  placeholder="手机号或者座机" onchange="checkTel()"
-							 value="${list.secondPhoneNumber}">
+							 value="${list.secondPhoneNumber}" <c:if test="${sessionScope.userPo.roleID ==1}">readonly="readonly"</c:if>>
 			   </div>
 			   <div class="span3">
 				  <label>客户信息备注：</label>
@@ -273,12 +273,12 @@
 		  	  <div class="span3">
 				  <label>门的型号：</label>
 				  <input id="model" name="model" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.model}">
+				  value="${list.model}" <c:if test="${sessionScope.userPo.roleID ==1}">readonly="readonly"</c:if>>
 			  </div>
 			  <div class="span3">
 				  <label>价格：</label>
 				  <input id="price" name="price" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.price}">
+				  value="${list.price}" <c:if test="${sessionScope.userPo.roleID ==1}">readonly="readonly"</c:if>>
 			  </div>
 			  <div class="span3">
 				  <label>定金：</label>

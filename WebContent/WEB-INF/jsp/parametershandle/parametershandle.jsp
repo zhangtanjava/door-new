@@ -168,8 +168,7 @@
                     <button class="btn btn-info btn-small textone" type="button" onclick="addfunction()"><li class="icon-plus icon-white"></li>新增</button>
                 </div>
                 <div class="span3">
-                    <button class="btn btn-warning btn-small textone" type="button" onclick="updatefunction()"
-                    <c:if test="${sessionScope.userPo.roleID ==1}">style="display:none"</c:if>><li class="icon-pencil icon-white"></li>修改</button>
+                    <button class="btn btn-warning btn-small textone" type="button" onclick="updatefunction()"><li class="icon-pencil icon-white"></li>修改</button>
                 </div>
                 <div class="span3">
                     <button class="btn btn-danger btn-small textone" type="button" onclick="deletefunction()"
