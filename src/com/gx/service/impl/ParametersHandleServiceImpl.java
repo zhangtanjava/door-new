@@ -55,8 +55,9 @@ public class ParametersHandleServiceImpl implements com.gx.service.ParametersHan
 				parametersinfo.getBeginDate(),parametersinfo.getEndDate(),parametersinfo.getUnitsOrAddress(),
 				parametersinfo.getStoreID(),parametersinfo.getContactPhoneNumber(),parametersinfo.getRoleID());
 		vo.setResult(list);
-		int count=parametersInfoDao.countFuzzyselect(parametersinfo.getBeginDate(),parametersinfo.getEndDate(),parametersinfo.getAgreementID(),
-				parametersinfo.getStoreID(),parametersinfo.getRoleID());
+		int count=parametersInfoDao.countFuzzyselect(parametersinfo.getBeginDate(),parametersinfo.getEndDate(),
+				parametersinfo.getUnitsOrAddress(),parametersinfo.getStoreID(),parametersinfo.getContactPhoneNumber(),
+				parametersinfo.getRoleID());
 		vo.setTotal(count);
 		return vo;
 	}

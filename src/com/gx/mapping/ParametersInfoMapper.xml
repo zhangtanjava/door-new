@@ -266,13 +266,22 @@
                 agreementID = #{agreementID}
             </if>
             <if test="beginDate != null">
-                and surveyorDate &gt;= #{beginDate}
+                and createDate &gt;= #{beginDate}
             </if>
             <if test="endDate != null">
-                AND surveyorDate &lt;= #{endDate}
+                AND createDate &lt;= #{endDate}
+            </if>
+            <if test="merName != null  and merName != '' ">
+                AND merName = #{merName}
             </if>
             <if test="storeID != null  and storeID != '' and roleID != 0 ">
                 AND storeID = #{storeID}
+            </if>
+             <if test="contactPhoneNumber != null  and contactPhoneNumber != '' ">
+                AND contactPhoneNumber like CONCAT('%',#{contactPhoneNumber},'%') 
+            </if>
+            <if test="unitsOrAddress != null and unitsOrAddress != '' ">
+                unitsOrAddress like CONCAT('%',#{unitsOrAddress},'%') 
             </if>
         </where>
 

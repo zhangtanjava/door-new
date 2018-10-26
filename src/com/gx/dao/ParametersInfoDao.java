@@ -32,7 +32,8 @@ public interface ParametersInfoDao {
 
     //分页模糊查询总条数
     public int countFuzzyselect(@Param("beginDate") Date beginDate, @Param("endDate") Date endDate,
-                                @Param("agreementID") String agreementID,@Param("storeID") String storeID
+                                @Param("unitsOrAddress") String unitsOrAddress,@Param("storeID") String storeID
+                                ,@Param("contactPhoneNumber") String contactPhoneNumber
                                 ,@Param("roleID") String roleID);
     
     
