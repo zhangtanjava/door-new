@@ -199,7 +199,7 @@
 							 style="width:100%;height:27px;"  placeholder="手机号或者座机" onchange="checkTel()">
 			   </div>
 			   <div class="span3">
-				  <label>客户信息备注：</label>
+				  <label>销售备注：</label>
 				  <input id="remarks" name="remarks" type="text" style="width:97%;height:27px;float:left;" >
 			  </div>
 			  <div class="span3">
@@ -380,6 +380,12 @@
 			  <div class="span3">
 				  <label>垭口备注：</label>
 				  <input id="yaKouSmark" name="yaKouSmark" type="text" style="width:97%;height:27px;float:left;" >
+			  </div>
+		  </div>
+		  <div class="row-fluid">
+			  <div class="span3">
+				  <label>转账信息备注：</label>
+				  <input id="transAcctSmark" name="transAcctSmark" type="text" style="width:97%;height:27px;float:left;" >
 			  </div>
 		  </div>
 	    </div>

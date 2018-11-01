@@ -204,7 +204,7 @@
 							 value="${list.secondPhoneNumber}" <c:if test="${sessionScope.userPo.roleID ==1}">readonly="readonly"</c:if>>
 			   </div>
 			   <div class="span3">
-				  <label>客户信息备注：</label>
+				  <label>销售备注：</label>
 				  <input id="remarks" name="remarks" type="text" style="width:97%;height:27px;float:left;" 
 				  value="${list.remarks}">
 			  </div>
@@ -427,7 +427,13 @@
 				  value="${list.yaKouSmark}">
 			  </div>
 		  </div>
-			
+			<div class="row-fluid">
+			  <div class="span3">
+				  <label>转账信息备注：</label>
+				  <input id="transAcctSmark" name="transAcctSmark" type="text" style="width:97%;height:27px;float:left;" 
+				  value="${list.transAcctSmark}">
+			  </div>
+		  </div>
             </div>
 			<div class="span6" style="text-align:center;">
 				<div class="row-fluid">

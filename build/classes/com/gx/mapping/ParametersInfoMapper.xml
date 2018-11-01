@@ -62,6 +62,7 @@
             <arg column="agreementPhotoPath" jdbcType="VARCHAR" javaType="java.lang.String"/>
             <arg column="agreementPhotoName" jdbcType="VARCHAR" javaType="java.lang.String"/>
             <arg column="agreementPhotoDes" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="transAcctSmark" jdbcType="VARCHAR" javaType="java.lang.String"/>
         </constructor>
     </resultMap>
 
@@ -76,7 +77,7 @@
        fixObject,fixSmarkOne,fixSmarkTwo,yaKouInstallDate,colorRequire,doorBottomInfo,yaKouSmark,
        genderID,contactPhoneNumber,unitsOrAddress,remarks,secondPhoneNumber,
        paymentID,model,price,deposit,playDate,payDate,smartLock,smartCatEye,operatorID,dateMoney,agreementPhotoPath,
-       agreementPhotoName,agreementPhotoDes)
+       agreementPhotoName,agreementPhotoDes,transAcctSmark)
      values (#{holeSize,jdbcType=VARCHAR},
 		     #{doorSize,jdbcType=VARCHAR},
 		     #{direction,jdbcType=VARCHAR},
@@ -128,7 +129,8 @@
 		     #{dateMoney,jdbcType=VARCHAR},
 		     #{agreementPhotoPath,jdbcType=VARCHAR},
 		     #{agreementPhotoName,jdbcType=VARCHAR},
-		     #{agreementPhotoDes,jdbcType=VARCHAR}
+		     #{agreementPhotoDes,jdbcType=VARCHAR},
+		     #{transAcctSmark,jdbcType=VARCHAR}
 		     )
   </insert>
     <!--   修改要用的精确查询 -->
@@ -186,7 +188,8 @@
              createDate=#{createDate,jdbcType=TIMESTAMP},
              agreementPhotoPath=#{agreementPhotoPath,jdbcType=VARCHAR},
 		     agreementPhotoName=#{agreementPhotoName,jdbcType=VARCHAR},
-		     agreementPhotoDes=#{agreementPhotoDes,jdbcType=VARCHAR}
+		     agreementPhotoDes=#{agreementPhotoDes,jdbcType=VARCHAR},
+		     transAcctSmark=#{transAcctSmark,jdbcType=VARCHAR}
             <if test="surveyorPhotoPath != null and surveyorPhotoPath != ''">
                 ,surveyorPhotoPath=#{surveyorPhotoPath}
             </if>
@@ -234,20 +237,20 @@
 	<select id="statisticsInfo" resultType="com.gx.po.Parametersinfo" parameterType="com.gx.po.Parametersinfo" >
     SELECT count(*) as counts,sum(price) as sumMoney,sum(deposit) as sumDepositMoney from parametersInfo
         <where>
-            <if test="agreementID != null and agreementID != '' ">
-                agreementID = #{agreementID}
-            </if>
             <if test="beginDate != null">
                 and createDate &gt;= #{beginDate}
             </if>
             <if test="endDate != null">
                 AND createDate &lt;= #{endDate}
             </if>
-            <if test="merName != null  and merName != '' ">
-                AND merName = #{merName}
-            </if>
             <if test="storeID != null  and storeID != '' and roleID != 0 ">
                 AND storeID = #{storeID}
+            </if>
+             <if test="contactPhoneNumber != null  and contactPhoneNumber != '' ">
+                AND contactPhoneNumber like CONCAT('%',#{contactPhoneNumber},'%') 
+            </if>
+            <if test="unitsOrAddress != null and unitsOrAddress != '' ">
+                unitsOrAddress like CONCAT('%',#{unitsOrAddress},'%') 
             </if>
         </where>
    </select>
@@ -256,17 +259,20 @@
     <select id="countFuzzyselect" resultType="java.lang.Integer">
        SELECT count(*) FROM parametersInfo
         <where>
-            <if test="agreementID != null and agreementID != '' ">
-                agreementID = #{agreementID}
-            </if>
             <if test="beginDate != null">
-                and surveyorDate &gt;= #{beginDate}
+                and createDate &gt;= #{beginDate}
             </if>
             <if test="endDate != null">
-                AND surveyorDate &lt;= #{endDate}
+                AND createDate &lt;= #{endDate}
             </if>
             <if test="storeID != null  and storeID != '' and roleID != 0 ">
                 AND storeID = #{storeID}
+            </if>
+             <if test="contactPhoneNumber != null  and contactPhoneNumber != '' ">
+                AND contactPhoneNumber like CONCAT('%',#{contactPhoneNumber},'%') 
+            </if>
+            <if test="unitsOrAddress != null and unitsOrAddress != '' ">
+                unitsOrAddress like CONCAT('%',#{unitsOrAddress},'%') 
             </if>
         </where>
 

@@ -220,14 +220,14 @@
 				<div class="row-fluid">
 					<div class="span4">
 						<label class="floatont">联系电话1：</label>
-						<label class="yanseblue">${list.contactPhoneNumber}/></label>
+						<label class="yanseblue">${list.contactPhoneNumber}</label>
 					</div>
 				<div class="span4">
 						<label class="floatont">联系电话2：</label>
 						<label class="yanseblue">${list.secondPhoneNumber}</label>
 					</div>
 					<div class="span4">
-						<label class="floatont">客户信息备注：</label>
+						<label class="floatont">销售备注：</label>
 						<label class="yanseblue">${list.remarks}</label>
 					</div>
 				</div>
@@ -422,6 +422,10 @@
 					<div class="span4">
 						<label class="floatont">垭口备注：</label>
 						<label class="yanseblue">${list.yaKouSmark}</label>
+					</div>
+					<div class="span4">
+						<label class="floatont">转账信息备注：</label>
+						<label class="yanseblue">${list.transAcctSmark}</label>
 					</div>
 				</div>
 			</div>

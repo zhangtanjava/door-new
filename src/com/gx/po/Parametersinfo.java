@@ -144,6 +144,7 @@ public class Parametersinfo implements Serializable{
 	    
 	    private BigDecimal sumDepositMoney;      //总定金额
 	
+	    private String transAcctSmark;      //转账信息备注
 	
 	public BigDecimal getSumDepositMoney() {
 			return sumDepositMoney;
@@ -666,6 +667,14 @@ public class Parametersinfo implements Serializable{
 
 	public void setAgreementPhotoDes(String agreementPhotoDes) {
 		this.agreementPhotoDes = agreementPhotoDes;
+	}
+
+	public String getTransAcctSmark() {
+		return transAcctSmark;
+	}
+
+	public void setTransAcctSmark(String transAcctSmark) {
+		this.transAcctSmark = transAcctSmark;
 	}
 	
 }
