@@ -73,6 +73,7 @@
    <select id="pageFuzzyselect" resultType="com.gx.po.UserPo">
        SELECT * from users
      WHERE userName like CONCAT('%',#{userName,jdbcType=VARCHAR},'%') 
+     order by createTime DESC
      limit #{start},#{pageSize}
   </select>
   

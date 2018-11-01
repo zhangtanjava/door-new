@@ -231,6 +231,7 @@
                 AND storeID = #{storeID}
             </if>
         </where>
+        order by createDate DESC
         limit #{start},#{pageSize}
   </select>
   
