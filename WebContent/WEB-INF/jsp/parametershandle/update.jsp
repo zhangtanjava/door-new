@@ -259,13 +259,13 @@
 			  <div class="span3">
 				  <label>订货日期：</label>
 				  <input style="width:97%;height:27px;float:left;" type="text" id="createDateStr" name="createDateStr" class="input-text Wdate"
-						 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss',maxDate:'%y-%M-%d'})" 
+						 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})" 
 						 value="<fmt:formatDate value="${list.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/>">
 			  </div>
 			  <div class="span3">
 				  <label>交款日期：</label>
 				  <input style="width:97%;height:27px;float:left;" type="text" id="payDateStr" name="payDateStr" class="input-text Wdate"
-						 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss',maxDate:'%y-%M-%d'})"
+						 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})"
 						 value="<fmt:formatDate value="${list.payDate}" pattern="yyyy-MM-dd HH:mm:ss"/>">
 			  </div>
 		  </div>
@@ -349,7 +349,7 @@
 			  <div class="span3">
 				  <label>安装日期：</label>
 				  <input style="width:97%;height:27px;float:left;" type="text" id="installDateStr" name="installDateStr" class="input-text Wdate"
-						 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss',maxDate:'%y-%M-%d'})"
+						 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})"
 						 value="<fmt:formatDate value="${list.installDate}" pattern="yyyy-MM-dd HH:mm:ss"/>" >
 			  </div>
 			  <div class="span3">
@@ -367,7 +367,7 @@
 			  <div class="span3">
 				  <label>测量日期：</label>
 				  <input style="width:97%;height:27px;float:left;" type="text" id="surveyorDateStr" name="surveyorDateStr" class="input-text Wdate"
-						 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss',maxDate:'%y-%M-%d'})"
+						 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})"
 						 value="<fmt:formatDate value="${list.surveyorDate}" pattern="yyyy-MM-dd HH:mm:ss"/>">
 			  </div>
 			  <div class="span3">
@@ -390,7 +390,7 @@
 			   <div class="span3">
 				  <label>维修服务日期：</label>
 				  <input style="width:97%;height:27px;float:left;" type="text" id="fixDateStr" name="fixDateStr" class="input-text Wdate"
-						 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss',maxDate:'%y-%M-%d'})"
+						 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})"
 						 value="<fmt:formatDate value="${list.fixDate}" pattern="yyyy-MM-dd HH:mm:ss"/>">
 			  </div>
 			  <div class="span3">
@@ -408,7 +408,7 @@
 			   <div class="span3">
 				  <label>垭口服务日期：</label>
 				  <input style="width:97%;height:27px;float:left;" type="text" id="yaKouInstallDateStr" name="yaKouInstallDateStr" class="input-text Wdate"
-						 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss',maxDate:'%y-%M-%d'})"
+						 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})"
 						 value="<fmt:formatDate value="${list.yaKouInstallDate}" pattern="yyyy-MM-dd HH:mm:ss"/>" >
 			  </div>
 			  <div class="span3">

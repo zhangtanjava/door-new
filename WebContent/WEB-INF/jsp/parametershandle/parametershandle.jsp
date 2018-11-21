@@ -109,6 +109,21 @@
         </div>
         <div class="row-fluid">
                 <div class="span6">
+                    <label style="float:left;">经营店铺：</label>
+                    <input id="stID" name="stID" class="tnput-text" style="width:54.5%;height:26px;" type="text"  value="${sID}"
+                    <c:if test="${sessionScope.userPo.roleID ==1}">readonly="readonly"</c:if>>
+                </div>
+                <div class="span6">
+                 <label style="float:left;">订单总金额：</label>
+            	<label style="float:left;margin-right:15px;color:blue;">${sumMoney}</label>
+            	<label style="float:left;">订单总定金额：</label>
+            	<label style="float:left;margin-right:15px;color:blue;">${sumDepositMoney}</label>
+            	<label style="float:left;">订单数量：</label>
+            	<label style="float:left;color:red;">${sumCount}</label>
+            	</div>
+        </div>
+        <div class="row-fluid">
+                <div class="span6">
                     <label style="float:left;">客户住址：</label>
                     <input id="unitsOrAddress" name="unitsOrAddress" class="tnput-text" style="width:54.5%;height:26px;" type="text"  value="${merN}">
                     <button onclick="timeSelect()" type="button" class="btn-success" style="margin-top:-12px;height:25px;">
@@ -121,14 +136,14 @@
                         详情
                     </button>
                 </div>
-                <div class="span6">
+                <%-- <div class="span6">
                  <label style="float:left;">订单总金额：</label>
             	<label style="float:left;margin-right:15px;color:blue;">${sumMoney}</label>
             	<label style="float:left;">订单总定金额：</label>
             	<label style="float:left;margin-right:15px;color:blue;">${sumDepositMoney}</label>
             	<label style="float:left;">订单数量：</label>
             	<label style="float:left;color:red;">${sumCount}</label>
-            	</div>
+            	</div> --%>
         </div>
         
         <div >
@@ -174,6 +189,9 @@
                     <button class="btn btn-danger btn-small textone" type="button" onclick="deletefunction()"
                     <c:if test="${sessionScope.userPo.roleID ==1}">style="display:none"</c:if>><li class="icon-remove icon-white"></li>删除</button>
                 </div>
+                <!-- <div>
+                	<button id="js-export" type="button" class="btn btn-primary">导出Excel</button>
+                </div>-->
             </div>
         </div>
     </div>
@@ -191,6 +209,7 @@
                     <th>尺寸</th>
                     <th>方向</th>
                     <th>价格</th>
+                    <th>店铺</th>
                     <th>测量</th>
                     <th>安装</th>
                     <th>合同</th>
@@ -207,6 +226,7 @@
                         <td>${item.doorSize}</td>
                         <td>${item.direction}</td>
                         <td>${item.price}</td>
+                        <td>${item.storeID}</td>
                         <td>
                             <a id="downloadsurvery" href="${ctx}/Download/download.do?filepath=${item.surveyorPhotoPath}" onclick="downloadSurVal()">
                                     <c:if test="${not empty item.surveyorPhotoName}">下载</c:if>
@@ -239,13 +259,20 @@
 
 <script type="text/javascript">
 
+	$('#js-export').click(function(){
+	    //window.location.href="${ctx}/excel/exportfeedback?type="+$('#type').val()+"&startDate="+$('#table_start_date').val()+"&endDate="+$('#table_end_date').val();
+		window.location.href="${ctx}/ParametersHandle/exportfeedback.do";
+	});
+
     function timeSelect() {
         var datemin = document.getElementById("datemin").value;
         var datemax = document.getElementById("datemax").value;
         var unitsOrAddress = document.getElementById("unitsOrAddress").value;
         var contactPhoneNumber = document.getElementById("contactPhoneNumber").value;
+        var stID = document.getElementById("stID").value;
         parent.document.getElementById('Mainid').src = '${ctx}/ParametersHandle/tolist.do?datemin=' +
-            datemin + '&datemax=' + datemax +'&contactPhoneNumber=' + contactPhoneNumber+'&unitsOrAddress=' + unitsOrAddress+'&userID=' + ${sessionScope.userPo.id};
+            datemin + '&datemax=' + datemax +'&contactPhoneNumber=' + contactPhoneNumber+'&unitsOrAddress=' + 
+            unitsOrAddress+'&userID=' + ${sessionScope.userPo.id}+'&stID=' + stID;
     }
     function wlInstallWord() {
         var id = [];

@@ -227,7 +227,8 @@
             <if test="contactPhoneNumber != null  and contactPhoneNumber != '' ">
                 AND contactPhoneNumber like CONCAT('%',#{contactPhoneNumber},'%') 
             </if>
-            <if test="storeID != null  and storeID != '' and roleID != 0 ">
+            <!-- <if test="storeID != null  and storeID != '' and roleID != 0 "> -->
+            <if test="storeID != null  and storeID != '' ">
                 AND storeID = #{storeID}
             </if>
         </where>

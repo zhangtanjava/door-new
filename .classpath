@@ -12,5 +12,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/poi-3.6-20091214.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

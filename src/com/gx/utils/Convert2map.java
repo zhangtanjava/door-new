@@ -36,7 +36,10 @@ public class Convert2map {
 		map.put("createDate",  DateUtils.get8Str(parametersinfo.getCreateDate()==null?new Date():parametersinfo.getCreateDate()));
 		map.put("doorMod", parametersinfo.getModel()==null?"":parametersinfo.getModel());
 		map.put("price", parametersinfo.getPrice()==null?"":parametersinfo.getPrice());
-		map.put("direction", parametersinfo.getDirection()==null?"":parametersinfo.getDirection());
+		StringBuffer direction = new StringBuffer();
+		direction.append(parametersinfo.getDoorSize()==null?"":parametersinfo.getDoorSize()).append("|").
+		append(parametersinfo.getDirection()==null?"":parametersinfo.getDirection());
+		map.put("direction", direction.toString());
 		map.put("dm", parametersinfo.getDateMoney()==null?"":parametersinfo.getDateMoney());
 		map.put("indoorInfo", parametersinfo.getIndoorInfo()==null?"":parametersinfo.getIndoorInfo());
 		map.put("payment", parametersinfo.getPaymentID()==null?"":parametersinfo.getPaymentID());
@@ -90,7 +93,10 @@ public class Convert2map {
 		map.put("createDate",  DateUtils.get8Str(parametersinfo.getCreateDate()==null?new Date():parametersinfo.getCreateDate()));
 		map.put("doorMod", parametersinfo.getModel()==null?"":parametersinfo.getModel());
 		map.put("installDate",  DateUtils.get8Str(parametersinfo.getInstallDate()==null?new Date():parametersinfo.getInstallDate()));
-		map.put("direction", parametersinfo.getDirection()==null?"":parametersinfo.getDirection());
+		StringBuffer direction = new StringBuffer();
+		direction.append(parametersinfo.getDoorSize()==null?"":parametersinfo.getDoorSize()).append("|").
+		append(parametersinfo.getDirection()==null?"":parametersinfo.getDirection());
+		map.put("direction", direction.toString());
 		map.put("surveyor", parametersinfo.getSurveyor()==null?"":parametersinfo.getSurveyor());
 		map.put("installPerson", parametersinfo.getInstallPerson()==null?"":parametersinfo.getInstallPerson());
 		map.put("unitsOrAddress", parametersinfo.getUnitsOrAddress()==null?"":parametersinfo.getUnitsOrAddress());

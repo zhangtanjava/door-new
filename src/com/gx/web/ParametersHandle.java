@@ -8,7 +8,10 @@ import com.gx.po.UserPo;
 import com.gx.service.ParametersHandleService;
 import com.gx.service.UserService;
 import com.gx.utils.DateUtils;
+import com.gx.utils.ExcelUtil;
+
 import org.apache.log4j.Logger;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,9 +26,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/ParametersHandle")
@@ -38,15 +43,21 @@ public class ParametersHandle {
 	private ParametersHandleService parametersHandleService;
 	@Autowired
 	private UserService userService;
+	
 	@RequestMapping("/tolist")
-	public ModelAndView tolist(String datemin, String datemax,String contactPhoneNumber,Integer currentPage,String unitsOrAddress,Integer userID) throws UnsupportedEncodingException{
+	public ModelAndView tolist(String datemin, String datemax,String contactPhoneNumber,
+			Integer currentPage,String unitsOrAddress,Integer userID,String stID) throws UnsupportedEncodingException{
 
 		if (unitsOrAddress != null && !"".equals(unitsOrAddress)) {
 			byte[] b=unitsOrAddress.getBytes("ISO-8859-1");//用tomcat的格式（iso-8859-1）方式去读。
 			unitsOrAddress=new String(b,"utf-8");//采用utf-8去接string
 		}
-	
-		logger.info("ParametersHandle tolist req:"+datemin+"|"+datemax+"|"+unitsOrAddress);
+		if (stID != null && !"".equals(stID)) {
+			byte[] b=stID.getBytes("ISO-8859-1");//用tomcat的格式（iso-8859-1）方式去读。
+			stID=new String(b,"utf-8");//采用utf-8去接string
+		}
+		
+		logger.info("ParametersHandle tolist req:"+datemin+"|"+datemax+"|"+unitsOrAddress+"|"+stID);
 		ModelAndView mv=null;
 		if (currentPage==null) {
 			currentPage=1;
@@ -76,7 +87,9 @@ public class ParametersHandle {
 			req.setStoreID(userPo.getStoreID());
 			req.setRoleID(userPo.getRoleID());
 		}
-		
+		if ("0".equals(req.getRoleID())) {
+			req.setStoreID(stID);
+		}
 		req.setUnitsOrAddress(unitsOrAddress);
 		req.setContactPhoneNumber(contactPhoneNumber);
 		vo=this.parametersHandleService.pageFuzzyselect(vo,req);
@@ -88,6 +101,7 @@ public class ParametersHandle {
 		mv.addObject("max",datemax);
 		mv.addObject("agID",contactPhoneNumber);
 		mv.addObject("merN",unitsOrAddress);
+		mv.addObject("sID", stID);
 		mv.addObject("sumCount",res.getCounts().toString());
 		mv.addObject("sumMoney",res.getSumMoney() == null? "0":res.getSumMoney().toString());
 		mv.addObject("sumDepositMoney",res.getSumDepositMoney() == null? "0":res.getSumDepositMoney().toString());
@@ -462,5 +476,69 @@ public class ParametersHandle {
 		return mv;
 	}
 
-
+//	@RequestMapping(value = "/exportfeedback")
+//    @ResponseBody
+//    public String exportFeedBack(HttpServletResponse response,
+//            @RequestParam(value="query", required=false) String searchText,
+//            @RequestParam(value="type", required=false) String strType,
+//            @RequestParam(value="startDate", required=false) String startDate,
+//            @RequestParam(value="endDate", required=false) String endDate){
+//        
+//        String fileName = "反馈明细"+System.currentTimeMillis()+".xls"; //文件名 
+//        String sheetName = "反馈明细";//sheet名
+//        
+//        //String []title = new String[]{"Id","导航图标","反馈类型","内容","联系方式","应用Id","应用版本","反馈时间"};//标题
+//        String []title = new String[]{"Id"};//标题
+//        
+//        List<Parametersinfo> list = parametersHandleService.selectAll();//内容list
+//        
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        
+//        String [][]values = new String[list.size()][];
+//        for(int i=0;i<list.size();i++){
+//            values[i] = new String[title.length];
+//            //将对象内容转换成string
+//            Parametersinfo obj = list.get(i);
+//            values[i][0] = obj.getId()+"";
+////            values[i][1] = obj.getFiles();
+////            values[i][2] = obj.getFbType();
+////            values[i][3] = obj.getContent();
+////            values[i][4] = obj.getContactInfo();
+////            values[i][5] = obj.getAppId();
+////            values[i][6] = obj.getVersionName();
+////            values[i][7] = sdf.format(obj.getCreateTime());
+//            
+//        }
+//        
+//        HSSFWorkbook wb = ExcelUtil.getHSSFWorkbook(sheetName, title, values, null);
+//        
+//        //将文件存到指定位置  
+//        try {  
+//             this.setResponseHeader(response, fileName);  
+//             OutputStream os = response.getOutputStream();  
+//             wb.write(os);  
+//             os.flush();  
+//             os.close();  
+//        } catch (Exception e) {  
+//             e.printStackTrace();  
+//        }  
+//        return "ok";
+//    }
+//    
+//     public void setResponseHeader(HttpServletResponse response, String fileName) {  
+//         try {  
+//              try {  
+//                   fileName = new String(fileName.getBytes(),"ISO8859-1");  
+//              } catch (UnsupportedEncodingException e) {  
+//                   // TODO Auto-generated catch block  
+//                   e.printStackTrace();  
+//              }  
+//              response.setContentType("application/octet-stream;charset=ISO8859-1");  
+//              response.setHeader("Content-Disposition", "attachment;filename="+ fileName);  
+//              response.addHeader("Pargam", "no-cache");  
+//              response.addHeader("Cache-Control", "no-cache");  
+//         } catch (Exception ex) {  
+//              ex.printStackTrace();  
+//         }  
+//    } 
 }
