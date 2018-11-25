@@ -46,7 +46,8 @@ public class ParametersHandle {
 	
 	@RequestMapping("/tolist")
 	public ModelAndView tolist(String datemin, String datemax,String contactPhoneNumber,
-			Integer currentPage,String unitsOrAddress,Integer userID,String stID) throws UnsupportedEncodingException{
+			Integer currentPage,String unitsOrAddress,Integer userID,String stID,
+			String installPerson) throws UnsupportedEncodingException{
 
 		if (unitsOrAddress != null && !"".equals(unitsOrAddress)) {
 			byte[] b=unitsOrAddress.getBytes("ISO-8859-1");//用tomcat的格式（iso-8859-1）方式去读。
@@ -56,8 +57,13 @@ public class ParametersHandle {
 			byte[] b=stID.getBytes("ISO-8859-1");//用tomcat的格式（iso-8859-1）方式去读。
 			stID=new String(b,"utf-8");//采用utf-8去接string
 		}
+		if (installPerson != null && !"".equals(installPerson)) {
+			byte[] b=installPerson.getBytes("ISO-8859-1");//用tomcat的格式（iso-8859-1）方式去读。
+			installPerson=new String(b,"utf-8");//采用utf-8去接string
+		}
 		
-		logger.info("ParametersHandle tolist req:"+datemin+"|"+datemax+"|"+unitsOrAddress+"|"+stID);
+		logger.info("ParametersHandle tolist req:"+datemin+"|"+datemax+"|"+unitsOrAddress+"|"+contactPhoneNumber
+				+"|"+currentPage+"|"+unitsOrAddress+"|"+userID+"|"+stID);
 		ModelAndView mv=null;
 		if (currentPage==null) {
 			currentPage=1;
@@ -92,6 +98,7 @@ public class ParametersHandle {
 		}
 		req.setUnitsOrAddress(unitsOrAddress);
 		req.setContactPhoneNumber(contactPhoneNumber);
+		req.setInstallPerson(installPerson);
 		vo=this.parametersHandleService.pageFuzzyselect(vo,req);
 
 		Parametersinfo res = this.parametersHandleService.statisticsInfo(req);
@@ -101,6 +108,7 @@ public class ParametersHandle {
 		mv.addObject("max",datemax);
 		mv.addObject("agID",contactPhoneNumber);
 		mv.addObject("merN",unitsOrAddress);
+		mv.addObject("instPerson",installPerson);
 		mv.addObject("sID", stID);
 		mv.addObject("sumCount",res.getCounts().toString());
 		mv.addObject("sumMoney",res.getSumMoney() == null? "0":res.getSumMoney().toString());
@@ -425,13 +433,13 @@ public class ParametersHandle {
 		}
 
 		UserPo userPo = userService.selectById(userID);
-		if (userPo != null){
-			parametersinfo.setStoreID(userPo.getStoreID());
-			parametersinfo.setRoleID(userPo.getRoleID());
-		}else{
-			parametersinfo.setStoreID("0");//1-8正常店
-			parametersinfo.setRoleID("2");//0 领导 1 员工
-		}
+//		if (userPo != null){
+//			parametersinfo.setStoreID(userPo.getStoreID());
+//			parametersinfo.setRoleID(userPo.getRoleID());
+//		}else{
+//			parametersinfo.setStoreID("0");//1-8正常店
+//			parametersinfo.setRoleID("2");//0 领导 1 员工
+//		}
 
 		parametersinfo.setUpdateDate(new Date());
 		parametersHandleService.updateById(parametersinfo);

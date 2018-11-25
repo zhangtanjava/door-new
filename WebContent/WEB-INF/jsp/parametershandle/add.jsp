@@ -307,7 +307,7 @@
 	      </div>
 		  <div class="row-fluid">
 			  <div class="span3">
-				  <label>割边情况：</label>
+				  <label>安装情况：</label>
 				  <input id="cutInfo" name="cutInfo" type="text" style="width:97%;height:27px;float:left;" >
 			  </div>
 			  <div class="span3">
@@ -384,7 +384,7 @@
 		  </div>
 		  <div class="row-fluid">
 			  <div class="span3">
-				  <label>转账信息备注：</label>
+				  <label>安装时应付款：</label>
 				  <input id="transAcctSmark" name="transAcctSmark" type="text" style="width:97%;height:27px;float:left;" >
 			  </div>
 		  </div>

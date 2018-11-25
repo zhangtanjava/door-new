@@ -114,13 +114,9 @@
                     <c:if test="${sessionScope.userPo.roleID ==1}">readonly="readonly"</c:if>>
                 </div>
                 <div class="span6">
-                 <label style="float:left;">订单总金额：</label>
-            	<label style="float:left;margin-right:15px;color:blue;">${sumMoney}</label>
-            	<label style="float:left;">订单总定金额：</label>
-            	<label style="float:left;margin-right:15px;color:blue;">${sumDepositMoney}</label>
-            	<label style="float:left;">订单数量：</label>
-            	<label style="float:left;color:red;">${sumCount}</label>
-            	</div>
+                    <label style="float:left;">安装师傅：</label>
+                    <input id="installPerson" name="installPerson" class="tnput-text" style="width:54.5%;height:26px;" type="text"  value="${instPerson}">
+                </div>
         </div>
         <div class="row-fluid">
                 <div class="span6">
@@ -136,14 +132,14 @@
                         详情
                     </button>
                 </div>
-                <%-- <div class="span6">
+                <div class="span6">
                  <label style="float:left;">订单总金额：</label>
             	<label style="float:left;margin-right:15px;color:blue;">${sumMoney}</label>
             	<label style="float:left;">订单总定金额：</label>
             	<label style="float:left;margin-right:15px;color:blue;">${sumDepositMoney}</label>
             	<label style="float:left;">订单数量：</label>
             	<label style="float:left;color:red;">${sumCount}</label>
-            	</div> --%>
+            	</div>
         </div>
         
         <div >
@@ -203,13 +199,14 @@
                 <tr>
                     <th>选择</th>
                     <th>订货日期</th>
+                    <th>店铺</th>
                     <th>客户住址</th>
                     <th>联系电话1</th>
                     <th>型号</th>
                     <th>尺寸</th>
                     <th>方向</th>
                     <th>价格</th>
-                    <th>店铺</th>
+                    <th>安装师傅</th>
                     <th>测量</th>
                     <th>安装</th>
                     <th>合同</th>
@@ -220,13 +217,14 @@
                     <tr>
                         <td><input type="radio" name="id" value="${item.id}"></td>
                         <td><fmt:formatDate value="${item.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                        <td>${item.storeID}</td>
                         <td>${item.unitsOrAddress}</td>
                         <td>${item.contactPhoneNumber}</td>
                         <td>${item.model}</td>
                         <td>${item.doorSize}</td>
                         <td>${item.direction}</td>
                         <td>${item.price}</td>
-                        <td>${item.storeID}</td>
+                        <td>${item.installPerson}</td>
                         <td>
                             <a id="downloadsurvery" href="${ctx}/Download/download.do?filepath=${item.surveyorPhotoPath}" onclick="downloadSurVal()">
                                     <c:if test="${not empty item.surveyorPhotoName}">下载</c:if>
@@ -270,9 +268,10 @@
         var unitsOrAddress = document.getElementById("unitsOrAddress").value;
         var contactPhoneNumber = document.getElementById("contactPhoneNumber").value;
         var stID = document.getElementById("stID").value;
+        var installPerson = document.getElementById("installPerson").value;
         parent.document.getElementById('Mainid').src = '${ctx}/ParametersHandle/tolist.do?datemin=' +
             datemin + '&datemax=' + datemax +'&contactPhoneNumber=' + contactPhoneNumber+'&unitsOrAddress=' + 
-            unitsOrAddress+'&userID=' + ${sessionScope.userPo.id}+'&stID=' + stID;
+            unitsOrAddress+'&userID=' + ${sessionScope.userPo.id}+'&stID=' + stID+'&installPerson='+installPerson;
     }
     function wlInstallWord() {
         var id = [];
@@ -454,8 +453,13 @@
         backFn: function (p) {
             var datemin = document.getElementById("datemin").value;
             var datemax = document.getElementById("datemax").value;
+            var unitsOrAddress = document.getElementById("unitsOrAddress").value;
+            var stID = document.getElementById("stID").value;
+            var installPerson = document.getElementById("installPerson").value;
             location.href = "${ctx}/ParametersHandle/tolist.do?currentPage=" + p +
-                "&datemin=" + datemin + "&datemax=" + datemax+"&userID=${sessionScope.userPo.id}";
+                "&datemin=" + datemin + "&datemax=" + datemax+'&unitsOrAddress=' + 
+            unitsOrAddress+'&userID=' + ${sessionScope.userPo.id}+'&stID=' + stID +
+            '&installPerson='+installPerson;
         }
     });
     

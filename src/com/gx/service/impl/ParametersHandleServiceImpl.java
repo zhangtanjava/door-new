@@ -53,11 +53,12 @@ public class ParametersHandleServiceImpl implements com.gx.service.ParametersHan
 		}
 		List<Parametersinfo> list=parametersInfoDao.pageFuzzyselect(start, vo.getPageSize(),
 				parametersinfo.getBeginDate(),parametersinfo.getEndDate(),parametersinfo.getUnitsOrAddress(),
-				parametersinfo.getStoreID(),parametersinfo.getContactPhoneNumber(),parametersinfo.getRoleID());
+				parametersinfo.getStoreID(),parametersinfo.getContactPhoneNumber(),parametersinfo.getRoleID()
+				,parametersinfo.getInstallPerson());
 		vo.setResult(list);
 		int count=parametersInfoDao.countFuzzyselect(parametersinfo.getBeginDate(),parametersinfo.getEndDate(),
 				parametersinfo.getUnitsOrAddress(),parametersinfo.getStoreID(),parametersinfo.getContactPhoneNumber(),
-				parametersinfo.getRoleID());
+				parametersinfo.getRoleID(),parametersinfo.getInstallPerson());
 		vo.setTotal(count);
 		return vo;
 	}

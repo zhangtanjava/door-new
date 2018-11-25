@@ -337,7 +337,7 @@
 	      </div>
 		  <div class="row-fluid">
 			  <div class="span3">
-				  <label>割边情况：</label>
+				  <label>安装情况：</label>
 				  <input id="cutInfo" name="cutInfo" type="text" style="width:97%;height:27px;float:left;" 
 				  value="${list.cutInfo}">
 			  </div>
@@ -429,7 +429,7 @@
 		  </div>
 			<div class="row-fluid">
 			  <div class="span3">
-				  <label>转账信息备注：</label>
+				  <label>安装时应付款：</label>
 				  <input id="transAcctSmark" name="transAcctSmark" type="text" style="width:97%;height:27px;float:left;" 
 				  value="${list.transAcctSmark}">
 			  </div>
@@ -439,7 +439,7 @@
 				<div class="row-fluid">
 					<div class="span12" style="margin-top: 10px;margin-bottom: 8px;">
 						<button class="btn btn-primary" type="submit">
-							<li class="icon-check icon-white"></li>修改</button>
+							<li class="icon-check icon-white"></li>保存</button>
 					</div>
 				</div>
 			</div>

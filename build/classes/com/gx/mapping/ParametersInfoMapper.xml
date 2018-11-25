@@ -155,8 +155,8 @@
 		     otherSmark=#{otherSmark,jdbcType=VARCHAR},
 		     agreementID=#{agreementID,jdbcType=VARCHAR},
 		     operatorID=#{operatorID,jdbcType=VARCHAR},
-             storeID=#{storeID,jdbcType=VARCHAR},
-             roleID=#{roleID,jdbcType=VARCHAR},
+            <!--  storeID=#{storeID,jdbcType=VARCHAR},
+             roleID=#{roleID,jdbcType=VARCHAR}, -->
              merName=#{merName,jdbcType=VARCHAR},
              updateDate=#{updateDate,jdbcType=TIMESTAMP},
              surveyorPhotoDes=#{surveyorPhotoDes,jdbcType=VARCHAR},
@@ -186,10 +186,14 @@
 		     operatorID=#{operatorID,jdbcType=VARCHAR},
 		     dateMoney=#{dateMoney,jdbcType=VARCHAR},
              createDate=#{createDate,jdbcType=TIMESTAMP},
-             agreementPhotoPath=#{agreementPhotoPath,jdbcType=VARCHAR},
-		     agreementPhotoName=#{agreementPhotoName,jdbcType=VARCHAR},
 		     agreementPhotoDes=#{agreementPhotoDes,jdbcType=VARCHAR},
 		     transAcctSmark=#{transAcctSmark,jdbcType=VARCHAR}
+		     <if test="agreementPhotoPath != null and agreementPhotoPath != ''">
+                ,agreementPhotoPath=#{agreementPhotoPath}
+            </if>
+            <if test="agreementPhotoName != null and agreementPhotoName != ''">
+                ,agreementPhotoName=#{agreementPhotoName}
+            </if>
             <if test="surveyorPhotoPath != null and surveyorPhotoPath != ''">
                 ,surveyorPhotoPath=#{surveyorPhotoPath}
             </if>
@@ -202,7 +206,7 @@
             <if test="istallPhotoName != null and istallPhotoName != ''">
                 ,istallPhotoName=#{istallPhotoName}
             </if>
-
+			
             WHERE id = #{id,jdbcType=INTEGER}
    </update>
 
@@ -216,7 +220,7 @@
 
         <where>
             <if test="unitsOrAddress != null and unitsOrAddress != '' ">
-                unitsOrAddress like CONCAT('%',#{unitsOrAddress},'%') 
+                and unitsOrAddress like CONCAT('%',#{unitsOrAddress},'%') 
             </if>
             <if test="beginDate != null">
                 and createDate &gt;= #{beginDate}
@@ -230,6 +234,9 @@
             <!-- <if test="storeID != null  and storeID != '' and roleID != 0 "> -->
             <if test="storeID != null  and storeID != '' ">
                 AND storeID = #{storeID}
+            </if>
+            <if test="installPerson != null  and installPerson != '' ">
+                AND installPerson = #{installPerson}
             </if>
         </where>
         order by createDate DESC
@@ -245,14 +252,20 @@
             <if test="endDate != null">
                 AND createDate &lt;= #{endDate}
             </if>
-            <if test="storeID != null  and storeID != '' and roleID != 0 ">
+            <!-- <if test="storeID != null  and storeID != '' and roleID != 0 ">
+                AND storeID = #{storeID}
+            </if> -->
+            <if test="storeID != null  and storeID != '' ">
                 AND storeID = #{storeID}
             </if>
              <if test="contactPhoneNumber != null  and contactPhoneNumber != '' ">
                 AND contactPhoneNumber like CONCAT('%',#{contactPhoneNumber},'%') 
             </if>
             <if test="unitsOrAddress != null and unitsOrAddress != '' ">
-                unitsOrAddress like CONCAT('%',#{unitsOrAddress},'%') 
+                and unitsOrAddress like CONCAT('%',#{unitsOrAddress},'%') 
+            </if>
+            <if test="installPerson != null  and installPerson != '' ">
+                AND installPerson = #{installPerson}
             </if>
         </where>
    </select>
@@ -267,14 +280,20 @@
             <if test="endDate != null">
                 AND createDate &lt;= #{endDate}
             </if>
-            <if test="storeID != null  and storeID != '' and roleID != 0 ">
+            <!-- <if test="storeID != null  and storeID != '' and roleID != 0 ">
+                AND storeID = #{storeID}
+            </if> -->
+            <if test="storeID != null  and storeID != '' ">
                 AND storeID = #{storeID}
             </if>
              <if test="contactPhoneNumber != null  and contactPhoneNumber != '' ">
                 AND contactPhoneNumber like CONCAT('%',#{contactPhoneNumber},'%') 
             </if>
             <if test="unitsOrAddress != null and unitsOrAddress != '' ">
-                unitsOrAddress like CONCAT('%',#{unitsOrAddress},'%') 
+                and unitsOrAddress like CONCAT('%',#{unitsOrAddress},'%') 
+            </if>
+            <if test="installPerson != null  and installPerson != '' ">
+                AND installPerson = #{installPerson}
             </if>
         </where>
 

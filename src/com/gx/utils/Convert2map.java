@@ -35,14 +35,14 @@ public class Convert2map {
 		map.put("installDate", DateUtils.get8Str(parametersinfo.getInstallDate()==null?new Date():parametersinfo.getInstallDate()));
 		map.put("createDate",  DateUtils.get8Str(parametersinfo.getCreateDate()==null?new Date():parametersinfo.getCreateDate()));
 		map.put("doorMod", parametersinfo.getModel()==null?"":parametersinfo.getModel());
-		map.put("price", parametersinfo.getPrice()==null?"":parametersinfo.getPrice());
+		map.put("price", parametersinfo.getSmartLock()==null?"":parametersinfo.getSmartLock());
 		StringBuffer direction = new StringBuffer();
 		direction.append(parametersinfo.getDoorSize()==null?"":parametersinfo.getDoorSize()).append("|").
 		append(parametersinfo.getDirection()==null?"":parametersinfo.getDirection());
 		map.put("direction", direction.toString());
-		map.put("dm", parametersinfo.getDateMoney()==null?"":parametersinfo.getDateMoney());
-		map.put("indoorInfo", parametersinfo.getIndoorInfo()==null?"":parametersinfo.getIndoorInfo());
-		map.put("payment", parametersinfo.getPaymentID()==null?"":parametersinfo.getPaymentID());
+		map.put("dm", parametersinfo.getPrice()==null?"":parametersinfo.getPrice());
+		map.put("indoorInfo", parametersinfo.getCutInfo()==null?"":parametersinfo.getCutInfo());
+		map.put("payment", parametersinfo.getTransAcctSmark()==null?"":parametersinfo.getTransAcctSmark());
 		map.put("unitsOrAddress", parametersinfo.getUnitsOrAddress()==null?"":parametersinfo.getUnitsOrAddress());
 		map.put("contactPhoneNumber", parametersinfo.getContactPhoneNumber()==null?"":parametersinfo.getContactPhoneNumber());
 		map.put("secondPhoneNumber", parametersinfo.getSecondPhoneNumber()==null?"":parametersinfo.getSecondPhoneNumber());

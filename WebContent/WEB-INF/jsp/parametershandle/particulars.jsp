@@ -337,7 +337,7 @@
 						<label class="yanseblue">${list.indoorInfo}</label>
 					</div>
 					<div class="span4">
-						<label class="floatont">割边情况：</label>
+						<label class="floatont">安装情况：</label>
 						<label class="yanseblue">${list.cutInfo}</label>
 					</div>
 					<div class="span4">
@@ -424,7 +424,7 @@
 						<label class="yanseblue">${list.yaKouSmark}</label>
 					</div>
 					<div class="span4">
-						<label class="floatont">转账信息备注：</label>
+						<label class="floatont">安装时应付款：</label>
 						<label class="yanseblue">${list.transAcctSmark}</label>
 					</div>
 				</div>

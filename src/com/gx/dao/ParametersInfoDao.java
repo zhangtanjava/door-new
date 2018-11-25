@@ -28,13 +28,13 @@ public interface ParametersInfoDao {
                                              @Param("beginDate") Date beginDate, @Param("endDate") Date endDate,
                                              @Param("unitsOrAddress") String unitsOrAddress,@Param("storeID") String storeID
                                              ,@Param("contactPhoneNumber") String contactPhoneNumber
-                                             ,@Param("roleID") String roleID);
+                                             ,@Param("roleID") String roleID,@Param("installPerson") String installPerson);
 
     //分页模糊查询总条数
     public int countFuzzyselect(@Param("beginDate") Date beginDate, @Param("endDate") Date endDate,
                                 @Param("unitsOrAddress") String unitsOrAddress,@Param("storeID") String storeID
                                 ,@Param("contactPhoneNumber") String contactPhoneNumber
-                                ,@Param("roleID") String roleID);
+                                ,@Param("roleID") String roleID,@Param("installPerson") String installPerson);
     
     
    //ajax 验证是否存在 此身份证号码
