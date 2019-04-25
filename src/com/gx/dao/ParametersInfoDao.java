@@ -1,6 +1,6 @@
 package com.gx.dao;
 
-import com.gx.po.Parametersinfo;
+import com.gx.po.ParametersInfoSepChild;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
@@ -8,23 +8,22 @@ import java.util.List;
 
 public interface ParametersInfoDao {
 
-
 	public int selectByAgreementID(String agreementID);
 
 	public int deleteById(Integer id);
 
-	public int insertAll(Parametersinfo Parametersinfo);
+	public int insertAll(ParametersInfoSepChild Parametersinfo);
 
 
-	public	Parametersinfo selectById(Integer id);
+	public	ParametersInfoSepChild selectById(Integer id);
 
 
-	public int updateById(Parametersinfo Parametersinfo);
+	public int updateById(ParametersInfoSepChild Parametersinfo);
 
 	
 	
 	//分页模糊查询
-    public List<Parametersinfo> pageFuzzyselect(@Param("start") int start, @Param("pageSize") int pageSize,
+    public List<ParametersInfoSepChild> pageFuzzyselect(@Param("start") int start, @Param("pageSize") int pageSize,
                                              @Param("beginDate") Date beginDate, @Param("endDate") Date endDate,
                                              @Param("unitsOrAddress") String unitsOrAddress,@Param("storeID") String storeID
                                              ,@Param("contactPhoneNumber") String contactPhoneNumber
@@ -44,11 +43,11 @@ public interface ParametersInfoDao {
     
     
     //查询所有数据  非本派所用
-    public List<Parametersinfo> selectAll();
+    public List<ParametersInfoSepChild> selectAll();
     
     //模糊查询 运用 Ajax 非分页
-    public List<Parametersinfo> selectAjaxList(String userName);
+    public List<ParametersInfoSepChild> selectAjaxList(String userName);
 
     
-    public  Parametersinfo statisticsInfo(Parametersinfo vo);
+    public  ParametersInfoSepChild statisticsInfo(ParametersInfoSepChild vo);
 }

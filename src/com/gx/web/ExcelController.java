@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.gx.po.Parametersinfo;
+import com.gx.po.ParametersInfoSepChild;
 import com.gx.service.ParametersHandleService;
 import com.gx.utils.ExcelUtil;
 
@@ -36,7 +36,7 @@ public class ExcelController {
         //String []title = new String[]{"Id","导航图标","反馈类型","内容","联系方式","应用Id","应用版本","反馈时间"};//标题
         String []title = new String[]{"Id"};//标题
         
-        List<Parametersinfo> list = parametersHandleService.selectAll();//内容list
+        List<ParametersInfoSepChild> list = parametersHandleService.selectAll();//内容list
         
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         
@@ -44,7 +44,7 @@ public class ExcelController {
         for(int i=0;i<list.size();i++){
             values[i] = new String[title.length];
             //将对象内容转换成string
-            Parametersinfo obj = list.get(i);
+            ParametersInfoSepChild obj = list.get(i);
             values[i][0] = obj.getId()+"";
 //            values[i][1] = obj.getFiles();
 //            values[i][2] = obj.getFbType();

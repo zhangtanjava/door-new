@@ -174,7 +174,7 @@
 	    <div class="row-fluid">
 	   			 <div class="span3">
 				  <label>店面：</label>
-				  <select id="storeId" name="storeId">
+				  <select id="storeID" name="storeID">
       					<option value="0" selected="selected">请选择</option>
 					</select>
 			  	</div>
@@ -225,7 +225,7 @@
 			  	</div>
 			  	<div class="span3">
 					<label>合同图片2：</label>
-					<input type="file" id="agreementFile" name="seAgreementFile" style="width:97%;height:27px;float:left;">
+					<input type="file" id="seAgreementFile" name="seAgreementFile" style="width:97%;height:27px;float:left;">
 		  		</div>
 		  </div>
 		  <div class="row-fluid">
@@ -324,14 +324,14 @@
 				  <input id="smartCatEye" name="smartCatEye" type="text" style="width:97%;height:27px;float:left;" >
 			  	</div>
 			  <div class="span3">
-				  <label>智能锁安装时间：</label>
-				  <input id="smartLock" name="smartLock" type="text" style="width:97%;height:27px;float:left;" >
-			  </div>
-			  <div class="span3">
 					  <label>智能锁安装时间：</label>
-					  <input style="width:97%;height:27px;float:left;" type="text" id="surveyorDateStr" name="surveyorDateStr" class="input-text Wdate"
+					  <input style="width:97%;height:27px;float:left;" type="text" id="smartLockDateStr" name="smartLockDateStr" class="input-text Wdate"
 							 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})">
 			  </div>
+			  <div class="span3">
+					<label>锁安装图片：</label>
+					<input type="file" id="smartLockFile" name="smartLockFile" style="width:97%;height:27px;float:left;">
+				</div>
 		  </div>
 		  <div class="row-fluid">
 			  <div class="span3">
@@ -433,9 +433,9 @@
 		      data:"",   
 		      success:function(result){   
 		            var len=result.length;   
-		            $('#storeId').attr("length",'0');   
+		            $('#storeID').attr("length",'0');   
 			      for(i=0;i<len;i++){   
-			          $("#storeId").append($('<option value='+result[i].storeID+'>'+result[i].storeID+'</option>'));  
+			          $("#storeID").append($('<option value='+result[i].storeID+'>'+result[i].storeID+'</option>'));  
 					}   
 				}   
 			});   
@@ -468,7 +468,7 @@
 	}
      
     function verify(){
-    	if($("#storeId").val() != 0){
+    	if($("#storeID").val() != 0){
     		if($("#saler").val() == null || $("#saler").val()==""){
     			alert("销售员不能为空！");
     			return false;

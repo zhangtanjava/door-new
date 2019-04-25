@@ -170,271 +170,234 @@
     <!--  ———————————————————————————————————————————————————————————————————————————————————————— -->
 	    <input type="hidden" name="id" value="${list.id}" >
 		<input type="hidden" name="userID" value="${sessionScope.userPo.id}" >
+		<input type="hidden" id ="selectedStoreId" value="${list.storeId}" >
 		<div class="span12">
-		<div class="row-fluid">
-				<div class="span3">
-				  <label>客户名称：</label>
-				  <input id="merName" name="merName" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.merName}">
+	    <div class="row-fluid">
+	   			 <div class="span3">
+				  <label>店面：</label>
+				  <select id="storeId" name="storeId">
+				  		<option value="0">请选择</option>
+					</select>
+			  	</div>
+			  	<div class="span3">
+				  <label>销售员：</label>
+				  <input id="saler" name="saler" type="text" style="width:97%;height:27px;float:left;" >
+			  	</div>
+	    		<div class="span3">
+				  <label>订货日期：</label>
+				  <input style="width:97%;height:27px;float:left;" type="text" id="createDateStr" name="createDateStr" class="input-text Wdate"
+						 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})">
+			  	</div>
+			  	<div class="span3">
+					<label>定金图片：</label>
+					<input type="file" id="frontMoneyFile" name="frontMoneyFile" style="width:97%;height:27px;float:left;">
+				</div>
+		  </div>
+		  <div class="row-fluid">
+	    		<div class="span3">
+				  <label>地址：</label>
+				  <input id="unitsOrAddress" name="unitsOrAddress" type="text" style="width:97%;height:27px;float:left;" >
+			  	</div>
+			  	<div class="span3">
+				  <label>电话1：</label>
+				  <input id="contactPhoneNumber" name="contactPhoneNumber" type="text" style="width:97%;height:27px;float:left;" >
+			  	</div>
+			  	<div class="span3">
+				  <label>电话2：</label>
+				  <input id="secondPhoneNumber" name="secondPhoneNumber" type="text" style="width:97%;height:27px;float:left;" >
+			  	</div>
+			  	<div class="span3">
+					<label>合同图片1：</label>
+					<input type="file" id="agreementFile" name="agreementFile" style="width:97%;height:27px;float:left;">
+				</div>
+		  </div>
+	    <div class="row-fluid">
+			  	<div class="span3">
+				  <label>型号：</label>
+				  <input id="model" name="model" type="text" style="width:97%;height:27px;float:left;" >
+			  	</div>
+			  	<div class="span3">
+				  <label>价格：</label>
+				  <input id="price" name="price" type="text" style="width:97%;height:27px;float:left;" >
+			  	</div>
+			  	<div class="span3">
+				  <label>定金：</label>
+				  <input id="deposit" name="deposit" type="text" style="width:97%;height:27px;float:left;" >
+			  	</div>
+			  	<div class="span3">
+					<label>合同图片2：</label>
+					<input type="file" id="agreementFile" name="seAgreementFile" style="width:97%;height:27px;float:left;">
+		  		</div>
+		  </div>
+		  <div class="row-fluid">
+			  	<div class="span3">
+				  <label>智能锁：</label>
+				  <input id="smartLock" name="smartLock" type="text" style="width:97%;height:27px;float:left;" >
+			  	</div>
+			  	<div class="span3">
+				  <label>销售备注：</label>
+				  <input id="saleRemarks" name="saleRemarks" type="text" style="width:97%;height:27px;float:left;" >
+			  	</div>
+			  	<div class="span3">
+				  <label>交居然日期：</label>
+				  <input style="width:97%;height:27px;float:left;" type="text" id="payDateStr" name="payDateStr" class="input-text Wdate"
+						 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})">
+			  	</div>
+			  	<div class="span3">
+				  <label>交居然金额：</label>
+				  <input id="jjrAmt" name="jjrAmt" type="text" style="width:97%;height:27px;float:left;" >
+			  	</div>
+		  </div>
+		  <div class="row-fluid">
+			  <div class="span3">
+					<label>—————————————————————————————————————————————————————————————————————————</label>
+				</div>
+			</div>
+		  <div class="row-fluid">
+		 		 <div class="span3">
+					  <label>洞口尺寸：</label>
+					  <input id="holeSize" name="holeSize" type="text" style="width:97%;height:27px;float:left;" >
+				  </div>
+				  <div class="span3">
+					  <label>门的尺寸：</label>
+					  <input id="doorSize" name="doorSize" type="text" style="width:97%;height:27px;float:left;" >
+				  </div>
+				  <div class="span3">
+					  <label>门的方向：</label>
+					  <input id="direction" name="direction" type="text" style="width:97%;height:27px;float:left;" >
+				  </div>
+			  		<div class="span3">
+						<label>测量图片：</label>
+						<input type="file" id= "surveyorFile" name="surveyorFile" style="width:97%;height:27px;float:left;">
+					</div>
+			</div>	
+			<div class="row-fluid">
+				  <div class="span3">
+					  <label>测量日期：</label>
+					  <input style="width:97%;height:27px;float:left;" type="text" id="surveyorDateStr" name="surveyorDateStr" class="input-text Wdate"
+							 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})">
+				  </div>
+				  <div class="span3">
+			        <label>测量师傅：</label>
+			        <input id="surveyor" name="surveyor" type="text" style="width:97%;height:27px;float:left;" >
+			      </div>
+				  <div class="span3">
+					  <label>测量备注：</label>
+					  <input id="surveyorSmark" name="surveyorSmark" type="text" style="width:97%;height:27px;float:left;" >
+				  </div>
+			</div>	 
+			<div class="row-fluid">
+			  <div class="span3">
+					<label>—————————————————————————————————————————————————————————————————————————</label>
+				</div>
+			</div> 
+			<div class="row-fluid">
+			  <div class="span3">
+				  <label>安装日期：</label>
+				  <input style="width:97%;height:27px;float:left;" type="text" id="installDateStr" name="installDateStr" class="input-text Wdate"
+						 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})">
+			  </div>
+			  <div class="span3">
+				  <label>安装师傅：</label>
+				  <input id="installPerson" name="installPerson" type="text" style="width:97%;height:27px;float:left;" >
+			  </div>
+			  <div class="span3">
+				  <label>安装备注：</label>
+				  <input id="installPerSmark" name="installPerSmark" type="text" style="width:97%;height:27px;float:left;" >
+			  </div>
+			  <div class="span3">
+					<label>门安装图片：</label>
+					<input type="file" id="istallFile" name="istallFile" style="width:97%;height:27px;float:left;">
+			  </div>
+		  </div>
+		  <div class="row-fluid">
+			  <div class="span3">
+					<label>—————————————————————————————————————————————————————————————————————————</label>
+				</div>
+		  </div> 
+		  <div class="row-fluid">
+			  <div class="span3">
+				  <label>垭口安装：</label>
+				  <input id="yaKouSmark" name="yaKouSmark" type="text" style="width:97%;height:27px;float:left;" >
+			  </div>
+			  <div class="span3">
+				  <label>智能猫眼：</label>
+				  <input id="smartCatEye" name="smartCatEye" type="text" style="width:97%;height:27px;float:left;" >
+			  	</div>
+			  <div class="span3">
+					  <label>智能锁安装时间：</label>
+					  <input style="width:97%;height:27px;float:left;" type="text" id="surveyorDateStr" name="surveyorDateStr" class="input-text Wdate"
+							 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})">
+			  </div>
+			  <div class="span3">
+					<label>锁安装图片：</label>
+					<input type="file" id="smartLockFile" name="smartLockFile" style="width:97%;height:27px;float:left;">
+				</div>
+		  </div>
+		  <div class="row-fluid">
+			  <div class="span3">
+					<label>—————————————————————————————————————————————————————————————————————————</label>
+				</div>
+		  </div> 
+		  <div class="row-fluid">
+			  	<div class="span3">
+				  <label>售后服务1：</label>
+				  <input id="fixSmarkOne" name="fixSmarkOne" type="text" style="width:97%;height:27px;float:left;" >
+			  </div>
+			  <div class="span3">
+				  <label>售后服务2：</label>
+				  <input id="fixSmarkTwo" name="fixSmarkTwo" type="text" style="width:97%;height:27px;float:left;" >
+			  </div>
+			  <div class="span3">
+				  <label>售后服务3：</label>
+				  <input id="fixSmarkSan" name="fixSmarkSan" type="text" style="width:97%;height:27px;float:left;" >
 				  <div id="divTwo" style="float:right;">
 				  </div>
 			  	</div>
 			  	<div class="span3">
-				  <label>客户性别：</label>
-				  <input id="genderID" name="genderID" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.genderID}">
+				  <label>售后服务4：</label>
+				  <input id="fixSmarkSi" name="fixSmarkSi" type="text" style="width:97%;height:27px;float:left;" >
 			  </div>
-			   <div class="span3">
-				  <label>客户住址：</label>
-				  <input id="unitsOrAddress" name="unitsOrAddress" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.unitsOrAddress}" <c:if test="${sessionScope.userPo.roleID ==1}">readonly="readonly"</c:if>>
-			  </div>
-			  <div class="span3">
-				  <label>联系电话1：</label>
-				  <input id="contactPhoneNumber" name="contactPhoneNumber" type="text"
-						 style="width:97%;height:27px;float:left;" onchange="checkTel()"
-						 value="${list.contactPhoneNumber}" <c:if test="${sessionScope.userPo.roleID ==1}">readonly="readonly"</c:if>>
-			  </div>
-		  </div>
-		  <div class="row-fluid">
-			   <div class="span3">
-					  <label>联系电话2：</label>
-					  <input id="secondPhoneNumber" name="secondPhoneNumber" type="text"
-							 style="width:100%;height:27px;"  placeholder="手机号或者座机" onchange="checkTel()"
-							 value="${list.secondPhoneNumber}" <c:if test="${sessionScope.userPo.roleID ==1}">readonly="readonly"</c:if>>
-			   </div>
-			   <div class="span3">
-				  <label>销售备注：</label>
-				  <input id="remarks" name="remarks" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.remarks}">
-			  </div>
-			  <div class="span3">
-					<label>合同图片描述：</label>
-					<input type="text" id="agreementPhotoDes" name="agreementPhotoDes" style="width:97%;height:27px;float:left;"
-					value="${list.agreementPhotoDes}">
-				</div>
-				<div class="span3">
-					<label>请选择文件：</label>
-					<input type="file" name="agreementFile" style="width:97%;height:27px;float:left;"
-					value="${list.agreementPhotoPath}">
-				</div>
-		  </div>
-			<div class="row-fluid">
-				<div class="span3">
-					<label>测量图片描述：</label>
-					<input type="text" id="surveyorPhotoDes" name="surveyorPhotoDes" style="width:97%;height:27px;float:left;"
-					value="${list.surveyorPhotoDes}">
-				</div>
-				
-				<div class="span3">
-					<label>请选择文件：</label>
-					<input type="file" name="surveyorFile" style="width:97%;height:27px;float:left;"
-					value="${list.surveyorPhotoPath}">
-				</div>
-				<div class="span3">
-					<label>安装图片描述：</label>
-					<input type="text" id="istallPhotoDes" name="istallPhotoDes" style="width:97%;height:27px;float:left;"
-					value="${list.istallPhotoDes}">
-				</div>
-				<div class="span3">
-					<label>请选择文件：</label>
-					<input type="file" name="istallFile" style="width:97%;height:27px;float:left;"
-					value="${list.istallPhotoPath}">
-				</div>
 			</div>
-			
-			<div class="row-fluid">
-		     <div class="span3">
-		        <label>合同编号：</label>
-		        <input id="agreementID" name="agreementID"  type="text" style="width:97%;height:27px;float:left;"  
-		        value="${list.agreementID}" onblur="selectAgreementID(this.value)" >
-				 <div id="divOne" style="float:right;">
-				 </div>
-			 </div>
-			 <div class="span3">
-				  <label>付款凭证号：</label>
-				  <input id="paymentID" name="paymentID" type="text" style="width:97%;height:27px;float:left;"
-				  value="${list.paymentID}" >
-			  </div>
-			  <div class="span3">
-				  <label>订货日期：</label>
-				  <input style="width:97%;height:27px;float:left;" type="text" id="createDateStr" name="createDateStr" class="input-text Wdate"
-						 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})" 
-						 value="<fmt:formatDate value="${list.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/>">
-			  </div>
-			  <div class="span3">
-				  <label>交款日期：</label>
-				  <input style="width:97%;height:27px;float:left;" type="text" id="payDateStr" name="payDateStr" class="input-text Wdate"
-						 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})"
-						 value="<fmt:formatDate value="${list.payDate}" pattern="yyyy-MM-dd HH:mm:ss"/>">
-			  </div>
-		  </div>
 		  <div class="row-fluid">
-		  	  <div class="span3">
-				  <label>门的型号：</label>
-				  <input id="model" name="model" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.model}" <c:if test="${sessionScope.userPo.roleID ==1}">readonly="readonly"</c:if>>
+			  	<div class="span3">
+				  <label>售后服务5：</label>
+				  <input id="fixSmarkWu" name="fixSmarkWu" type="text" style="width:97%;height:27px;float:left;" >
 			  </div>
 			  <div class="span3">
-				  <label>价格：</label>
-				  <input id="price" name="price" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.price}" <c:if test="${sessionScope.userPo.roleID ==1}">readonly="readonly"</c:if>>
+				  <label>售后服务6：</label>
+				  <input id="fixSmarkLiu" name="fixSmarkLiu" type="text" style="width:97%;height:27px;float:left;" >
 			  </div>
 			  <div class="span3">
-				  <label>定金：</label>
-				  <input id="deposit" name="deposit" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.deposit}">
-			  </div>
-			  <div class="span3">
-				  <label>日期金额：</label>
-				  <input id="dateMoney" name="dateMoney" type="text" style="width:97%;height:27px;float:left;" 
-				   value="${list.dateMoney}">
-			  </div>
-		  </div>
-		  <div class="row-fluid">
-			  <div class="span3">
-					  <label>洞口尺寸：</label>
-					  <input id="holeSize" name="holeSize" type="text" style="width:97%;height:27px;float:left;" 
-					  value="${list.holeSize}">
+				  <label>售后服务7：</label>
+				  <input id="fixSmarkQi" name="fixSmarkQi" type="text" style="width:97%;height:27px;float:left;" >
+				  <div id="divTwo" style="float:right;">
 				  </div>
+			  	</div>
+			  	<div class="span3">
+				  <label>售后服务8：</label>
+				  <input id="fixSmarkBa" name="fixSmarkBa" type="text" style="width:97%;height:27px;float:left;" >
+			  </div>
+			</div>
+		  <div class="row-fluid">
+			  <div class="span3">
+				  <label>售后服务9：</label>
+				  <input id="fixSmarkJiu" name="fixSmarkJiu" type="text" style="width:97%;height:27px;float:left;" >
+			  </div>
+			  <div class="span3">
+				  <label>售后服务10：</label>
+				  <input id="fixSmarkShi" name="fixSmarkShi" type="text" style="width:97%;height:27px;float:left;" >
+			  </div>
+		</div>
+		<div style="display: none;">
+			  <div class="row-fluid">
 				  <div class="span3">
-					  <label>门尺寸：</label>
-					  <input id="doorSize" name="doorSize" type="text" style="width:97%;height:27px;float:left;" 
-					  value="${list.doorSize}">
+					  <label>操作员工：</label>
+					  <input id="operatorID" name="operatorID" type="text" style="width:97%;height:27px;float:left;" 
+					  value="${sessionScope.userPo.userName}" readonly="readonly">
 				  </div>
-				  <div class="span3">
-					  <label>木套尺寸：</label>
-					  <input id="woodcase" name="woodcase" type="text" style="width:97%;height:27px;float:left;" 
-					  value="${list.woodcase}">
-				  </div>
-				  <div class="span3">
-					  <label>压条尺寸：</label>
-					  <input id="moundlayer" name="moundlayer" type="text" style="width:97%;height:27px;float:left;" 
-					  value="${list.moundlayer}">
-			  	  </div>
-		  </div>
-		  <div class="row-fluid">
-		  	  <div class="span3">
-					  <label>开口方向：</label>
-					  <input id="direction" name="direction" type="text" style="width:97%;height:27px;float:left;" 
-					  value="${list.direction}">
-				  </div>
-				  <div class="span3">
-				  <label>智能锁：</label>
-				  <input id="smartLock" name="smartLock" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.smartLock}">
-			  </div>
-			   <div class="span3">
-				  <label>智能猫眼：</label>
-				  <input id="smartCatEye" name="smartCatEye" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.smartCatEye}">
-			  </div>
-			  <div class="span3">
-				  <label>室内情况：</label>
-				  <input id="indoorInfo" name="indoorInfo" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.indoorInfo}">
-			  </div>
-	      </div>
-		  <div class="row-fluid">
-			  <div class="span3">
-				  <label>安装情况：</label>
-				  <input id="cutInfo" name="cutInfo" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.cutInfo}">
-			  </div>
-			  <div class="span3">
-				  <label>安装师：</label>
-				  <input id="installPerson" name="installPerson" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.installPerson}">
-			  </div>
-			  <div class="span3">
-				  <label>安装日期：</label>
-				  <input style="width:97%;height:27px;float:left;" type="text" id="installDateStr" name="installDateStr" class="input-text Wdate"
-						 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})"
-						 value="<fmt:formatDate value="${list.installDate}" pattern="yyyy-MM-dd HH:mm:ss"/>" >
-			  </div>
-			  <div class="span3">
-				  <label>安装备注：</label>
-				  <input id="installPerSmark" name="installPerSmark" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.installPerSmark}">
 			  </div>
 		  </div>
-		  <div class="row-fluid">
-		  	<div class="span3">
-		        <label>测量师：</label>
-		        <input id="surveyor" name="surveyor" type="text" style="width:97%;height:27px;float:left;" 
-		        value="${list.surveyor}">
-		      </div>
-			  <div class="span3">
-				  <label>测量日期：</label>
-				  <input style="width:97%;height:27px;float:left;" type="text" id="surveyorDateStr" name="surveyorDateStr" class="input-text Wdate"
-						 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})"
-						 value="<fmt:formatDate value="${list.surveyorDate}" pattern="yyyy-MM-dd HH:mm:ss"/>">
-			  </div>
-			  <div class="span3">
-				  <label>测量备注：</label>
-				  <input id="surveyorSmark" name="surveyorSmark" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.surveyorSmark}">
-			  </div>
-			  <div class="span3">
-				  <label>操作员工：</label>
-				  <input id="operatorID" name="operatorID" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.operatorID}" readonly="readonly">
-			  </div>
-		  </div>
-			<div class="row-fluid">
-			  <div class="span3">
-				  <label>维修服务项目：</label>
-				  <input id="fixObject" name="fixObject" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.fixObject}">
-			  </div>
-			   <div class="span3">
-				  <label>维修服务日期：</label>
-				  <input style="width:97%;height:27px;float:left;" type="text" id="fixDateStr" name="fixDateStr" class="input-text Wdate"
-						 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})"
-						 value="<fmt:formatDate value="${list.fixDate}" pattern="yyyy-MM-dd HH:mm:ss"/>">
-			  </div>
-			  <div class="span3">
-				  <label>维修备注1：</label>
-				  <input id="fixSmarkOne" name="fixSmarkOne" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.fixSmarkOne}">
-			  </div>
-			  <div class="span3">
-				  <label>维修备注2：</label>
-				  <input id="fixSmarkTwo" name="fixSmarkTwo" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.fixSmarkTwo}">
-			  </div>
-		  </div>
-		  <div class="row-fluid">
-			   <div class="span3">
-				  <label>垭口服务日期：</label>
-				  <input style="width:97%;height:27px;float:left;" type="text" id="yaKouInstallDateStr" name="yaKouInstallDateStr" class="input-text Wdate"
-						 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})"
-						 value="<fmt:formatDate value="${list.yaKouInstallDate}" pattern="yyyy-MM-dd HH:mm:ss"/>" >
-			  </div>
-			  <div class="span3">
-				  <label>垭口颜色要求：</label>
-				  <input id="colorRequire" name="colorRequire" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.colorRequire}">
-			  </div>
-			  <div class="span3">
-				  <label>门底槛情况：</label>
-				  <input id="doorBottomInfo" name="doorBottomInfo" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.doorBottomInfo}">
-			  </div>
-			  <div class="span3">
-				  <label>垭口备注：</label>
-				  <input id="yaKouSmark" name="yaKouSmark" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.yaKouSmark}">
-			  </div>
-		  </div>
-			<div class="row-fluid">
-			  <div class="span3">
-				  <label>安装时应付款：</label>
-				  <input id="transAcctSmark" name="transAcctSmark" type="text" style="width:97%;height:27px;float:left;" 
-				  value="${list.transAcctSmark}">
-			  </div>
-		  </div>
-            </div>
 			<div class="span6" style="text-align:center;">
 				<div class="row-fluid">
 					<div class="span12" style="margin-top: 10px;margin-bottom: 8px;">
@@ -460,105 +423,279 @@
  
  
  <script type="text/javascript">
-     var reg = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
-     function verify(){
-         if(document.getElementById("agreementID").value==""){
-             alert("合同编号  是必填项，不能为空哦！");
-             document.getElementById("agreementID").focus();
-             return false;
-         }else if(document.getElementById("agreementID").valuelength>64){
-             alert("合同编号长度不能超过64位！");
-             document.getElementById("agreementID").focus();
-             return false;
-         }else if(document.getElementById("holeSize").value.length>16){
-             alert("洞口尺寸不能超过16位！");
-             document.getElementById("holeSize").focus();
-             return false;
-         }else if(document.getElementById("doorSize").value.length>16){
-             alert("门尺寸不能超过16位");
-             document.getElementById("doorSize").focus();
-             return false;
-         }else if(document.getElementById("direction").value.length>16){
-             alert("开口方向长度不能超过16位！");
-             document.getElementById("direction").focus();
-             return false;
-         }else if(document.getElementById("indoorInfo").value.length>64){
-             alert("室内情况长度不能超过64位！");
-             document.getElementById("indoorInfo").focus();
-             return false;
-         }else if(document.getElementById("surveyor").value.length>16){
-             alert("测量师长度不能超过16位！");
-             document.getElementById("surveyor").focus();
-             return false;
-         }else if(document.getElementById("surveyorSmark").value.length>64){
-             alert("测量师备注长度不能超过64位！");
-             document.getElementById("surveyorSmark").focus();
-             return false;
-         }else if(document.getElementById("woodcase").value.length>16){
-             alert("木套长度不能超过16位！");
-             document.getElementById("woodcase").focus();
-             return false;
-         }else if(document.getElementById("moundlayer").value.length>16){
-             alert("压条长度不能超过16位！");
-             document.getElementById("moundlayer").focus();
-             return false;
-         }else if(document.getElementById("installPerson").value.length>16){
-             alert("安装师长度不能超过16位！");
-             document.getElementById("installPerson").focus();
-             return false;
-         }else if(document.getElementById("installPerSmark").value.length>64){
-             alert("安装师备注长度不能超过64位！");
-             document.getElementById("installPerSmark").focus();
-             return false;
-         }else if(document.getElementById("otherSmark").value.length>64){
-             alert("其它备注长度不能超过64位！");
-             document.getElementById("otherSmark").focus();
-             return false;
-         }else if(document.getElementById("merName").value.length>10){
-             alert("商户名长度不能超过10位！");
-             document.getElementById("merName").focus();
-             return false;
-         }else if(document.getElementById("surveyorPhotoDes").value.length>32){
-             alert("测量图片描述长度不能超过32位！");
-             document.getElementById("surveyorPhotoDes").focus();
-             return false;
-         }else if(document.getElementById("istallPhotoDes").value.length>32){
-             alert("安装图片描述长度不能超过32位！");
-             document.getElementById("istallPhotoDes").focus();
-             return false;
-         }else if(document.getElementById("fixObject").value.length>16){
-	    	alert("服务项目长度不能超过16位!");
-            document.getElementById("fixObject").focus();
+ $(document).ready(function(){  
+     var key=$("#selectedStoreId").val();
+     //根据值让option选中 
+     $("#storeId option[value='"+key+"']").attr("selected","selected"); 
+ }); 
+ 
+ $(function(){  
+     getStoreId();  
+ });  
+	function getStoreId(){   
+	 		$.ajax({   
+		      type:"POST",   
+		      dataType: "json",   
+		      url:"${ctx}/User/selectStoreId.do",   
+		      data:"",   
+		      success:function(result){   
+		            var len=result.length;   
+		            $('#storeId').attr("length",'0');   
+			      for(i=0;i<len;i++){   
+			          $("#storeId").append($('<option value='+result[i].storeID+'>'+result[i].storeID+'</option>'));  
+					}   
+				}   
+			});   
+	 }   
+ 
+ 	var reg = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
+ 	function deletefunction(){
+	    parent.document.getElementById('Mainid').src='${ctx}/ParametersHandle/tolist.do?userID=${sessionScope.userPo.id}';
+	} 
+	 
+	function selectAgreementID(value){
+		     if(value!=""){
+		       $.ajax({
+		          cache:false,                                             //是否使用缓存提交 如果为TRUE 会调用浏览器的缓存 而不会提交
+		          type: "POST",                                           //上面3行都是必须要的
+		          url: '${ctx}/ParametersHandle/selectByAgreementID.do',       //地址 type 带参数
+		          data:"agreementID="+value,                         // IDCardValue 自定义的。相当于name把值赋予给 他可以在servlet 获取
+		          async:false,                                          // 是否 异步 提交
+		          success: function (result) {                          // 不出现异常 进行立面方
+		              if(result>=1){
+		                   alert("合同编号已经存在！");                     //提示框
+		                   document.getElementById("agreementID").value="";     //这个id的文本框的值 将会清空
+		                   document.getElementById("agreementID").focus();      // 给这个id的文本框提供焦点
+		                   document.getElementById("agreementID").style.display="block"; //显示
+		              }
+		          },
+		          error: function(data) {  }
+		      });
+		     }
+	}
+     
+    function verify(){
+    	if($("#storeId").val() != 0){
+    		if($("#saler").val() == null || $("#saler").val()==""){
+    			alert("销售员不能为空！");
+    			return false;
+    		}
+    		if($("#createDateStr").val() == null || $("#createDateStr").val()==""){
+    			alert("订货日期不能为空！");
+    			return false;
+    		}
+    		if($("#frontMoneyFile").val() == null || $("#frontMoneyFile").val()==""){
+    			alert("定金图片不能为空！");
+    			return false;
+    		}
+    		if($("#unitsOrAddress").val() == null || $("#unitsOrAddress").val()==""){
+    			alert("地址不能为空！");
+    			return false;
+    		}
+    		if($("#contactPhoneNumber").val() == null || $("#contactPhoneNumber").val()==""){
+    			alert("电话1不能为空！");
+    			return false;
+    		}
+    		if($("#model").val() == null || $("#model").val()==""){
+    			alert("型号不能为空！");
+    			return false;
+    		}
+    		if($("#price").val() == null || $("#price").val()==""){
+    			alert("价格不能为空！");
+    			return false;
+    		}
+    		if($("#deposit").val() == null || $("#deposit").val()==""){
+    			alert("定金不能为空！");
+    			return false;
+    		}
+        }
+    	if($("#agreementFile").val() != null && $("#agreementFile").val()!=""){
+    		if($("#payDateStr").val() == null || $("#payDateStr").val()==""){
+    			alert("交居然日期不能为空！");
+    			return false;
+    		}
+    		if($("#jjrAmt").val() == null || $("#jjrAmt").val()==""){
+    			alert("交居然金额不能为空！");
+    			return false;
+    		}
+    	}
+    	if($("#holeSize").val() != null && $("#holeSize").val()!=""){
+    		if($("#doorSize").val() == null || $("#doorSize").val()==""){
+    			alert("门的尺寸不能为空！");
+    			return false;
+    		}
+    		if($("#direction").val() == null || $("#direction").val()==""){
+    			alert("门的方向不能为空！");
+    			return false;
+    		}
+    		if($("#surveyorFile").val() == null || $("#surveyorFile").val()==""){
+    			alert("测量图片不能为空！");
+    			return false;
+    		}
+    		if($("#surveyorDateStr").val() == null || $("#surveyorDateStr").val()==""){
+    			alert("测量日期不能为空！");
+    			return false;
+    		}
+    		if($("#surveyor").val() == null || $("#surveyor").val()==""){
+    			alert("测量师傅不能为空！");
+    			return false;
+    		}
+    		if($("#surveyorSmark").val() == null || $("#surveyorSmark").val()==""){
+    			alert("测量备注不能为空！");
+    			return false;
+    		}
+    	}
+    	if($("#installDateStr").val() != null && $("#installDateStr").val()!=""){
+    		if($("#installPerson").val() == null || $("#installPerson").val()==""){
+    			alert("安装师傅不能为空！");
+    			return false;
+    		}
+    		if($("#installPerSmark").val() == null || $("#installPerSmark").val()==""){
+    			alert("安装备注不能为空！");
+    			return false;
+    		}
+    		if($("#istallFile").val() == null || $("#istallFile").val()==""){
+    			alert("门安装图片不能为空！");
+    			return false;
+    		}
+    	}
+    	
+    	if(document.getElementById("saler").value.length>16){
+   	     alert("销售员不能超过16位！");
+   	     document.getElementById("saler").focus();
+   	     return false;
+   	    }else if(document.getElementById("unitsOrAddressId").value.length>64){
+		     alert("住址不要超出64位长度");
+		     document.getElementById("unitsOrAddressId").focus();
+		     return false;
+        }else if(document.getElementById("model").value.length>16){
+	     alert("型号不能超过16位");
+	     document.getElementById("model").focus();
+	     return false;
+        }else if (!reg.test(document.getElementById("price").value)){
+            alert("输入的价格格式不对");
+            document.getElementById("price").focus();
+            return false;
+        }else  if (!reg.test(document.getElementById("deposit").value)){
+            alert("输入的定金格式不对");
+            document.getElementById("deposit").focus();
+            return false;
+        }else if(document.getElementById("smartLock").value.length>32){
+	       alert("智能锁长度不能超过32位！");
+	       document.getElementById("smartLock").focus();
+	       return false;
+	    }else if(document.getElementById("saleRemarks").value.length>64){
+            alert("销售备注长度不能超过64位！");
+            document.getElementById("saleRemarks").focus();
+            return false;
+        }else  if (!reg.test(document.getElementById("jjrAmt").value)){
+            alert("输入的交居然金额格式不对");
+            document.getElementById("jjrAmt").focus();
+            return false;
+        }else if(document.getElementById("holeSize").value.length>16){
+	     alert("洞口尺寸不能超过16位！");
+	     document.getElementById("holeSize").focus();
+	     return false;
+        }else if(document.getElementById("doorSize").value.length>16){
+	     alert("门的尺寸不能超过16位");
+	     document.getElementById("doorSize").focus();
+	     return false;
+        }else if(document.getElementById("direction").value.length>16){
+	       alert("门的方向长度不能超过16位！");
+	       document.getElementById("direction").focus();
+	       return false;
+	    }else if(document.getElementById("surveyor").value.length>16){
+            alert("测量师傅长度不能超过16位！");
+            document.getElementById("surveyor").focus();
+            return false;
+        }else if(document.getElementById("surveyorSmark").value.length>64){
+            alert("测量备注长度不能超过64位！");
+            document.getElementById("surveyorSmark").focus();
+            return false;
+        }else if(document.getElementById("installPerson").value.length>16){
+            alert("安装师傅长度不能超过16位！");
+            document.getElementById("installPerson").focus();
+            return false;
+        }else if(document.getElementById("installPerSmark").value.length>64){
+            alert("安装备注长度不能超过64位！");
+            document.getElementById("installPerSmark").focus();
+            return false;
+        }else if(document.getElementById("yaKouSmark").value.length>32){
+            alert("垭口安装长度不能超过32位！");
+            document.getElementById("yaKouSmark").focus();
+            return false;
+        }else if(document.getElementById("smartCatEye").value.length>32){
+            alert("智能猫眼长度不能超过32位！");
+            document.getElementById("smartCatEye").focus();
             return false;
         }else if(document.getElementById("fixSmarkOne").value.length>64){
-            alert("维修备注1长度不能超过64位！");
+            alert("售后服务1长度不能超过64位！");
             document.getElementById("fixSmarkOne").focus();
             return false;
-        }else if(document.getElementById("fixSmarkTwo").value.length>32){
-            alert("维修备注2长度不能超过64位！");
+        }else if(document.getElementById("fixSmarkTwo").value.length>64){
+            alert("售后服务2长度不能超过64位！");
             document.getElementById("fixSmarkTwo").focus();
             return false;
-        }else if(document.getElementById("colorRequire").value.length>16){
-	    	alert("颜色要求长度不能超过16位!");
-	        document.getElementById("colorRequire").focus();
-	        return false;
-	    }else if(document.getElementById("doorBottomInfo").value.length>32){
-	        alert("门槛底部情况长度不能超过32位！");
-	        document.getElementById("doorBottomInfo").focus();
-	        return false;
-	    }else if(document.getElementById("yaKouSmark").value.length>64){
-	        alert("垭口备注不能超过64位！");
-	        document.getElementById("yaKouSmark").focus();
-	        return false;
-    	}else{
-	       return true;
+        }else if(document.getElementById("fixSmarkSan").value.length>64){
+            alert("售后服务3长度不能超过64位！");
+            document.getElementById("fixSmarkSan").focus();
+            return false;
+        }else if(document.getElementById("fixSmarkSi").value.length>64){
+            alert("售后服务4长度不能超过64位！");
+            document.getElementById("fixSmarkSi").focus();
+            return false;
+        }else if(document.getElementById("fixSmarkWu").value.length>64){
+            alert("售后服务5长度不能超过64位！");
+            document.getElementById("fixSmarkWu").focus();
+            return false;
+        }else if(document.getElementById("fixSmarkLiu").value.length>64){
+            alert("售后服务6长度不能超过64位！");
+            document.getElementById("fixSmarkLiu").focus();
+            return false;
+        }else if(document.getElementById("fixSmarkQi").value.length>64){
+            alert("售后服务7长度不能超过64位！");
+            document.getElementById("fixSmarkQi").focus();
+            return false;
+        }else if(document.getElementById("fixSmarkBa").value.length>64){
+            alert("售后服务8长度不能超过64位！");
+            document.getElementById("fixSmarkBa").focus();
+            return false;
+        }else if(document.getElementById("fixSmarkJiu").value.length>64){
+            alert("售后服务9长度不能超过64位！");
+            document.getElementById("fixSmarkJiu").focus();
+            return false;
+        }else if(document.getElementById("fixSmarkShi").value.length>64){
+            alert("售后服务10长度不能超过64位！");
+            document.getElementById("fixSmarkShi").focus();
+            return false;
+        }else{
+	       	return true;
 	    }
+	    
+	    function checkTel(){
+		     var shouji = /^1\d{10}$/;
+		     var zuoji = /^0\d{2,3}-?\d{7,8}$/;
+		     //联系电话
+		     if(document.getElementById("contactPhoneNumberId").value!=""){
+		        	 if(!shouji.test(document.getElementById("contactPhoneNumberId").value) &&
+		             		!zuoji.test(document.getElementById("contactPhoneNumberId").value))
+			       {
+			          document.getElementById("contactPhoneNumberId").focus();
+			          document.getElementById("contactPhoneNumberId").value="";
+			          alert("你输入的电话号码有误，请重新输入！");
+			       }
+		     }
+		     if(document.getElementById("secondPhoneNumber").value!=""){
+		    	 if(!shouji.test(document.getElementById("secondPhoneNumber").value) &&
+		          		!zuoji.test(document.getElementById("secondPhoneNumber").value))
+		 	       {
+		 	          document.getElementById("secondPhoneNumber").focus();
+		 	          document.getElementById("secondPhoneNumber").value="";
+		 	          alert("你输入的电话号码有误，请重新输入！");
+		 	       }
+		      }
+		   }
    }
-   
-   function deletefunction(){
-	     parent.document.getElementById('Mainid').src='${ctx}/ParametersHandle/tolist.do?userID='+${sessionScope.userPo.id};
-	   }
-	 
    
  </script>
    

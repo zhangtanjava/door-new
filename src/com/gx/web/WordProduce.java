@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.gx.enums.TemplateName;
-import com.gx.po.Parametersinfo;
+import com.gx.po.ParametersInfoSepChild;
 import com.gx.service.ParametersHandleService;
 import com.gx.utils.Convert2map;
 import com.gx.utils.PropertyPlaceholder;

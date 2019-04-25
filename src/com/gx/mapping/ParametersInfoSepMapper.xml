@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gx.dao.ParametersInfoSepMapper">
+  <resultMap id="BaseResultMap" type="com.gx.po.ParametersInfoSepChild">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="storeID" jdbcType="VARCHAR" property="storeID" />
+    <result column="saler" jdbcType="VARCHAR" property="saler" />
+    <result column="frontMoneyFilePath" jdbcType="VARCHAR" property="frontMoneyFilePath" />
+    <result column="frontMoneyFileName" jdbcType="VARCHAR" property="frontMoneyFileName" />
+    <result column="unitsOrAddress" jdbcType="VARCHAR" property="unitsOrAddress" />
+    <result column="contactPhoneNumber" jdbcType="VARCHAR" property="contactPhoneNumber" />
+    <result column="secondPhoneNumber" jdbcType="VARCHAR" property="secondPhoneNumber" />
+    <result column="agreementPhotoPath" jdbcType="VARCHAR" property="agreementPhotoPath" />
+    <result column="agreementPhotoName" jdbcType="VARCHAR" property="agreementPhotoName" />
+    <result column="model" jdbcType="VARCHAR" property="model" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="deposit" jdbcType="DECIMAL" property="deposit" />
+    <result column="seAgreementPhotoPath" jdbcType="VARCHAR" property="seAgreementPhotoPath" />
+    <result column="seAgreementPhotoName" jdbcType="VARCHAR" property="seAgreementPhotoName" />
+    <result column="smartLock" jdbcType="VARCHAR" property="smartLock" />
+    <result column="saleRemarks" jdbcType="VARCHAR" property="saleRemarks" />
+    <result column="payDate" jdbcType="TIMESTAMP" property="payDate" />
+    <result column="jjrAmt" jdbcType="DECIMAL" property="jjrAmt" />
+    <result column="holeSize" jdbcType="VARCHAR" property="holeSize" />
+    <result column="doorSize" jdbcType="VARCHAR" property="doorSize" />
+    <result column="direction" jdbcType="VARCHAR" property="direction" />
+    <result column="surveyor" jdbcType="VARCHAR" property="surveyor" />
+    <result column="surveyorSmark" jdbcType="VARCHAR" property="surveyorSmark" />
+    <result column="surveyorDate" jdbcType="TIMESTAMP" property="surveyorDate" />
+    <result column="surveyorPhotoPath" jdbcType="VARCHAR" property="surveyorPhotoPath" />
+    <result column="surveyorPhotoName" jdbcType="VARCHAR" property="surveyorPhotoName" />
+    <result column="installPerson" jdbcType="VARCHAR" property="installPerson" />
+    <result column="installPerSmark" jdbcType="VARCHAR" property="installPerSmark" />
+    <result column="installDate" jdbcType="TIMESTAMP" property="installDate" />
+    <result column="istallPhotoPath" jdbcType="VARCHAR" property="istallPhotoPath" />
+    <result column="istallPhotoName" jdbcType="VARCHAR" property="istallPhotoName" />
+    <result column="yaKouSmark" jdbcType="VARCHAR" property="yaKouSmark" />
+    <result column="smartCatEye" jdbcType="VARCHAR" property="smartCatEye" />
+    <result column="smartLockDate" jdbcType="TIMESTAMP" property="smartLockDate" />
+    <result column="smartLockFilePath" jdbcType="VARCHAR" property="smartLockFilePath" />
+    <result column="smartLockFileName" jdbcType="VARCHAR" property="smartLockFileName" />
+    <result column="fixSmarkOne" jdbcType="VARCHAR" property="fixSmarkOne" />
+    <result column="fixSmarkTwo" jdbcType="VARCHAR" property="fixSmarkTwo" />
+    <result column="fixSmarkSan" jdbcType="VARCHAR" property="fixSmarkSan" />
+    <result column="fixSmarkSi" jdbcType="VARCHAR" property="fixSmarkSi" />
+    <result column="fixSmarkWu" jdbcType="VARCHAR" property="fixSmarkWu" />
+    <result column="fixSmarkLiu" jdbcType="VARCHAR" property="fixSmarkLiu" />
+    <result column="fixSmarkQi" jdbcType="VARCHAR" property="fixSmarkQi" />
+    <result column="fixSmarkBa" jdbcType="VARCHAR" property="fixSmarkBa" />
+    <result column="fixSmarkJiu" jdbcType="VARCHAR" property="fixSmarkJiu" />
+    <result column="fixSmarkShi" jdbcType="VARCHAR" property="fixSmarkShi" />
+    <result column="createDate" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="updateDate" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="operatorID" jdbcType="VARCHAR" property="operatorID" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, storeID, saler, frontMoneyFilePath, frontMoneyFileName, unitsOrAddress, contactPhoneNumber, 
+    secondPhoneNumber, agreementPhotoPath, agreementPhotoName, model, price, deposit, 
+    seAgreementPhotoPath, seAgreementPhotoName, smartLock, saleRemarks, payDate, jjrAmt, 
+    holeSize, doorSize, direction, surveyor, surveyorSmark, surveyorDate, surveyorPhotoPath, 
+    surveyorPhotoName, installPerson, installPerSmark, installDate, istallPhotoPath, 
+    istallPhotoName, yaKouSmark, smartCatEye, smartLockDate, smartLockFilePath, smartLockFileName, 
+    fixSmarkOne, fixSmarkTwo, fixSmarkSan, fixSmarkSi, fixSmarkWu, fixSmarkLiu, fixSmarkQi, 
+    fixSmarkBa, fixSmarkJiu, fixSmarkShi, createDate, updateDate, operatorID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from parametersInfoSep
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from parametersInfoSep
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.gx.po.ParametersInfoSep">
+    insert into parametersInfoSep (id, storeID, saler, 
+      frontMoneyFilePath, frontMoneyFileName, 
+      unitsOrAddress, contactPhoneNumber, secondPhoneNumber, 
+      agreementPhotoPath, agreementPhotoName, 
+      model, price, deposit, 
+      seAgreementPhotoPath, seAgreementPhotoName, 
+      smartLock, saleRemarks, payDate, 
+      jjrAmt, holeSize, doorSize, 
+      direction, surveyor, surveyorSmark, 
+      surveyorDate, surveyorPhotoPath, surveyorPhotoName, 
+      installPerson, installPerSmark, installDate, 
+      istallPhotoPath, istallPhotoName, yaKouSmark, 
+      smartCatEye, smartLockDate, smartLockFilePath, 
+      smartLockFileName, fixSmarkOne, fixSmarkTwo, 
+      fixSmarkSan, fixSmarkSi, fixSmarkWu, 
+      fixSmarkLiu, fixSmarkQi, fixSmarkBa, 
+      fixSmarkJiu, fixSmarkShi, createDate, 
+      updateDate, operatorID)
+    values (#{id,jdbcType=INTEGER}, #{storeID,jdbcType=VARCHAR}, #{saler,jdbcType=VARCHAR}, 
+      #{frontMoneyFilePath,jdbcType=VARCHAR}, #{frontMoneyFileName,jdbcType=VARCHAR}, 
+      #{unitsOrAddress,jdbcType=VARCHAR}, #{contactPhoneNumber,jdbcType=VARCHAR}, #{secondPhoneNumber,jdbcType=VARCHAR}, 
+      #{agreementPhotoPath,jdbcType=VARCHAR}, #{agreementPhotoName,jdbcType=VARCHAR}, 
+      #{model,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{deposit,jdbcType=DECIMAL}, 
+      #{seAgreementPhotoPath,jdbcType=VARCHAR}, #{seAgreementPhotoName,jdbcType=VARCHAR}, 
+      #{smartLock,jdbcType=VARCHAR}, #{saleRemarks,jdbcType=VARCHAR}, #{payDate,jdbcType=TIMESTAMP}, 
+      #{jjrAmt,jdbcType=DECIMAL}, #{holeSize,jdbcType=VARCHAR}, #{doorSize,jdbcType=VARCHAR}, 
+      #{direction,jdbcType=VARCHAR}, #{surveyor,jdbcType=VARCHAR}, #{surveyorSmark,jdbcType=VARCHAR}, 
+      #{surveyorDate,jdbcType=TIMESTAMP}, #{surveyorPhotoPath,jdbcType=VARCHAR}, #{surveyorPhotoName,jdbcType=VARCHAR}, 
+      #{installPerson,jdbcType=VARCHAR}, #{installPerSmark,jdbcType=VARCHAR}, #{installDate,jdbcType=TIMESTAMP}, 
+      #{istallPhotoPath,jdbcType=VARCHAR}, #{istallPhotoName,jdbcType=VARCHAR}, #{yaKouSmark,jdbcType=VARCHAR}, 
+      #{smartCatEye,jdbcType=VARCHAR}, #{smartLockDate,jdbcType=TIMESTAMP}, #{smartLockFilePath,jdbcType=VARCHAR}, 
+      #{smartLockFileName,jdbcType=VARCHAR}, #{fixSmarkOne,jdbcType=VARCHAR}, #{fixSmarkTwo,jdbcType=VARCHAR}, 
+      #{fixSmarkSan,jdbcType=VARCHAR}, #{fixSmarkSi,jdbcType=VARCHAR}, #{fixSmarkWu,jdbcType=VARCHAR}, 
+      #{fixSmarkLiu,jdbcType=VARCHAR}, #{fixSmarkQi,jdbcType=VARCHAR}, #{fixSmarkBa,jdbcType=VARCHAR}, 
+      #{fixSmarkJiu,jdbcType=VARCHAR}, #{fixSmarkShi,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{operatorID,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gx.po.ParametersInfoSep">
+    insert into parametersInfoSep
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="storeID != null">
+        storeID,
+      </if>
+      <if test="saler != null">
+        saler,
+      </if>
+      <if test="frontMoneyFilePath != null">
+        frontMoneyFilePath,
+      </if>
+      <if test="frontMoneyFileName != null">
+        frontMoneyFileName,
+      </if>
+      <if test="unitsOrAddress != null">
+        unitsOrAddress,
+      </if>
+      <if test="contactPhoneNumber != null">
+        contactPhoneNumber,
+      </if>
+      <if test="secondPhoneNumber != null">
+        secondPhoneNumber,
+      </if>
+      <if test="agreementPhotoPath != null">
+        agreementPhotoPath,
+      </if>
+      <if test="agreementPhotoName != null">
+        agreementPhotoName,
+      </if>
+      <if test="model != null">
+        model,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="deposit != null">
+        deposit,
+      </if>
+      <if test="seAgreementPhotoPath != null">
+        seAgreementPhotoPath,
+      </if>
+      <if test="seAgreementPhotoName != null">
+        seAgreementPhotoName,
+      </if>
+      <if test="smartLock != null">
+        smartLock,
+      </if>
+      <if test="saleRemarks != null">
+        saleRemarks,
+      </if>
+      <if test="payDate != null">
+        payDate,
+      </if>
+      <if test="jjrAmt != null">
+        jjrAmt,
+      </if>
+      <if test="holeSize != null">
+        holeSize,
+      </if>
+      <if test="doorSize != null">
+        doorSize,
+      </if>
+      <if test="direction != null">
+        direction,
+      </if>
+      <if test="surveyor != null">
+        surveyor,
+      </if>
+      <if test="surveyorSmark != null">
+        surveyorSmark,
+      </if>
+      <if test="surveyorDate != null">
+        surveyorDate,
+      </if>
+      <if test="surveyorPhotoPath != null">
+        surveyorPhotoPath,
+      </if>
+      <if test="surveyorPhotoName != null">
+        surveyorPhotoName,
+      </if>
+      <if test="installPerson != null">
+        installPerson,
+      </if>
+      <if test="installPerSmark != null">
+        installPerSmark,
+      </if>
+      <if test="installDate != null">
+        installDate,
+      </if>
+      <if test="istallPhotoPath != null">
+        istallPhotoPath,
+      </if>
+      <if test="istallPhotoName != null">
+        istallPhotoName,
+      </if>
+      <if test="yaKouSmark != null">
+        yaKouSmark,
+      </if>
+      <if test="smartCatEye != null">
+        smartCatEye,
+      </if>
+      <if test="smartLockDate != null">
+        smartLockDate,
+      </if>
+      <if test="smartLockFilePath != null">
+        smartLockFilePath,
+      </if>
+      <if test="smartLockFileName != null">
+        smartLockFileName,
+      </if>
+      <if test="fixSmarkOne != null">
+        fixSmarkOne,
+      </if>
+      <if test="fixSmarkTwo != null">
+        fixSmarkTwo,
+      </if>
+      <if test="fixSmarkSan != null">
+        fixSmarkSan,
+      </if>
+      <if test="fixSmarkSi != null">
+        fixSmarkSi,
+      </if>
+      <if test="fixSmarkWu != null">
+        fixSmarkWu,
+      </if>
+      <if test="fixSmarkLiu != null">
+        fixSmarkLiu,
+      </if>
+      <if test="fixSmarkQi != null">
+        fixSmarkQi,
+      </if>
+      <if test="fixSmarkBa != null">
+        fixSmarkBa,
+      </if>
+      <if test="fixSmarkJiu != null">
+        fixSmarkJiu,
+      </if>
+      <if test="fixSmarkShi != null">
+        fixSmarkShi,
+      </if>
+      <if test="createDate != null">
+        createDate,
+      </if>
+      <if test="updateDate != null">
+        updateDate,
+      </if>
+      <if test="operatorID != null">
+        operatorID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="storeID != null">
+        #{storeID,jdbcType=VARCHAR},
+      </if>
+      <if test="saler != null">
+        #{saler,jdbcType=VARCHAR},
+      </if>
+      <if test="frontMoneyFilePath != null">
+        #{frontMoneyFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="frontMoneyFileName != null">
+        #{frontMoneyFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="unitsOrAddress != null">
+        #{unitsOrAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhoneNumber != null">
+        #{contactPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="secondPhoneNumber != null">
+        #{secondPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="agreementPhotoPath != null">
+        #{agreementPhotoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="agreementPhotoName != null">
+        #{agreementPhotoName,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="deposit != null">
+        #{deposit,jdbcType=DECIMAL},
+      </if>
+      <if test="seAgreementPhotoPath != null">
+        #{seAgreementPhotoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="seAgreementPhotoName != null">
+        #{seAgreementPhotoName,jdbcType=VARCHAR},
+      </if>
+      <if test="smartLock != null">
+        #{smartLock,jdbcType=VARCHAR},
+      </if>
+      <if test="saleRemarks != null">
+        #{saleRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="payDate != null">
+        #{payDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jjrAmt != null">
+        #{jjrAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="holeSize != null">
+        #{holeSize,jdbcType=VARCHAR},
+      </if>
+      <if test="doorSize != null">
+        #{doorSize,jdbcType=VARCHAR},
+      </if>
+      <if test="direction != null">
+        #{direction,jdbcType=VARCHAR},
+      </if>
+      <if test="surveyor != null">
+        #{surveyor,jdbcType=VARCHAR},
+      </if>
+      <if test="surveyorSmark != null">
+        #{surveyorSmark,jdbcType=VARCHAR},
+      </if>
+      <if test="surveyorDate != null">
+        #{surveyorDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="surveyorPhotoPath != null">
+        #{surveyorPhotoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="surveyorPhotoName != null">
+        #{surveyorPhotoName,jdbcType=VARCHAR},
+      </if>
+      <if test="installPerson != null">
+        #{installPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="installPerSmark != null">
+        #{installPerSmark,jdbcType=VARCHAR},
+      </if>
+      <if test="installDate != null">
+        #{installDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="istallPhotoPath != null">
+        #{istallPhotoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="istallPhotoName != null">
+        #{istallPhotoName,jdbcType=VARCHAR},
+      </if>
+      <if test="yaKouSmark != null">
+        #{yaKouSmark,jdbcType=VARCHAR},
+      </if>
+      <if test="smartCatEye != null">
+        #{smartCatEye,jdbcType=VARCHAR},
+      </if>
+      <if test="smartLockDate != null">
+        #{smartLockDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="smartLockFilePath != null">
+        #{smartLockFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="smartLockFileName != null">
+        #{smartLockFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="fixSmarkOne != null">
+        #{fixSmarkOne,jdbcType=VARCHAR},
+      </if>
+      <if test="fixSmarkTwo != null">
+        #{fixSmarkTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="fixSmarkSan != null">
+        #{fixSmarkSan,jdbcType=VARCHAR},
+      </if>
+      <if test="fixSmarkSi != null">
+        #{fixSmarkSi,jdbcType=VARCHAR},
+      </if>
+      <if test="fixSmarkWu != null">
+        #{fixSmarkWu,jdbcType=VARCHAR},
+      </if>
+      <if test="fixSmarkLiu != null">
+        #{fixSmarkLiu,jdbcType=VARCHAR},
+      </if>
+      <if test="fixSmarkQi != null">
+        #{fixSmarkQi,jdbcType=VARCHAR},
+      </if>
+      <if test="fixSmarkBa != null">
+        #{fixSmarkBa,jdbcType=VARCHAR},
+      </if>
+      <if test="fixSmarkJiu != null">
+        #{fixSmarkJiu,jdbcType=VARCHAR},
+      </if>
+      <if test="fixSmarkShi != null">
+        #{fixSmarkShi,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorID != null">
+        #{operatorID,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gx.po.ParametersInfoSep">
+    update parametersInfoSep
+    <set>
+      <if test="storeID != null">
+        storeID = #{storeID,jdbcType=VARCHAR},
+      </if>
+      <if test="saler != null">
+        saler = #{saler,jdbcType=VARCHAR},
+      </if>
+      <if test="frontMoneyFilePath != null">
+        frontMoneyFilePath = #{frontMoneyFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="frontMoneyFileName != null">
+        frontMoneyFileName = #{frontMoneyFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="unitsOrAddress != null">
+        unitsOrAddress = #{unitsOrAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhoneNumber != null">
+        contactPhoneNumber = #{contactPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="secondPhoneNumber != null">
+        secondPhoneNumber = #{secondPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="agreementPhotoPath != null">
+        agreementPhotoPath = #{agreementPhotoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="agreementPhotoName != null">
+        agreementPhotoName = #{agreementPhotoName,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="deposit != null">
+        deposit = #{deposit,jdbcType=DECIMAL},
+      </if>
+      <if test="seAgreementPhotoPath != null">
+        seAgreementPhotoPath = #{seAgreementPhotoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="seAgreementPhotoName != null">
+        seAgreementPhotoName = #{seAgreementPhotoName,jdbcType=VARCHAR},
+      </if>
+      <if test="smartLock != null">
+        smartLock = #{smartLock,jdbcType=VARCHAR},
+      </if>
+      <if test="saleRemarks != null">
+        saleRemarks = #{saleRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="payDate != null">
+        payDate = #{payDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jjrAmt != null">
+        jjrAmt = #{jjrAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="holeSize != null">
+        holeSize = #{holeSize,jdbcType=VARCHAR},
+      </if>
+      <if test="doorSize != null">
+        doorSize = #{doorSize,jdbcType=VARCHAR},
+      </if>
+      <if test="direction != null">
+        direction = #{direction,jdbcType=VARCHAR},
+      </if>
+      <if test="surveyor != null">
+        surveyor = #{surveyor,jdbcType=VARCHAR},
+      </if>
+      <if test="surveyorSmark != null">
+        surveyorSmark = #{surveyorSmark,jdbcType=VARCHAR},
+      </if>
+      <if test="surveyorDate != null">
+        surveyorDate = #{surveyorDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="surveyorPhotoPath != null">
+        surveyorPhotoPath = #{surveyorPhotoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="surveyorPhotoName != null">
+        surveyorPhotoName = #{surveyorPhotoName,jdbcType=VARCHAR},
+      </if>
+      <if test="installPerson != null">
+        installPerson = #{installPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="installPerSmark != null">
+        installPerSmark = #{installPerSmark,jdbcType=VARCHAR},
+      </if>
+      <if test="installDate != null">
+        installDate = #{installDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="istallPhotoPath != null">
+        istallPhotoPath = #{istallPhotoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="istallPhotoName != null">
+        istallPhotoName = #{istallPhotoName,jdbcType=VARCHAR},
+      </if>
+      <if test="yaKouSmark != null">
+        yaKouSmark = #{yaKouSmark,jdbcType=VARCHAR},
+      </if>
+      <if test="smartCatEye != null">
+        smartCatEye = #{smartCatEye,jdbcType=VARCHAR},
+      </if>
+      <if test="smartLockDate != null">
+        smartLockDate = #{smartLockDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="smartLockFilePath != null">
+        smartLockFilePath = #{smartLockFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="smartLockFileName != null">
+        smartLockFileName = #{smartLockFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="fixSmarkOne != null">
+        fixSmarkOne = #{fixSmarkOne,jdbcType=VARCHAR},
+      </if>
+      <if test="fixSmarkTwo != null">
+        fixSmarkTwo = #{fixSmarkTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="fixSmarkSan != null">
+        fixSmarkSan = #{fixSmarkSan,jdbcType=VARCHAR},
+      </if>
+      <if test="fixSmarkSi != null">
+        fixSmarkSi = #{fixSmarkSi,jdbcType=VARCHAR},
+      </if>
+      <if test="fixSmarkWu != null">
+        fixSmarkWu = #{fixSmarkWu,jdbcType=VARCHAR},
+      </if>
+      <if test="fixSmarkLiu != null">
+        fixSmarkLiu = #{fixSmarkLiu,jdbcType=VARCHAR},
+      </if>
+      <if test="fixSmarkQi != null">
+        fixSmarkQi = #{fixSmarkQi,jdbcType=VARCHAR},
+      </if>
+      <if test="fixSmarkBa != null">
+        fixSmarkBa = #{fixSmarkBa,jdbcType=VARCHAR},
+      </if>
+      <if test="fixSmarkJiu != null">
+        fixSmarkJiu = #{fixSmarkJiu,jdbcType=VARCHAR},
+      </if>
+      <if test="fixSmarkShi != null">
+        fixSmarkShi = #{fixSmarkShi,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        createDate = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        updateDate = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorID != null">
+        operatorID = #{operatorID,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="com.gx.po.ParametersInfoSep">
+    update parametersInfoSep
+    set storeID = #{storeID,jdbcType=VARCHAR},
+      saler = #{saler,jdbcType=VARCHAR},
+      frontMoneyFilePath = #{frontMoneyFilePath,jdbcType=VARCHAR},
+      frontMoneyFileName = #{frontMoneyFileName,jdbcType=VARCHAR},
+      unitsOrAddress = #{unitsOrAddress,jdbcType=VARCHAR},
+      contactPhoneNumber = #{contactPhoneNumber,jdbcType=VARCHAR},
+      secondPhoneNumber = #{secondPhoneNumber,jdbcType=VARCHAR},
+      agreementPhotoPath = #{agreementPhotoPath,jdbcType=VARCHAR},
+      agreementPhotoName = #{agreementPhotoName,jdbcType=VARCHAR},
+      model = #{model,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      deposit = #{deposit,jdbcType=DECIMAL},
+      seAgreementPhotoPath = #{seAgreementPhotoPath,jdbcType=VARCHAR},
+      seAgreementPhotoName = #{seAgreementPhotoName,jdbcType=VARCHAR},
+      smartLock = #{smartLock,jdbcType=VARCHAR},
+      saleRemarks = #{saleRemarks,jdbcType=VARCHAR},
+      payDate = #{payDate,jdbcType=TIMESTAMP},
+      jjrAmt = #{jjrAmt,jdbcType=DECIMAL},
+      holeSize = #{holeSize,jdbcType=VARCHAR},
+      doorSize = #{doorSize,jdbcType=VARCHAR},
+      direction = #{direction,jdbcType=VARCHAR},
+      surveyor = #{surveyor,jdbcType=VARCHAR},
+      surveyorSmark = #{surveyorSmark,jdbcType=VARCHAR},
+      surveyorDate = #{surveyorDate,jdbcType=TIMESTAMP},
+      surveyorPhotoPath = #{surveyorPhotoPath,jdbcType=VARCHAR},
+      surveyorPhotoName = #{surveyorPhotoName,jdbcType=VARCHAR},
+      installPerson = #{installPerson,jdbcType=VARCHAR},
+      installPerSmark = #{installPerSmark,jdbcType=VARCHAR},
+      installDate = #{installDate,jdbcType=TIMESTAMP},
+      istallPhotoPath = #{istallPhotoPath,jdbcType=VARCHAR},
+      istallPhotoName = #{istallPhotoName,jdbcType=VARCHAR},
+      yaKouSmark = #{yaKouSmark,jdbcType=VARCHAR},
+      smartCatEye = #{smartCatEye,jdbcType=VARCHAR},
+      smartLockDate = #{smartLockDate,jdbcType=TIMESTAMP},
+      smartLockFilePath = #{smartLockFilePath,jdbcType=VARCHAR},
+      smartLockFileName = #{smartLockFileName,jdbcType=VARCHAR},
+      fixSmarkOne = #{fixSmarkOne,jdbcType=VARCHAR},
+      fixSmarkTwo = #{fixSmarkTwo,jdbcType=VARCHAR},
+      fixSmarkSan = #{fixSmarkSan,jdbcType=VARCHAR},
+      fixSmarkSi = #{fixSmarkSi,jdbcType=VARCHAR},
+      fixSmarkWu = #{fixSmarkWu,jdbcType=VARCHAR},
+      fixSmarkLiu = #{fixSmarkLiu,jdbcType=VARCHAR},
+      fixSmarkQi = #{fixSmarkQi,jdbcType=VARCHAR},
+      fixSmarkBa = #{fixSmarkBa,jdbcType=VARCHAR},
+      fixSmarkJiu = #{fixSmarkJiu,jdbcType=VARCHAR},
+      fixSmarkShi = #{fixSmarkShi,jdbcType=VARCHAR},
+      createDate = #{createDate,jdbcType=TIMESTAMP},
+      updateDate = #{updateDate,jdbcType=TIMESTAMP},
+      operatorID = #{operatorID,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!--旧代码-->
+  
+  <select id="selectByAgreementID" resultType="java.lang.Integer" parameterType="java.lang.String">
+    Select count(*) From parametersInfoSep Where agreementID = #{agreementID,jdbcType=VARCHAR}
+  </select>
+
+    <!--   分页查询 -->
+    <select id="pageFuzzyselect" resultType="com.gx.po.Parametersinfo">
+       SELECT * from parametersInfoSep
+
+        <where>
+            <if test="unitsOrAddress != null and unitsOrAddress != '' ">
+                and unitsOrAddress like CONCAT('%',#{unitsOrAddress},'%') 
+            </if>
+            <if test="beginDate != null">
+                and createDate &gt;= #{beginDate}
+            </if>
+            <if test="endDate != null">
+                AND createDate &lt;= #{endDate}
+            </if>
+            <if test="contactPhoneNumber != null  and contactPhoneNumber != '' ">
+                AND contactPhoneNumber like CONCAT('%',#{contactPhoneNumber},'%') 
+            </if>
+            <!-- <if test="storeID != null  and storeID != '' and roleID != 0 "> -->
+            <if test="storeID != null  and storeID != '' ">
+                AND storeID = #{storeID}
+            </if>
+            <if test="installPerson != null  and installPerson != '' ">
+                AND installPerson = #{installPerson}
+            </if>
+        </where>
+        order by createDate DESC
+        limit #{start},#{pageSize}
+  </select>
+  
+	<select id="statisticsInfo" resultType="com.gx.po.ParametersInfoSepChild" parameterType="com.gx.po.ParametersInfoSepChild" >
+    SELECT count(*) as counts,sum(price) as sumMoney,sum(deposit) as sumDepositMoney from parametersInfoSep
+        <where>
+            <if test="beginDate != null">
+                and createDate &gt;= #{beginDate}
+            </if>
+            <if test="endDate != null">
+                AND createDate &lt;= #{endDate}
+            </if>
+            <!-- <if test="storeID != null  and storeID != '' and roleID != 0 ">
+                AND storeID = #{storeID}
+            </if> -->
+            <if test="storeID != null  and storeID != '' ">
+                AND storeID = #{storeID}
+            </if>
+             <if test="contactPhoneNumber != null  and contactPhoneNumber != '' ">
+                AND contactPhoneNumber like CONCAT('%',#{contactPhoneNumber},'%') 
+            </if>
+            <if test="unitsOrAddress != null and unitsOrAddress != '' ">
+                and unitsOrAddress like CONCAT('%',#{unitsOrAddress},'%') 
+            </if>
+            <if test="installPerson != null  and installPerson != '' ">
+                AND installPerson = #{installPerson}
+            </if>
+        </where>
+   </select>
+   
+    <select id="countFuzzyselect" resultType="java.lang.Integer">
+       SELECT count(*) FROM parametersInfoSep
+        <where>
+            <if test="beginDate != null">
+                and createDate &gt;= #{beginDate}
+            </if>
+            <if test="endDate != null">
+                AND createDate &lt;= #{endDate}
+            </if>
+            <!-- <if test="storeID != null  and storeID != '' and roleID != 0 ">
+                AND storeID = #{storeID}
+            </if> -->
+            <if test="storeID != null  and storeID != '' ">
+                AND storeID = #{storeID}
+            </if>
+             <if test="contactPhoneNumber != null  and contactPhoneNumber != '' ">
+                AND contactPhoneNumber like CONCAT('%',#{contactPhoneNumber},'%') 
+            </if>
+            <if test="unitsOrAddress != null and unitsOrAddress != '' ">
+                and unitsOrAddress like CONCAT('%',#{unitsOrAddress},'%') 
+            </if>
+            <if test="installPerson != null  and installPerson != '' ">
+                AND installPerson = #{installPerson}
+            </if>
+        </where>
+  </select>
+
+    <select id="selectYZ" resultType="java.lang.String">
+    SELECT COUNT(*) FROM parametersInfoSep Where roleID=#{roleID}
+  </select>
+
+    <!--   查询所有数据  非本派所用 -->
+    <select id="selectAll" resultType="com.gx.po.ParametersInfoSepChild" parameterType="com.gx.po.ParametersInfoSepChild" >
+        SELECT * from parametersInfoSep;
+    </select>
+
+    <!--  模糊查询 运用 Ajax 非分页 -->
+    <select id="selectAjaxList" resultType="com.gx.po.ParametersInfoSepChild">
+    SELECT * from parametersInfoSep
+      WHERE userName like CONCAT('%',#{userName,jdbcType=VARCHAR},'%')
+   </select>
+</mapper>

@@ -1,6 +1,8 @@
 package com.gx.web;
 
 import java.sql.Timestamp;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -109,5 +111,12 @@ public class User {
 		UserPo userPo = userService.selectLogin(user);
 		Gson gson =new Gson();
 		return gson.toJson(userPo);
+	}
+	
+	@RequestMapping("/selectStoreId")
+	@ResponseBody
+	public List<UserPo> selectStoreId(){
+		List<UserPo> userList = this.userService.selectAll();
+		return userList;
 	}
 }

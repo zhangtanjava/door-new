@@ -286,8 +286,8 @@
             alert("店铺  是必填项，不能为空哦！");
             document.getElementById("storeID").focus();
             return false;
-        }else if(document.getElementById("storeID").value.length>32){
-            alert("店铺  不要超出  32  位长度！");
+        }else if(document.getElementById("storeID").value.length>16){
+            alert("店铺  不要超出  16  位长度！");
             document.getElementById("storeID").focus();
             return false;
         }else{

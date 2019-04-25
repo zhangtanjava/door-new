@@ -3,14 +3,15 @@ package com.gx.utils;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.gx.po.ParametersInfoSepChild;
 import com.gx.po.Parametersinfo;
 import com.gx.po.UserPo;
 import com.gx.service.ParametersHandleService;
-import com.gx.service.PassengerService;
-import com.gx.service.TranInfoService;
 import com.gx.service.UserService;
 @Service(value="convert2map")
 public class Convert2map {
@@ -23,7 +24,7 @@ public class Convert2map {
 	
 	public Map<String, Object> wlInstall(Map<String, Object> map,Integer id) {
 		
-		Parametersinfo parametersinfo = parametersHandleService.selectById(id);
+		ParametersInfoSepChild parametersinfo = parametersHandleService.selectById(id);
 		
 		UserPo userPo = new UserPo();
 		userPo.setUserName(parametersinfo.getOperatorID());
@@ -41,8 +42,8 @@ public class Convert2map {
 		append(parametersinfo.getDirection()==null?"":parametersinfo.getDirection());
 		map.put("direction", direction.toString());
 		map.put("dm", parametersinfo.getPrice()==null?"":parametersinfo.getPrice());
-		map.put("indoorInfo", parametersinfo.getCutInfo()==null?"":parametersinfo.getCutInfo());
-		map.put("payment", parametersinfo.getTransAcctSmark()==null?"":parametersinfo.getTransAcctSmark());
+//		map.put("indoorInfo", parametersinfo.getCutInfo()==null?"":parametersinfo.getCutInfo());
+//		map.put("payment", parametersinfo.getTransAcctSmark()==null?"":parametersinfo.getTransAcctSmark());
 		map.put("unitsOrAddress", parametersinfo.getUnitsOrAddress()==null?"":parametersinfo.getUnitsOrAddress());
 		map.put("contactPhoneNumber", parametersinfo.getContactPhoneNumber()==null?"":parametersinfo.getContactPhoneNumber());
 		map.put("secondPhoneNumber", parametersinfo.getSecondPhoneNumber()==null?"":parametersinfo.getSecondPhoneNumber());
@@ -52,7 +53,7 @@ public class Convert2map {
 	}
 	public Map<String, Object> wlSurveyWord(Map<String, Object> map,Integer id) {
 		
-		Parametersinfo parametersinfo = parametersHandleService.selectById(id);
+		ParametersInfoSepChild parametersinfo = parametersHandleService.selectById(id);
 		
 		UserPo userPo = new UserPo();
 		userPo.setUserName(parametersinfo.getOperatorID());
@@ -73,14 +74,14 @@ public class Convert2map {
 		map.put("contactPhoneNumber", parametersinfo.getContactPhoneNumber()==null?"":parametersinfo.getContactPhoneNumber());
 		map.put("holeSize", parametersinfo.getHoleSize()==null?"":parametersinfo.getHoleSize());
 		map.put("doorSize", parametersinfo.getDoorSize()==null?"":parametersinfo.getDoorSize());
-		map.put("indoorInfo", parametersinfo.getIndoorInfo()==null?"":parametersinfo.getIndoorInfo());
-		map.put("cutInfo", parametersinfo.getCutInfo()==null?"":parametersinfo.getCutInfo());
+//		map.put("indoorInfo", parametersinfo.getIndoorInfo()==null?"":parametersinfo.getIndoorInfo());
+//		map.put("cutInfo", parametersinfo.getCutInfo()==null?"":parametersinfo.getCutInfo());
 		map.put("surveyorSmark",parametersinfo.getSurveyorSmark()==null?"":parametersinfo.getSurveyorSmark());
 		return map;
 	}
 	public Map<String, Object> wlFixWord(Map<String, Object> map,Integer id) {
 		
-		Parametersinfo parametersinfo = parametersHandleService.selectById(id);
+		ParametersInfoSepChild parametersinfo = parametersHandleService.selectById(id);
 		
 		UserPo userPo = new UserPo();
 		userPo.setUserName(parametersinfo.getOperatorID());
@@ -89,7 +90,7 @@ public class Convert2map {
 			map.put("storeID", userRes.getStoreID()==null?"":userRes.getStoreID());
 		}
 		
-		map.put("fxiDate", DateUtils.get8Str(parametersinfo.getFixDate()==null?new Date():parametersinfo.getFixDate()));
+//		map.put("fxiDate", DateUtils.get8Str(parametersinfo.getFixDate()==null?new Date():parametersinfo.getFixDate()));
 		map.put("createDate",  DateUtils.get8Str(parametersinfo.getCreateDate()==null?new Date():parametersinfo.getCreateDate()));
 		map.put("doorMod", parametersinfo.getModel()==null?"":parametersinfo.getModel());
 		map.put("installDate",  DateUtils.get8Str(parametersinfo.getInstallDate()==null?new Date():parametersinfo.getInstallDate()));
@@ -102,15 +103,15 @@ public class Convert2map {
 		map.put("unitsOrAddress", parametersinfo.getUnitsOrAddress()==null?"":parametersinfo.getUnitsOrAddress());
 		map.put("contactPhoneNumber", parametersinfo.getContactPhoneNumber()==null?"":parametersinfo.getContactPhoneNumber());
 		map.put("secondPhoneNumber", parametersinfo.getSecondPhoneNumber()==null?"":parametersinfo.getSecondPhoneNumber());
-		map.put("fixObject", parametersinfo.getFixObject()==null?"":parametersinfo.getFixObject());
+//		map.put("fixObject", parametersinfo.getFixObject()==null?"":parametersinfo.getFixObject());
 		map.put("fixSmark", parametersinfo.getFixSmarkOne()==null?"":parametersinfo.getFixSmarkOne());
-		map.put("fixSmarkTwo", parametersinfo.getFixSmarkTwo()==null?"":parametersinfo.getFixSmarkTwo());
+//		map.put("fixSmarkTwo", parametersinfo.getFixSmarkTwo()==null?"":parametersinfo.getFixSmarkTwo());
 		return map;
 	}
 	
 	public Map<String, Object> yaKouWord(Map<String, Object> map,Integer id) {
 		
-		Parametersinfo parametersinfo = parametersHandleService.selectById(id);
+		ParametersInfoSepChild parametersinfo = parametersHandleService.selectById(id);
 		
 		UserPo userPo = new UserPo();
 		userPo.setUserName(parametersinfo.getOperatorID());
@@ -126,8 +127,8 @@ public class Convert2map {
 		map.put("contactPhoneNumber", parametersinfo.getContactPhoneNumber()==null?"":parametersinfo.getContactPhoneNumber());
 		map.put("secondPhoneNumber", parametersinfo.getSecondPhoneNumber()==null?"":parametersinfo.getSecondPhoneNumber());
 		map.put("holeSize", parametersinfo.getHoleSize()==null?"":parametersinfo.getHoleSize());
-		map.put("colorRequire", parametersinfo.getColorRequire()==null?"":parametersinfo.getColorRequire());
-		map.put("doorBottomInfo", parametersinfo.getDoorBottomInfo()==null?"":parametersinfo.getDoorBottomInfo());
+//		map.put("colorRequire", parametersinfo.getColorRequire()==null?"":parametersinfo.getColorRequire());
+//		map.put("doorBottomInfo", parametersinfo.getDoorBottomInfo()==null?"":parametersinfo.getDoorBottomInfo());
 		map.put("yakouSmark", parametersinfo.getYaKouSmark()==null?"":parametersinfo.getYaKouSmark());
 		return map;
 	}
