@@ -557,19 +557,21 @@
    	     alert("销售员不能超过16位！");
    	     document.getElementById("saler").focus();
    	     return false;
-   	    }else if(document.getElementById("unitsOrAddressId").value.length>64){
+   	    }else if(document.getElementById("unitsOrAddress").value.length>64){
 		     alert("住址不要超出64位长度");
-		     document.getElementById("unitsOrAddressId").focus();
+		     document.getElementById("unitsOrAddress").focus();
 		     return false;
         }else if(document.getElementById("model").value.length>16){
 	     alert("型号不能超过16位");
 	     document.getElementById("model").focus();
 	     return false;
-        }else if (!reg.test(document.getElementById("price").value)){
+        }else if (!($("#price").val() == null || $("#price").val()=="")
+        		&& !reg.test(document.getElementById("price").value)){
             alert("输入的价格格式不对");
             document.getElementById("price").focus();
             return false;
-        }else  if (!reg.test(document.getElementById("deposit").value)){
+        }else  if (!($("#deposit").val() == null || $("#deposit").val()=="") 
+        		&& !reg.test(document.getElementById("deposit").value)){
             alert("输入的定金格式不对");
             document.getElementById("deposit").focus();
             return false;
@@ -581,7 +583,8 @@
             alert("销售备注长度不能超过64位！");
             document.getElementById("saleRemarks").focus();
             return false;
-        }else  if (!reg.test(document.getElementById("jjrAmt").value)){
+        }else  if (!($("#jjrAmt").val() == null || $("#jjrAmt").val()=="") 
+        		&& !reg.test(document.getElementById("jjrAmt").value)){
             alert("输入的交居然金额格式不对");
             document.getElementById("jjrAmt").focus();
             return false;

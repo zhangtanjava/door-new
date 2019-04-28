@@ -130,13 +130,15 @@ public class ParametersHandle {
 	}
 
 	@RequestMapping("/add")
-	public ModelAndView add(HttpServletRequest request, ParametersInfoSepChild parametersinfo,
+	public ModelAndView add(HttpServletRequest request, 
+			ParametersInfoSepChild parametersinfo,
 			@RequestParam("frontMoneyFile") MultipartFile frontMoneyFile,
 			@RequestParam("agreementFile") MultipartFile agreementFile,
 			@RequestParam("seAgreementFile") MultipartFile seAgreementFile,
 			@RequestParam("surveyorFile") MultipartFile surveyorFile,
 			@RequestParam("istallFile") MultipartFile istallFile,
-			@RequestParam("smartLockFile") MultipartFile smartLockFile, @RequestParam("userID") Integer userID) {
+			@RequestParam("smartLockFile") MultipartFile smartLockFile,
+			@RequestParam("userID") Integer userID) {
 
 		ModelAndView mv = null;
 
@@ -162,6 +164,89 @@ public class ParametersHandle {
 		}
 		parametersHandleService.insertAll(parametersinfo);
 		mv = new ModelAndView("redirect:/ParametersHandle/tolist.do?userID=" + userID);
+		return mv;
+	}
+
+	
+
+	@RequestMapping("/update")
+	public ModelAndView update(HttpServletRequest request, 
+			ParametersInfoSepChild parametersinfo,
+			@RequestParam("frontMoneyFile") MultipartFile frontMoneyFile,
+			@RequestParam("agreementFile") MultipartFile agreementFile,
+			@RequestParam("seAgreementFile") MultipartFile seAgreementFile,
+			@RequestParam("surveyorFile") MultipartFile surveyorFile,
+			@RequestParam("istallFile") MultipartFile istallFile,
+			@RequestParam("smartLockFile") MultipartFile smartLockFile,
+			@RequestParam("userID") Integer userID) {
+		ModelAndView mv = null;
+
+		ParametersInfoSepChild p1 = parametersHandleService.selectById(parametersinfo.getId());
+		String frontMoneyPath = p1.getFrontMoneyFilePath();
+		String agreementPhotoPath = p1.getAgreementPhotoPath();
+		String seAgreePhotoPath = p1.getSeAgreementPhotoPath();
+		String surveyPath = p1.getSurveyorPhotoPath();
+		String istallPath = p1.getIstallPhotoPath();
+		String smartLockPath = p1.getSmartLockFilePath();
+		
+		//定金图片修改
+		photosFileUpdate(parametersinfo, frontMoneyFile, "frontMoneyFile", frontMoneyPath);
+		//合同图片修改
+		photosFileUpdate(parametersinfo, agreementFile,"agreementFile", agreementPhotoPath);
+		//合同二图片修改
+		photosFileUpdate(parametersinfo, seAgreementFile, "seAgreementFile", seAgreePhotoPath);
+		//测量图片修改
+		photosFileUpdate(parametersinfo, surveyorFile, "surveyorFile", surveyPath);
+		//安装图片修改
+		photosFileUpdate(parametersinfo, istallFile, "istallFile", istallPath);
+		//智能锁图片修改
+		photosFileUpdate(parametersinfo, smartLockFile, "smartLockFile", smartLockPath);
+		// 日期格式处理
+		dateStrParse(parametersinfo);
+		//前台如果不选店铺，默认为该员工所属店
+		if ("0".equals(parametersinfo.getStoreID())) {
+			UserPo userPo = userService.selectById(userID);
+			parametersinfo.setStoreID(userPo.getStoreID());
+		}
+		parametersHandleService.updateById(parametersinfo);
+		mv = new ModelAndView("redirect:/ParametersHandle/tolist.do?userID=" + userID);
+		return mv;
+	}
+
+	@RequestMapping("/delete")
+	public ModelAndView delete(@RequestParam("id") String id, @RequestParam("userID") Integer userID) {
+		ModelAndView mv = null;
+		String[] FenGe = id.split(",");
+		for (int i = 0; i < FenGe.length; i++) {
+			parametersHandleService.deleteById(Integer.parseInt(FenGe[i]));
+		}
+		String storeID = "0";
+		UserPo userPo = userService.selectById(userID);
+		if (userPo != null) {
+			storeID = userPo.getStoreID();
+		}
+		mv = new ModelAndView("redirect:/ParametersHandle/tolist.do?userID=" + userID);
+		return mv;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/selectByAgreementID")
+	public Object selectByName(String agreementID) {
+		int accout = parametersHandleService.selectByAgreementID(agreementID);
+		Gson gson = new Gson();
+		return gson.toJson(accout);
+	}
+
+	@RequestMapping("/toinformation")
+	public ModelAndView toinformation(Integer id, Integer stayregisterdetailsId, String min, String max) {
+		ModelAndView mv = null;
+		ParametersInfoSepChild list = parametersHandleService.selectById(id);
+
+		mv = new ModelAndView("/parametershandle/particulars");
+		mv.addObject("list", list);
+		mv.addObject("id", id);
+		mv.addObject("min", min);
+		mv.addObject("max", max);
 		return mv;
 	}
 
@@ -194,7 +279,17 @@ public class ParametersHandle {
 		}
 		parametersinfo.setUpdateDate(new Date());
 	}
-
+	private void photosFileUpdate(ParametersInfoSepChild parametersinfo, MultipartFile file, String fileType,String oldFilePath) {
+		if (!file.isEmpty()) {
+			// 删除原来的文件，新建文件
+			if (!StringUtils.isEmpty(oldFilePath)) {
+				File oldfile = new File(oldFilePath);
+				oldfile.delete();
+			}
+			photosFileSave(parametersinfo, file, fileType);
+		}
+	}
+	
 	private void photosFileSave(ParametersInfoSepChild parametersinfo, MultipartFile file, String fileType) {
 		if (!file.isEmpty()) {
 			// 上传文件路径
@@ -241,206 +336,7 @@ public class ParametersHandle {
 			logger.info(fileType + "图片文件保存失败！");
 		}
 	}
-
-	@RequestMapping("/update")
-	public ModelAndView update(HttpServletRequest request, ParametersInfoSepChild parametersinfo,
-			@RequestParam("surveyorFile") MultipartFile surveyorFile,
-			@RequestParam("istallFile") MultipartFile istallFile,
-			@RequestParam("agreementFile") MultipartFile agreementFile, @RequestParam("userID") Integer userID) {
-		ModelAndView mv = null;
-
-		ParametersInfoSepChild parametersinfo1 = parametersHandleService.selectById(parametersinfo.getId());
-		String surveyPath = parametersinfo1.getSurveyorPhotoPath();
-		String istallPath = parametersinfo1.getIstallPhotoPath();
-		String agreementPhotoPath = parametersinfo1.getAgreementPhotoPath();
-		// 如果文件不为空，写入上传路径
-		if (!surveyorFile.isEmpty()) {
-			// 删除原来的文件，新建文件
-			if (!StringUtils.isEmpty(surveyPath)) {
-				File file = new File(surveyPath);
-				file.delete();
-			}
-
-			// 上传文件路径
-			String path = "/Users/zhangtan/Pictures" + File.separator + DateUtils.getToday() +
-			// File.separator + parametersinfo.getAgreementID()+
-					File.separator + "surveyorFile";
-			logger.info("上传文件路径：" + path);
-			// 上传文件名
-			String filename = surveyorFile.getOriginalFilename();
-			logger.info("上传文件名：" + filename);
-
-			File filepath = new File(path, filename);
-			// 判断路径是否存在，如果不存在就创建一个
-			if (!filepath.getParentFile().exists()) {
-				filepath.getParentFile().mkdirs();
-			}
-			// 将上传文件保存到一个目标文件当中
-			try {
-				surveyorFile.transferTo(new File(path + File.separator + filename));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			parametersinfo.setSurveyorPhotoPath(path + File.separator + filename);
-			parametersinfo.setSurveyorPhotoName(filename);
-			logger.info("测量图片保存成功！");
-		} else {
-			logger.info("测量图片保存失败！");
-		}
-
-		// 如果文件不为空，写入上传路径
-		if (!istallFile.isEmpty()) {
-			// 删除原来文件
-			if (!StringUtils.isEmpty(istallPath)) {
-				File file = new File(istallPath);
-				file.delete();
-			}
-
-			// 上传文件路径
-			String path = "/Users/zhangtan/Pictures" + File.separator + DateUtils.getToday() +
-			// File.separator + parametersinfo.getAgreementID()+
-					File.separator + "istallFile";
-			logger.info("上传文件路径：" + path);
-			// 上传文件名
-			String filename = istallFile.getOriginalFilename();
-			logger.info("上传文件名：" + filename);
-			File filepath = new File(path, filename);
-			// 判断路径是否存在，如果不存在就创建一个
-			if (!filepath.getParentFile().exists()) {
-				filepath.getParentFile().mkdirs();
-			}
-			// 将上传文件保存到一个目标文件当中
-			try {
-				istallFile.transferTo(new File(path + File.separator + filename));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			parametersinfo.setIstallPhotoPath(path + File.separator + filename);
-			parametersinfo.setIstallPhotoName(filename);
-			logger.info("安装图片保存成功！");
-		} else {
-			logger.info("安装图片保存失败！");
-		}
-
-		// 如果文件不为空，写入上传路径
-		if (!agreementFile.isEmpty()) {
-			// 删除原来的文件，新建文件
-			if (!StringUtils.isEmpty(agreementPhotoPath)) {
-				File file = new File(agreementPhotoPath);
-				file.delete();
-			}
-
-			// 上传文件路径
-			String path = "/Users/zhangtan/Pictures" + File.separator + DateUtils.getToday() +
-			// File.separator + parametersinfo.getAgreementID()+
-					File.separator + "agreementFile";
-			logger.info("上传文件路径：" + path);
-			// 上传文件名
-			String filename = agreementFile.getOriginalFilename();
-			logger.info("上传文件名：" + filename);
-
-			File filepath = new File(path, filename);
-			// 判断路径是否存在，如果不存在就创建一个
-			if (!filepath.getParentFile().exists()) {
-				filepath.getParentFile().mkdirs();
-			}
-			// 将上传文件保存到一个目标文件当中
-			try {
-				agreementFile.transferTo(new File(path + File.separator + filename));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			parametersinfo.setAgreementPhotoPath(path + File.separator + filename);
-			parametersinfo.setAgreementPhotoName(filename);
-			logger.info("合同图片保存成功！");
-		} else {
-			logger.info("合同图片保存失败！");
-		}
-
-		String surveyorDateStr = parametersinfo.getSurveyorDateStr();
-		String installDateStr = parametersinfo.getInstallDateStr();
-		String createDateStr = parametersinfo.getCreateDateStr();
-		// String fixDateStr = parametersinfo.getFixDateStr();
-		// String yaKouInstallDateStr = parametersinfo.getYaKouInstallDateStr();
-		// String payDateStr = parametersinfo.getPayDateStr();
-		// logger.info("surveyorDateStr:"+surveyorDateStr+"installDateStr:"+installDateStr+"createDateStr:"+createDateStr
-		// +"fixDateStr"+fixDateStr+"yaKouInstallDateStr:"+yaKouInstallDateStr+"payDateStr:"+payDateStr);
-		try {
-			if (!StringUtils.isEmpty(surveyorDateStr)) {
-				parametersinfo.setSurveyorDate(simpleDateFormat.parse(surveyorDateStr));
-			}
-			if (!StringUtils.isEmpty(installDateStr)) {
-				parametersinfo.setInstallDate(simpleDateFormat.parse(installDateStr));
-			}
-			if (!StringUtils.isEmpty(createDateStr)) {
-				parametersinfo.setCreateDate(simpleDateFormat.parse(createDateStr));
-			}
-			// if (!StringUtils.isEmpty(fixDateStr)){
-			// logger.info("fixDateStr:"+fixDateStr);
-			// parametersinfo.setFixDate(simpleDateFormat.parse(fixDateStr));
-			// }
-			// if (!StringUtils.isEmpty(yaKouInstallDateStr)){
-			// parametersinfo.setYaKouInstallDate(simpleDateFormat.parse(yaKouInstallDateStr));
-			// }
-			// if (!StringUtils.isEmpty(payDateStr)){
-			// parametersinfo.setPayDate(simpleDateFormat.parse(payDateStr));
-			// }
-		} catch (Exception e) {
-			logger.info("日期转换异常：" + e);
-		}
-
-		UserPo userPo = userService.selectById(userID);
-		// if (userPo != null){
-		// parametersinfo.setStoreID(userPo.getStoreID());
-		// parametersinfo.setRoleID(userPo.getRoleID());
-		// }else{
-		// parametersinfo.setStoreID("0");//1-8正常店
-		// parametersinfo.setRoleID("2");//0 领导 1 员工
-		// }
-
-		parametersinfo.setUpdateDate(new Date());
-		parametersHandleService.updateById(parametersinfo);
-		mv = new ModelAndView("redirect:/ParametersHandle/tolist.do?userID=" + userID);
-		return mv;
-	}
-
-	@RequestMapping("/delete")
-	public ModelAndView delete(@RequestParam("id") String id, @RequestParam("userID") Integer userID) {
-		ModelAndView mv = null;
-		String[] FenGe = id.split(",");
-		for (int i = 0; i < FenGe.length; i++) {
-			parametersHandleService.deleteById(Integer.parseInt(FenGe[i]));
-		}
-		String storeID = "0";
-		UserPo userPo = userService.selectById(userID);
-		if (userPo != null) {
-			storeID = userPo.getStoreID();
-		}
-		mv = new ModelAndView("redirect:/ParametersHandle/tolist.do?userID=" + userID);
-		return mv;
-	}
-
-	@ResponseBody
-	@RequestMapping(value = "/selectByAgreementID")
-	public Object selectByName(String agreementID) {
-		int accout = parametersHandleService.selectByAgreementID(agreementID);
-		Gson gson = new Gson();
-		return gson.toJson(accout);
-	}
-
-	@RequestMapping("/toinformation")
-	public ModelAndView toinformation(Integer id, Integer stayregisterdetailsId, String min, String max) {
-		ModelAndView mv = null;
-		ParametersInfoSepChild list = parametersHandleService.selectById(id);
-
-		mv = new ModelAndView("/parametershandle/particulars");
-		mv.addObject("list", list);
-		mv.addObject("id", id);
-		mv.addObject("min", min);
-		mv.addObject("max", max);
-		return mv;
-	}
-
+	
 	// @RequestMapping(value = "/exportfeedback")
 	// @ResponseBody
 	// public String exportFeedBack(HttpServletResponse response,

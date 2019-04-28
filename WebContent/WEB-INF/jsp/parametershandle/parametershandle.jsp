@@ -127,10 +127,10 @@
                         查询
                     </button>
                     <%--合同号--%>
-                    <button onclick="particulars()" type="button" class="btn-info" style="margin-top:-12px;height:25px;">
+                    <!-- <button onclick="particulars()" type="button" class="btn-info" style="margin-top:-12px;height:25px;">
                         <li class="icon-zoom-in icon-white"></li>
                         详情
-                    </button>
+                    </button> -->
                 </div>
                 <div class="span6">
                  <label style="float:left;">订单总金额：</label>
@@ -207,9 +207,12 @@
                     <th>方向</th>
                     <th>价格</th>
                     <th>安装师傅</th>
+                    <th>定金</th>
+                    <th>合同1</th>
+                    <th>合同2</th>
                     <th>测量</th>
-                    <th>安装</th>
-                    <th>合同</th>
+                    <th>门安装</th>
+                    <th>锁安装</th>
                 </tr>
                 </thead>
                 <tbody id="tbody">
@@ -226,6 +229,21 @@
                         <td>${item.price}</td>
                         <td>${item.installPerson}</td>
                         <td>
+                            <a id="downloadsurvery" href="${ctx}/Download/download.do?filepath=${item.frontMoneyFilePath}" onclick="downloadSurVal()">
+                                    <c:if test="${not empty item.frontMoneyFileName}">下载</c:if>
+                            </a>
+                        </td>
+                        <td>
+                            <a id="downloadistall" href="${ctx}/Download/download.do?filepath=${item.agreementPhotoPath}" onclick="downloadIstallVal()">
+                                    <c:if test="${not empty item.agreementPhotoName}">下载</c:if>
+                            </a>
+                        </td>
+                        <td>
+                            <a id="downloadsurvery" href="${ctx}/Download/download.do?filepath=${item.seAgreementPhotoPath}" onclick="downloadSurVal()">
+                                    <c:if test="${not empty item.seAgreementPhotoName}">下载</c:if>
+                            </a>
+                        </td>
+                        <td>
                             <a id="downloadsurvery" href="${ctx}/Download/download.do?filepath=${item.surveyorPhotoPath}" onclick="downloadSurVal()">
                                     <c:if test="${not empty item.surveyorPhotoName}">下载</c:if>
                             </a>
@@ -236,10 +254,9 @@
                             </a>
                         </td>
                         <td>
-                            <a id="downloadistall" href="${ctx}/Download/download.do?filepath=${item.agreementPhotoPath}" onclick="downloadIstallVal()">
-                                    <c:if test="${not empty item.agreementPhotoName}">下载</c:if>
+                            <a id="downloadsurvery" href="${ctx}/Download/download.do?filepath=${item.smartLockFilePath}" onclick="downloadSurVal()">
+                                    <c:if test="${not empty item.smartLockFileName}">下载</c:if>
                             </a>
-                        </td>
                         </td>
                     </tr>
                 </c:forEach>

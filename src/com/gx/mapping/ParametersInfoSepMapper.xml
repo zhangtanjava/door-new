@@ -633,7 +633,7 @@
   </select>
 
     <!--   分页查询 -->
-    <select id="pageFuzzyselect" resultType="com.gx.po.Parametersinfo">
+    <select id="pageFuzzyselect" resultType="com.gx.po.ParametersInfoSepChild">
        SELECT * from parametersInfoSep
 
         <where>
