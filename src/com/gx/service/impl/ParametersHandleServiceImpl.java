@@ -82,5 +82,10 @@ public class ParametersHandleServiceImpl implements com.gx.service.ParametersHan
 	public ParametersInfoSepChild selectAllInfo(ParametersInfoSepChild vo) {
 		return parametersInfoSepMapper.statisticsInfo(vo);
 	}
+
+	@Override
+	public List<ParametersInfoSepChild> selectByConditions(ParametersInfoSepChild Parametersinfo) {
+		return parametersInfoSepMapper.selectByConditions(Parametersinfo);
+	}
 	
 }

@@ -512,4 +512,27 @@ public class ParametersInfoSep implements Serializable {
 		this.operatorID = operatorID;
 	}
 
+	@Override
+	public String toString() {
+		return "ParametersInfoSep [id=" + id + ", storeID=" + storeID + ", saler=" + saler + ", frontMoneyFilePath="
+				+ frontMoneyFilePath + ", frontMoneyFileName=" + frontMoneyFileName + ", unitsOrAddress="
+				+ unitsOrAddress + ", contactPhoneNumber=" + contactPhoneNumber + ", secondPhoneNumber="
+				+ secondPhoneNumber + ", agreementPhotoPath=" + agreementPhotoPath + ", agreementPhotoName="
+				+ agreementPhotoName + ", model=" + model + ", price=" + price + ", deposit=" + deposit
+				+ ", seAgreementPhotoPath=" + seAgreementPhotoPath + ", seAgreementPhotoName=" + seAgreementPhotoName
+				+ ", smartLock=" + smartLock + ", saleRemarks=" + saleRemarks + ", payDate=" + payDate + ", jjrAmt="
+				+ jjrAmt + ", holeSize=" + holeSize + ", doorSize=" + doorSize + ", direction=" + direction
+				+ ", surveyor=" + surveyor + ", surveyorSmark=" + surveyorSmark + ", surveyorDate=" + surveyorDate
+				+ ", surveyorPhotoPath=" + surveyorPhotoPath + ", surveyorPhotoName=" + surveyorPhotoName
+				+ ", installPerson=" + installPerson + ", installPerSmark=" + installPerSmark + ", installDate="
+				+ installDate + ", istallPhotoPath=" + istallPhotoPath + ", istallPhotoName=" + istallPhotoName
+				+ ", yaKouSmark=" + yaKouSmark + ", smartCatEye=" + smartCatEye + ", smartLockDate=" + smartLockDate
+				+ ", smartLockFilePath=" + smartLockFilePath + ", smartLockFileName=" + smartLockFileName
+				+ ", fixSmarkOne=" + fixSmarkOne + ", fixSmarkTwo=" + fixSmarkTwo + ", fixSmarkSan=" + fixSmarkSan
+				+ ", fixSmarkSi=" + fixSmarkSi + ", fixSmarkWu=" + fixSmarkWu + ", fixSmarkLiu=" + fixSmarkLiu
+				+ ", fixSmarkQi=" + fixSmarkQi + ", fixSmarkBa=" + fixSmarkBa + ", fixSmarkJiu=" + fixSmarkJiu
+				+ ", fixSmarkShi=" + fixSmarkShi + ", createDate=" + createDate + ", updateDate=" + updateDate
+				+ ", operatorID=" + operatorID + "]";
+	}
+
 }

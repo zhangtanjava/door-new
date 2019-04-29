@@ -185,9 +185,9 @@
                     <button class="btn btn-danger btn-small textone" type="button" onclick="deletefunction()"
                     <c:if test="${sessionScope.userPo.roleID ==1}">style="display:none"</c:if>><li class="icon-remove icon-white"></li>删除</button>
                 </div>
-                <!-- <div>
-                	<button id="js-export" type="button" class="btn btn-primary">导出Excel</button>
-                </div>-->
+                <div>
+                	<button id="js-export" type="button" class="btn btn-info btn-small textone">导出Excel</button>
+                </div>
             </div>
         </div>
     </div>
@@ -275,8 +275,8 @@
 <script type="text/javascript">
 
 	$('#js-export').click(function(){
-	    //window.location.href="${ctx}/excel/exportfeedback?type="+$('#type').val()+"&startDate="+$('#table_start_date').val()+"&endDate="+$('#table_end_date').val();
-		window.location.href="${ctx}/ParametersHandle/exportfeedback.do";
+		window.location.href="${ctx}/excel/exportfeedback.do?unitsOrAddress="+$('#unitsOrAddress').val()+"&stID="+$('#stID').val()+"&datemin="+$('#datemin').val()
+				+"&datemax="+$('#datemax').val()+"&installPerson="+$('#installPerson').val()+"&contactPhoneNumber="+$('#contactPhoneNumber').val();
 	});
 
     function timeSelect() {
@@ -290,6 +290,7 @@
             datemin + '&datemax=' + datemax +'&contactPhoneNumber=' + contactPhoneNumber+'&unitsOrAddress=' + 
             unitsOrAddress+'&userID=' + ${sessionScope.userPo.id}+'&stID=' + stID+'&installPerson='+installPerson;
     }
+    
     function wlInstallWord() {
         var id = [];
         var table = document.getElementById("tbody");

@@ -631,7 +631,32 @@
   <select id="selectByAgreementID" resultType="java.lang.Integer" parameterType="java.lang.String">
     Select count(*) From parametersInfoSep Where agreementID = #{agreementID,jdbcType=VARCHAR}
   </select>
-
+	<!-- 按条件查询（生成excel表格用） -->
+    <select id="selectByConditions" resultType="com.gx.po.ParametersInfoSepChild" parameterType="com.gx.po.ParametersInfoSepChild">
+       SELECT * from parametersInfoSep
+        <where>
+            <if test="unitsOrAddress != null and unitsOrAddress != '' ">
+                and unitsOrAddress like CONCAT('%',#{unitsOrAddress},'%') 
+            </if>
+            <if test="beginDate != null">
+                and createDate &gt;= #{beginDate}
+            </if>
+            <if test="endDate != null">
+                AND createDate &lt;= #{endDate}
+            </if>
+            <if test="contactPhoneNumber != null  and contactPhoneNumber != '' ">
+                AND contactPhoneNumber like CONCAT('%',#{contactPhoneNumber},'%') 
+            </if>
+            <if test="storeID != null  and storeID != '' ">
+                AND storeID = #{storeID}
+            </if>
+            <if test="installPerson != null  and installPerson != '' ">
+                AND installPerson = #{installPerson}
+            </if>
+        </where>
+        order by createDate DESC
+  </select>
+  
     <!--   分页查询 -->
     <select id="pageFuzzyselect" resultType="com.gx.po.ParametersInfoSepChild">
        SELECT * from parametersInfoSep

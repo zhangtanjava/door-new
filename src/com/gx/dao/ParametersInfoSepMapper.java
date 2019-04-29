@@ -29,6 +29,8 @@ public interface ParametersInfoSepMapper {
      */
     public int selectByAgreementID(String agreementID);
 	
+    public List<ParametersInfoSepChild> selectByConditions(ParametersInfoSepChild parametersInfoSepChild);
+    
 	//分页模糊查询
     public List<ParametersInfoSepChild> pageFuzzyselect(@Param("start") int start, @Param("pageSize") int pageSize,
                                              @Param("beginDate") Date beginDate, @Param("endDate") Date endDate,

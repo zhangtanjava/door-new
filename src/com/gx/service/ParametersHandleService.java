@@ -20,7 +20,7 @@ public interface ParametersHandleService {
 
 	public int updateById(ParametersInfoSepChild Parametersinfo);
 
-
+	public List<ParametersInfoSepChild>  selectByConditions(ParametersInfoSepChild Parametersinfo);
 	//分页需要
 	public Page<ParametersInfoSepChild> pageFuzzyselect(Page<ParametersInfoSepChild> vo, ParametersInfoSepChild parametersinfo);
 	
