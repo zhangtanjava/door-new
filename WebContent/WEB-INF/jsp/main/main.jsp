@@ -49,7 +49,7 @@
 					<a href="#" class="brand">
 						<small>
 							<i class="icon-leaf"></i>
-							 亲爱的${sessionScope.userPo.userName }，欢迎您使用防盗门管理系统                   
+							 亲爱的${sessionScope.user.userName }，欢迎您使用防盗门管理系统                   
 						</small>
 					</a><!--/.brand-->
 
@@ -98,7 +98,7 @@
 
 				<ul class="nav nav-list">
 						<li>
-							<a id="sheetManageId" onclick="sheetManage()" class="dropdown-toggle">
+							<a id="sheetManageId" class="dropdown-toggle">
 								<%--<i class="icon-move"></i>--%>
 								<i class="icon-home"></i>
 								<span class="menu-text">客户档案 </span>
@@ -118,9 +118,9 @@
 						</li>
 
 
-					<li <c:if test="${sessionScope.userPo.roleID ==1}">style="display:none"</c:if>
+					<li <c:if test="${sessionScope.user.roleID ==1}">style="display:none"</c:if>
 		          	>
-						<a id="userManageId" onclick="userManage()" class="dropdown-toggle">
+						<a id="userManageId"  class="dropdown-toggle">
 							<i class="icon-user"></i>
 							<span class="menu-text">员工管理 </span>
 
@@ -162,7 +162,7 @@
 				</div>
 				
 				<div style="width:100%;height:100%;">
-				  <iframe id="Mainid" src="${ctx}/Main/todata.do?userID=${sessionScope.userPo.id}" style="width:100%;height:100%;"  frameBorder="0" scrolling="no"></iframe>
+				  <iframe id="Mainid" src="${ctx}/Main/todata.do?userID=${sessionScope.user.id}" style="width:100%;height:100%;"  frameBorder="0" scrolling="no"></iframe>
 				</div>
 
 				<div class="ace-settings-container" id="ace-settings-container">
@@ -467,7 +467,7 @@
 			     document.getElementById("bigGuide").innerHTML=a+"";
 			     var s=document.getElementById("parametersId").getElementsByTagName('span')[0].innerHTML;
 			     document.getElementById("smallGuide").innerHTML=s+"";
-			     document.getElementById('Mainid').src='${ctx}/ParametersHandle/tolist.do?userID='+${sessionScope.userPo.id};
+			     document.getElementById('Mainid').src='${ctx}/ParametersHandle/tolist.do?userID='+${sessionScope.user.id};
 			}
 		    function logout(){
 		        if (confirm("您确定要退出系统吗？"))

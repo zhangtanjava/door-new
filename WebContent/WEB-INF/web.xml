@@ -35,9 +35,11 @@
         <filter-name>characterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
+	<!-- 设置session失效时间 1分钟 没有生效，在代码中设置-->
+	<!-- 从session不活动的时候开始计算，如果session一直活动，session就总不会过期。
+	从该Session未被访问,开始计时; 一旦Session被访问,计时清0; -->
     <session-config>
-        <session-timeout>60</session-timeout>
+        <session-timeout>1</session-timeout>
     </session-config>
 
     <servlet>
@@ -59,12 +61,7 @@
         <servlet-name>springMvc</servlet-name>
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
-
-
-
-
-
-
+		<!-- web项目的默认访问路径 -->
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>

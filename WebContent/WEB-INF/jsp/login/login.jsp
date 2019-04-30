@@ -34,6 +34,7 @@
   background:-moz-linear-gradient(top,#FFF,#D1BBFF);/*火狐*/ 
   background:-webkit-gradient(linear, 0% 39.1%, 0% 100%,from(#FFF), to(#D1BBFF));/*谷歌*/ 
   }
+  div p{margin:0 auto;width:200px;}
 </style>
   
   <body>
@@ -60,6 +61,9 @@
             </div>
           </form>
       </div>
+      <div style="color: gray">
+        <p>${message}</p>  <%--这里显示上边的controller里边用户或者密码错误的信息--%>
+      </div>
       <div class="modal-footer">
       	<button type="button" onclick="$('#form1').submit()" class="btn btn-primary">登录</button>
       </div>
@@ -85,8 +89,7 @@
             document.getElementById("password").focus();
             return false;
         }
-
-        $.ajax({
+        /* $.ajax({
             cache:false,                                             //是否使用缓存提交 如果为TRUE 会调用浏览器的缓存 而不会提交
             type: "POST",                                           //上面3行都是必须要的
             url: '${ctx}/User/selectLogin.do',       //地址 type 带参数
@@ -101,8 +104,7 @@
                 }
             },
             error: function(data) {  }
-        });
-
+        }); */
     }
 </script> 
 </html>

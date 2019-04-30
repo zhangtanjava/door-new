@@ -11,5 +11,8 @@ public class Main {
 	public String tologin(String userID){
 		return "redirect:/ParametersHandle/tolist.do?userID="+userID;
 	}
-
+	@RequestMapping("/main")
+	public String tomian(){
+		return "/main/main";
+	}
 }
