@@ -471,7 +471,7 @@
 			}
 		    function logout(){
 		        if (confirm("您确定要退出系统吗？"))
-		            top.location = "${ctx}/Login/tologin.do";
+		            top.location = "${ctx}/Login/logout.do";
 		         return false;
 		    }
 		</script>

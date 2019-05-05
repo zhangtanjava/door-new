@@ -10,6 +10,7 @@ import com.alibaba.druid.util.StringUtils;
 import com.gx.dao.UserDao;
 import com.gx.page.Page;
 import com.gx.po.UserPo;
+import com.gx.service.ParametersHandleService;
 import com.gx.service.UserService;
 import com.sun.istack.internal.logging.Logger;
 
@@ -19,6 +20,8 @@ public class UserServiceImpl implements UserService {
 	Logger logger = Logger.getLogger(UserServiceImpl.class);
 	@Autowired
 	private UserDao userDao;
+	@Autowired
+	private ParametersHandleService parametersHandleService;
 	
 	@Override
 	public UserPo selectLogin(UserPo user) {
@@ -48,8 +51,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int updateById(UserPo UserPo) {
-		return userDao.updateById(UserPo);
+	@Transactional
+	public int updateById(UserPo userPo) {
+		UserPo user = selectById(userPo.getId());
+		if (!user.getStoreID().equals(userPo.getStoreID())) {//店铺信息做了修改,修改所有和店铺有关的表信息
+			parametersHandleService.updateStoreID(user.getStoreID(), userPo.getStoreID());
+		}
+		return userDao.updateById(userPo);
 	}
 
 	@Override

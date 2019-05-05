@@ -40,7 +40,7 @@ public class Login {
 //            model.addAttribute("userPo",user);
 //            model.addAttribute("userName", user.getUserName());
     		session.setAttribute("user",user);
-    		session.setMaxInactiveInterval(1800);//1800秒，优先级大于web，大于tomcat
+    		session.setMaxInactiveInterval(3600);//3600秒，优先级大于web，大于tomcat
             return "redirect:/Main/main.do";
         }else {
             model.addAttribute("message","登录名或密码错误！");
@@ -50,8 +50,8 @@ public class Login {
     //logout登出，其实就是删除之前登录时设置的session
     @RequestMapping("/logout")
     public String logout(HttpServletRequest request) {
-        request.getSession().removeAttribute("userPo");
-        return "redirect:/login/login";
+        request.getSession().removeAttribute("user");
+        return "redirect:/Login/tologin.do";
     }
     
 	//登录页面提交

@@ -51,4 +51,6 @@ public interface ParametersInfoSepMapper {
     //模糊查询 运用 Ajax 非分页
     public List<ParametersInfoSepChild> selectAjaxList(String userName);
     public  ParametersInfoSepChild statisticsInfo(ParametersInfoSepChild vo);
+    
+    public int updateStoreID(@Param("oldStoreID")String oldStoreID, @Param("newStoreID")String newStoreID);
 }

@@ -19,6 +19,8 @@ public interface ParametersHandleService {
 
 
 	public int updateById(ParametersInfoSepChild Parametersinfo);
+	
+	public int updateStoreID(String oldStoreID, String newStoreID);
 
 	public List<ParametersInfoSepChild>  selectByConditions(ParametersInfoSepChild Parametersinfo);
 	//分页需要

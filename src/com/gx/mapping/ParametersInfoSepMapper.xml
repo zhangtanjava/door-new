@@ -626,6 +626,16 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   
+  <update id="updateStoreID">
+    update parametersInfoSep
+    <set>
+	     <if test="newStoreID != null">
+	        storeID = #{newStoreID,jdbcType=VARCHAR}
+	      </if>
+    </set>
+    where storeID = #{oldStoreID,jdbcType=INTEGER}
+  </update>
+  
   <!--旧代码-->
   
   <select id="selectByAgreementID" resultType="java.lang.Integer" parameterType="java.lang.String">

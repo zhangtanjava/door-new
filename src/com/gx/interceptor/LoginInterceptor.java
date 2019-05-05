@@ -17,11 +17,12 @@ public class LoginInterceptor implements HandlerInterceptor {
 	
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-    	logger.info("进入登录拦截访问...");
+    	logger.info("进入登录拦截器...");
     	//获取请求的地址（根域名以外的部分）
     	String url = request.getRequestURI();
-		if (url.contains("/Login/tomain.do")) {
-			logger.info("进入登录controller，不需要拦截！");//登录controller会进一步就行判断，所以放进来
+		if (url.contains("/Login/tomain.do") ||
+				url.contains("/Login/tologin.do")) {
+			logger.info("登录项，不需要拦截！");//登录controller会进一步就行判断，所以放进来
 			return true;
 		}
     	
@@ -35,9 +36,11 @@ public class LoginInterceptor implements HandlerInterceptor {
         		return true;
 			}
         }
-        logger.info("登录时间超过30分钟，请登录系统！");
-        request.setAttribute("message","登录时间超过30分钟，请登录系统！");
-        request.getRequestDispatcher("/WEB-INF/jsp/login/login.jsp").forward(request,response);
+        logger.info("请登录系统！");
+	      request.setAttribute("message","请登录系统！");
+	      request.getRequestDispatcher("/WEB-INF/jsp/login/login.jsp").forward(request,response);
+//        request.getSession(true).setAttribute("message", "请登录系统！");
+//        response.sendRedirect(request.getContextPath()+"/Login/tologin.do");
         return false;
     }
     @Override

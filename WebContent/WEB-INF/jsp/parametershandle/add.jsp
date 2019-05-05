@@ -169,7 +169,7 @@
 
     <form action="${ctx}/ParametersHandle/add.do" method="post" onsubmit="return verify()" enctype="multipart/form-data">
     <!--  ———————————————————————————————————————————————————————————————————————————————————————— -->
-		<input type="hidden" name="userID" value="${sessionScope.userPo.id}" >
+		<input type="hidden" name="userID" value="${sessionScope.user.id}" >
 	    <div class="span12">
 	    <div class="row-fluid">
 	   			 <div class="span3">
@@ -393,7 +393,7 @@
 				  <div class="span3">
 					  <label>操作员工：</label>
 					  <input id="operatorID" name="operatorID" type="text" style="width:97%;height:27px;float:left;" 
-					  value="${sessionScope.userPo.userName}" readonly="readonly">
+					  value="${sessionScope.user.userName}" readonly="readonly">
 				  </div>
 			  </div>
 		  </div>
@@ -443,7 +443,7 @@
  
  	var reg = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
  	function deletefunction(){
-	    parent.document.getElementById('Mainid').src='${ctx}/ParametersHandle/tolist.do?userID=${sessionScope.userPo.id}';
+	    parent.document.getElementById('Mainid').src='${ctx}/ParametersHandle/tolist.do?userID=${sessionScope.user.id}';
 	} 
 	 
 	function selectAgreementID(value){

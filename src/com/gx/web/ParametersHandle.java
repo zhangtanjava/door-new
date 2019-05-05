@@ -85,10 +85,13 @@ public class ParametersHandle {
 			logger.info("日期转换异常：" + e);
 		}
 		UserPo userPo = userService.selectById(userID);
-		if (userPo != null) {
+		//根据session查出user信息StoreID和RoleID
+//		if (userPo != null) {//user信息必须不能是空，如果是空，该用户不存在，就抛出异常！
 			req.setStoreID(userPo.getStoreID());
 			req.setRoleID(userPo.getRoleID());
-		}
+//		}
+		//如果角色是员工，只能查看本店数据
+		//如果是角色是领导0，领导可以看其他店的数据，所以要根据前台传的stID
 		if ("0".equals(req.getRoleID())) {
 			req.setStoreID(stID);
 		}

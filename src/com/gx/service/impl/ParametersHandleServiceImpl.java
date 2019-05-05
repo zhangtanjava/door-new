@@ -87,5 +87,10 @@ public class ParametersHandleServiceImpl implements com.gx.service.ParametersHan
 	public List<ParametersInfoSepChild> selectByConditions(ParametersInfoSepChild Parametersinfo) {
 		return parametersInfoSepMapper.selectByConditions(Parametersinfo);
 	}
+
+	@Override
+	public int updateStoreID(String oldStoreID, String newStoreID) {
+		return parametersInfoSepMapper.updateStoreID(oldStoreID,newStoreID);
+	}
 	
 }

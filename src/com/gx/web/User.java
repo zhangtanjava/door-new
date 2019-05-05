@@ -4,14 +4,17 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.google.gson.Gson;
 import com.gx.page.Page;
 import com.gx.po.UserPo;
+import com.gx.service.ParametersHandleService;
 import com.gx.service.UserService;
 import com.sun.istack.internal.logging.Logger;
 
@@ -48,9 +51,7 @@ public class User {
 	@RequestMapping("/toadd")
 	public ModelAndView toadd(){
 		ModelAndView mv=null;
-
 		mv=new ModelAndView("/user/add");
-
 		return mv;
 	}
 	
@@ -59,7 +60,6 @@ public class User {
 		ModelAndView mv=null;
 		UserPo list=userService.selectById(id);
 		mv=new ModelAndView("/user/update");
-
 		mv.addObject("list",list);
 		return mv;
 	}

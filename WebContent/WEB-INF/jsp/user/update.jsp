@@ -201,32 +201,6 @@
 				  <label>店铺：</label>
 				  <input id="storeID" name="storeID"  type="text" style="width:97%;height:27px;float:left;"
 				  value="${list.storeID}" >
-				  <%-- <select id="storeID" name="storeID" style="width:100%;height:27px;">
-					  <option value="1" <c:if test="${1==list.storeID}">selected="selected"</c:if>>
-						  1号店
-					  </option>
-					  <option value="2"<c:if test="${2==list.storeID}">selected="selected"</c:if>>
-						  2号店
-					  </option>
-					  <option value="3"<c:if test="${3==list.storeID}">selected="selected"</c:if>>
-						  3号店
-					  </option>
-					  <option value="4"<c:if test="${4==list.storeID}">selected="selected"</c:if>>
-						  4号店
-					  </option>
-					  <option value="5"<c:if test="${5==list.storeID}">selected="selected"</c:if>>
-						  5号店
-					  </option>
-					  <option value="6"<c:if test="${6==list.storeID}">selected="selected"</c:if>>
-						  6号店
-					  </option>
-					  <option value="7"<c:if test="${7==list.storeID}">selected="selected"</c:if>>
-						  7号店
-					  </option>
-					  <option value="8"<c:if test="${8==list.storeID}">selected="selected"</c:if>>
-						  8号店
-					  </option>
-				  </select> --%>
 			  </div>
 	  		</div>
 		</div>

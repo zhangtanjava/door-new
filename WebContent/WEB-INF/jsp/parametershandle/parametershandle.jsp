@@ -111,7 +111,7 @@
                 <div class="span6">
                     <label style="float:left;">经营店铺：</label>
                     <input id="stID" name="stID" class="tnput-text" style="width:54.5%;height:26px;" type="text"  value="${sID}"
-                    <c:if test="${sessionScope.userPo.roleID ==1}">readonly="readonly"</c:if>>
+                    <c:if test="${sessionScope.user.roleID ==1}">readonly="readonly"</c:if>>
                 </div>
                 <div class="span6">
                     <label style="float:left;">安装师傅：</label>
@@ -145,31 +145,31 @@
         <div >
                 <div class="span3">
                     <button class="btn btn-info btn-small textone" type="button" onclick="wlInstallWord()"
-                    <c:if test="${sessionScope.userPo.roleID ==1}">style="display:none"</c:if>>王力安装表</button>
+                    <c:if test="${sessionScope.user.roleID ==1}">style="display:none"</c:if>>王力安装表</button>
                 </div>
                 <div class="span3">
                     <button class="btn btn-info btn-small textone" type="button" onclick="wlSurveyWord()"
-                    <c:if test="${sessionScope.userPo.roleID ==1}">style="display:none"</c:if>>王力测量表</button>
+                    <c:if test="${sessionScope.user.roleID ==1}">style="display:none"</c:if>>王力测量表</button>
                 </div>
                 <div class="span3">
                     <button class="btn btn-info btn-small textone" type="button" onclick="wlFixWord()"
-                    <c:if test="${sessionScope.userPo.roleID ==1}">style="display:none"</c:if>>王力服务表</button>
+                    <c:if test="${sessionScope.user.roleID ==1}">style="display:none"</c:if>>王力服务表</button>
                 </div>
                 <div class="span3">
 	                <button class="btn btn-danger btn-small textone" type="button" onclick="yaKouWord()"
-	                <c:if test="${sessionScope.userPo.roleID ==1}">style="display:none"</c:if>>垭口安装表</button>
+	                <c:if test="${sessionScope.user.roleID ==1}">style="display:none"</c:if>>垭口安装表</button>
 	        	 </div>
 	        	 <div class="span3">
                     <button class="btn btn-warning btn-small textone" type="button" onclick="ppInstallWord()"
-                    <c:if test="${sessionScope.userPo.roleID ==1}">style="display:none"</c:if>>盼盼安装表</button>
+                    <c:if test="${sessionScope.user.roleID ==1}">style="display:none"</c:if>>盼盼安装表</button>
                 </div>
                 <div class="span3">
                     <button class="btn btn-warning btn-small textone" type="button" onclick="ppSurveyWord()"
-                    <c:if test="${sessionScope.userPo.roleID ==1}">style="display:none"</c:if>>盼盼测量表</button>
+                    <c:if test="${sessionScope.user.roleID ==1}">style="display:none"</c:if>>盼盼测量表</button>
                 </div>
                 <div class="span3">
                     <button class="btn btn-warning btn-small textone" type="button" onclick="ppFixWord()"
-                    <c:if test="${sessionScope.userPo.roleID ==1}">style="display:none"</c:if>>盼盼服务表</button>
+                    <c:if test="${sessionScope.user.roleID ==1}">style="display:none"</c:if>>盼盼服务表</button>
                 </div>
         </div>
        	  
@@ -183,10 +183,11 @@
                 </div>
                 <div class="span3">
                     <button class="btn btn-danger btn-small textone" type="button" onclick="deletefunction()"
-                    <c:if test="${sessionScope.userPo.roleID ==1}">style="display:none"</c:if>><li class="icon-remove icon-white"></li>删除</button>
+                    <c:if test="${sessionScope.user.roleID ==1}">style="display:none"</c:if>><li class="icon-remove icon-white"></li>删除</button>
                 </div>
                 <div>
-                	<button id="js-export" type="button" class="btn btn-info btn-small textone">导出Excel</button>
+                	<button id="js-export" type="button" class="btn btn-info btn-small textone"
+                	<c:if test="${sessionScope.user.roleID ==1}">style="display:none"</c:if>>导出Excel</button>
                 </div>
             </div>
         </div>
@@ -288,7 +289,7 @@
         var installPerson = document.getElementById("installPerson").value;
         parent.document.getElementById('Mainid').src = '${ctx}/ParametersHandle/tolist.do?datemin=' +
             datemin + '&datemax=' + datemax +'&contactPhoneNumber=' + contactPhoneNumber+'&unitsOrAddress=' + 
-            unitsOrAddress+'&userID=' + ${sessionScope.userPo.id}+'&stID=' + stID+'&installPerson='+installPerson;
+            unitsOrAddress+'&userID=' + ${sessionScope.user.id}+'&stID=' + stID+'&installPerson='+installPerson;
     }
     
     function wlInstallWord() {
@@ -457,7 +458,7 @@
         if(chk_value!=""){
             var flag=window.confirm("注意：您确定要永久删除该信息吗?");
             if(flag){
-                parent.document.getElementById("Mainid").src='${ctx}/ParametersHandle/delete.do?id='+chk_value+'&userID=${sessionScope.userPo.id}';
+                parent.document.getElementById("Mainid").src='${ctx}/ParametersHandle/delete.do?id='+chk_value+'&userID=${sessionScope.user.id}';
             }
         }else{
             alert("请选择一条或多条数据进行删除");
@@ -469,15 +470,19 @@
         pageCount:${list.totalPage},
         current:${list.currentPage},
         backFn: function (p) {
+        	
+			
             var datemin = document.getElementById("datemin").value;
             var datemax = document.getElementById("datemax").value;
             var unitsOrAddress = document.getElementById("unitsOrAddress").value;
             var stID = document.getElementById("stID").value;
             var installPerson = document.getElementById("installPerson").value;
+            var contactPhoneNumber = document.getElementById("contactPhoneNumber").value;
+            
             location.href = "${ctx}/ParametersHandle/tolist.do?currentPage=" + p +
                 "&datemin=" + datemin + "&datemax=" + datemax+'&unitsOrAddress=' + 
-            unitsOrAddress+'&userID=' + ${sessionScope.userPo.id}+'&stID=' + stID +
-            '&installPerson='+installPerson;
+            unitsOrAddress+'&userID=' + ${sessionScope.user.id}+'&stID=' + stID +
+            '&installPerson='+installPerson + '&contactPhoneNumber='+contactPhoneNumber;
         }
     });
     

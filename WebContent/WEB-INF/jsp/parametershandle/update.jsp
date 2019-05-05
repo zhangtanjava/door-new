@@ -233,7 +233,7 @@
     <form action="${ctx}/ParametersHandle/update.do" method="post" onsubmit="return verify()" enctype="multipart/form-data">
     <!--  ———————————————————————————————————————————————————————————————————————————————————————— -->
 	    <input type="hidden" name="id" value="${list.id}" >
-		<input type="hidden" name="userID" value="${sessionScope.userPo.id}" >
+		<input type="hidden" name="userID" value="${sessionScope.user.id}" >
 		<input type="hidden" id ="selectedStoreId" value="${list.storeID}" >
 		<div class="span12">
 	    <div class="row-fluid">
@@ -267,15 +267,18 @@
 		  <div class="row-fluid">
 	    		<div class="span3">
 				  <label>地址：</label>
-				  <input value="${list.unitsOrAddress}" id="unitsOrAddress" name="unitsOrAddress" type="text" style="width:97%;height:27px;float:left;" >
+				  <input value="${list.unitsOrAddress}" id="unitsOrAddress" name="unitsOrAddress" type="text" style="width:97%;height:27px;float:left;" 
+				  <c:if test="${sessionScope.user.roleID ==1}">readonly="readonly"</c:if>>
 			  	</div>
 			  	<div class="span3">
 				  <label>电话1：</label>
-				  <input value="${list.contactPhoneNumber}"  id="contactPhoneNumber" name="contactPhoneNumber" type="text" style="width:97%;height:27px;float:left;" >
+				  <input value="${list.contactPhoneNumber}"  id="contactPhoneNumber" name="contactPhoneNumber" type="text" style="width:97%;height:27px;float:left;" 
+				  <c:if test="${sessionScope.user.roleID ==1}">readonly="readonly"</c:if>>
 			  	</div>
 			  	<div class="span3">
 				  <label>电话2：</label>
-				  <input value="${list.secondPhoneNumber}"  id="secondPhoneNumber" name="secondPhoneNumber" type="text" style="width:97%;height:27px;float:left;" >
+				  <input value="${list.secondPhoneNumber}"  id="secondPhoneNumber" name="secondPhoneNumber" type="text" style="width:97%;height:27px;float:left;" 
+				  <c:if test="${sessionScope.user.roleID ==1}">readonly="readonly"</c:if>>
 			  	</div>
 			  	<div class="span3">
 					<label>合同图片1：</label>
@@ -290,11 +293,13 @@
 	    <div class="row-fluid">
 			  	<div class="span3">
 				  <label>型号：</label>
-				  <input value="${list.model}" id="model" name="model" type="text" style="width:97%;height:27px;float:left;" >
+				  <input value="${list.model}" id="model" name="model" type="text" style="width:97%;height:27px;float:left;" 
+				  <c:if test="${sessionScope.user.roleID ==1}">readonly="readonly"</c:if>>
 			  	</div>
 			  	<div class="span3">
 				  <label>价格：</label>
-				  <input value="${list.price}"  id="price" name="price" type="text" style="width:97%;height:27px;float:left;" >
+				  <input value="${list.price}"  id="price" name="price" type="text" style="width:97%;height:27px;float:left;" 
+				  <c:if test="${sessionScope.user.roleID ==1}">readonly="readonly"</c:if>>
 			  	</div>
 			  	<div class="span3">
 				  <label>定金：</label>
@@ -494,7 +499,7 @@
 				  <div class="span3">
 					  <label>操作员工：</label>
 					  <input id="operatorID" name="operatorID" type="text" style="width:97%;height:27px;float:left;" 
-					  value="${sessionScope.userPo.userName}" readonly="readonly">
+					  value="${sessionScope.user.userName}" readonly="readonly">
 				  </div>
 			  </div>
 		  </div>
@@ -665,7 +670,7 @@ $("#smartLockFile").change(function () {
 	
  	var reg = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
  	function deletefunction(){
-	    parent.document.getElementById('Mainid').src='${ctx}/ParametersHandle/tolist.do?userID=${sessionScope.userPo.id}';
+	    parent.document.getElementById('Mainid').src='${ctx}/ParametersHandle/tolist.do?userID=${sessionScope.user.id}';
 	} 
 	 
     function verify(){
