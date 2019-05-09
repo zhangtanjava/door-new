@@ -26,12 +26,12 @@ import org.springframework.stereotype.Service;
 public class CodeProduct {
     private String packageOutPath = "com.gx.test";//指定实体生成所在包的路径
     private static String authorName = "MrZhang";//作者名字
-    private String tablename = "parametersInfo";//表名
+    private String tablename = "wlStore";//表名
 
     //数据库连接
-    private static final String URL ="jdbc:mysql://127.0.0.1:3306/grogshop?useUnicode=true&characterEncoding=utf-8";
+    private static final String URL ="jdbc:mysql://127.0.0.1:3306/newshop?useUnicode=true&characterEncoding=utf-8";
     private static final String NAME = "root";
-    private static final String PASS = "123456";
+    private static final String PASS = "Ztan05022317a";
     private static final String DRIVER ="com.mysql.jdbc.Driver";
 
 

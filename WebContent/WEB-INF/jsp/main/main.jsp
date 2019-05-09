@@ -116,7 +116,25 @@
 							</ul>
 
 						</li>
+						<li>
+							<a id="storeManageId" class="dropdown-toggle">
+								<%--<i class="icon-move"></i>--%>
+								<i class="icon-home"></i>
+								<span class="menu-text">库存管理 </span>
 
+								<b class="arrow icon-angle-down"></b>
+							</a>
+
+							<ul class="submenu">
+								<li>
+									<a id="storeId" onclick="storeHandle()">
+										<i class="icon-double-angle-right"></i>
+										<span>库存信息管理</span>
+									</a>
+								</li>
+							</ul>
+
+						</li>
 
 					<li <c:if test="${sessionScope.user.roleID ==1}">style="display:none"</c:if>
 		          	>
@@ -469,6 +487,14 @@
 			     document.getElementById("smallGuide").innerHTML=s+"";
 			     document.getElementById('Mainid').src='${ctx}/ParametersHandle/tolist.do?userID='+${sessionScope.user.id};
 			}
+			function storeHandle(){
+			     var a=document.getElementById("storeManageId").getElementsByTagName('span')[0].innerHTML;
+			     document.getElementById("bigGuide").innerHTML=a+"";
+			     var s=document.getElementById("storeId").getElementsByTagName('span')[0].innerHTML;
+			     document.getElementById("smallGuide").innerHTML=s+"";
+			     document.getElementById('Mainid').src='${ctx}/StoreHandle/tolist.do?userID='+${sessionScope.user.id};
+			}
+			
 		    function logout(){
 		        if (confirm("您确定要退出系统吗？"))
 		            top.location = "${ctx}/Login/logout.do";

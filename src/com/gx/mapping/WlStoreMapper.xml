@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gx.dao.WlStoreMapper">
+  <resultMap id="BaseResultMap" type="com.gx.po.WlStore">
+  
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="model" jdbcType="VARCHAR" property="model" />
+    <result column="size" jdbcType="VARCHAR" property="size" />
+    <result column="outLeft" jdbcType="INTEGER" property="outLeft" />
+    <result column="outRight" jdbcType="INTEGER" property="outRight" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, model, size, outLeft, outRight
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wlStore
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wlStore
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.gx.po.WlStore">
+    insert into wlStore (id, model, size, 
+      outLeft, outRight)
+    values (#{id,jdbcType=INTEGER}, #{model,jdbcType=VARCHAR}, #{size,jdbcType=VARCHAR}, 
+      #{outLeft,jdbcType=INTEGER}, #{outRight,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gx.po.WlStore">
+    insert into wlStore
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="model != null">
+        model,
+      </if>
+      <if test="size != null">
+        size,
+      </if>
+      <if test="outLeft != null">
+        outLeft,
+      </if>
+      <if test="outRight != null">
+        outRight,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="model != null">
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="outLeft != null">
+        #{outLeft,jdbcType=INTEGER},
+      </if>
+      <if test="outRight != null">
+        #{outRight,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gx.po.WlStore">
+    update wlStore
+    <set>
+      <if test="model != null">
+        model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        size = #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="outLeft != null">
+        outLeft = #{outLeft,jdbcType=INTEGER},
+      </if>
+      <if test="outRight != null">
+        outRight = #{outRight,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gx.po.WlStore">
+    update wlStore
+    set model = #{model,jdbcType=VARCHAR},
+      size = #{size,jdbcType=VARCHAR},
+      outLeft = #{outLeft,jdbcType=INTEGER},
+      outRight = #{outRight,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!--   分页模糊查询 -->
+   <select id="pageFuzzyselect"  resultType="com.gx.po.WlStore">
+       SELECT * from wlStore
+     WHERE model like CONCAT('%',#{model,jdbcType=VARCHAR},'%') 
+     order by model DESC
+     limit #{start},#{pageSize}
+  </select>
+  
+  <select id="countFuzzyselect" parameterType="com.gx.po.WlStore" resultType="java.lang.Integer">
+       SELECT count(*) FROM wlStore 
+     WHERE model like CONCAT('%',#{model,jdbcType=VARCHAR},'%')
+  </select>
+  
+  <select id="selectByModelSize" resultType="com.gx.po.WlStore" parameterType="com.gx.po.WlStore">
+    Select * From wlStore Where model = #{model,jdbcType=VARCHAR} and size = #{size,jdbcType=VARCHAR}
+  </select>
+  
+</mapper>
