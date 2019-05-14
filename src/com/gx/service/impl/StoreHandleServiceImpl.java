@@ -72,4 +72,9 @@ public class StoreHandleServiceImpl implements StoreHandleService {
 		return wlStoreMapper.selectByModelSize(wlStore);
 	}
 
+	@Override
+	public int batchUpOrInStoreInfo(List<WlStore> list) {
+		return wlStoreMapper.batchUpOrInStoreInfo(list);
+	}
+
 }

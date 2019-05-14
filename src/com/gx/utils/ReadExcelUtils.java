@@ -10,9 +10,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import javax.print.attribute.standard.MediaName;
-
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DateUtil;
@@ -21,11 +18,11 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class readExcelUtils {
+public class ReadExcelUtils {
 public static void main(String[] args) {
 	String filePath = "/Users/zhangtan/Downloads/库存表.xlsx";
     String columns[] = {"model","size","left","right"};
-    readExcelUtils.excel2List(filePath,columns);
+    ReadExcelUtils.excel2List(filePath,columns);
 }
     public static List<Map<String,String>> excel2List(String filePath,String columns[]) {
         Workbook wb =null;
@@ -73,13 +70,6 @@ public static void main(String[] args) {
                     list.add(map);
                 }
             }
-        }
-        //遍历解析出来的list
-        for (Map<String,String> map1 : list) {
-            for (Entry<String,String> entry : map1.entrySet()) {
-                System.out.print(entry.getKey()+":"+entry.getValue()+",");
-            }
-            System.out.println();
         }
         return list;
     }

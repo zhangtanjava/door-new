@@ -222,7 +222,7 @@
  
  
  <script type="text/javascript">
- var reg=/^[0-9]*$ /;
+ var reg=/^[0-9]*$/;
  var Name=document.getElementById("papersNumberId").value;
  
     function verify(){

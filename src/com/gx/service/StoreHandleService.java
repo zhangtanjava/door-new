@@ -26,5 +26,6 @@ public interface StoreHandleService {
     
     //form提交验证该型号尺寸是否存在
     public int selectByModelSize(String model,String size);
-    
+    //批量插入，如果存在就替代更新
+    public int batchUpOrInStoreInfo(List<WlStore> list);
 }

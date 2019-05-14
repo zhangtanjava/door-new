@@ -21,26 +21,28 @@ public class LoginInterceptor implements HandlerInterceptor {
     	//获取请求的地址（根域名以外的部分）
     	String url = request.getRequestURI();
 		if (url.contains("/Login/tomain.do") ||
-				url.contains("/Login/tologin.do")) {
+				url.contains("/Login/tologin.do") ||
+				url.contains("/Login/logout.do")) {
 			logger.info("登录项，不需要拦截！");//登录controller会进一步就行判断，所以放进来
 			return true;
 		}
     	
     	//对于非登录的访问请求，获取session，有就是说明已经登录，没有就是拦截访问并跳转到登录页面
         HttpSession session = request.getSession(false);
-        if (session!=null){
+        if (session!=null && session.getAttribute("user") != null){
+        	logger.info("user存在,可以访问！");
         	logger.info("session设置的失效时间:"+session.getMaxInactiveInterval());
-        	logger.info("session未过期,可以访问！");
-        	if (session.getAttribute("user") != null) {
-        		logger.info("user存在,可以访问！");
-        		return true;
-			}
+        	return true;
         }
         logger.info("请登录系统！");
-	      request.setAttribute("message","请登录系统！");
-	      request.getRequestDispatcher("/WEB-INF/jsp/login/login.jsp").forward(request,response);
-//        request.getSession(true).setAttribute("message", "请登录系统！");
-//        response.sendRedirect(request.getContextPath()+"/Login/tologin.do");
+//	      request.setAttribute("message","请登录系统！");
+//	      request.getRequestDispatcher("/WEB-INF/jsp/login/login.jsp").forward(request,response);
+        request.getSession(true).setAttribute("message", "请登录系统！");
+//        response.sendRedirect(request.getContextPath()+"/Login/tologin.do");//iframe的嵌套页面返回到登录页面
+        HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+       httpServletResponse.getWriter().print("<script>top.location = '../Login/logout.do'</script>"); //让主页面返回到登录页面，而不是iframe嵌套页面
+//        httpServletResponse.getWriter().print("<script>parent.window.location.href='Login/logout.do'</script>");     
+//        httpServletResponse.getWriter().print("<script>location.href='Login/logout.do'</script>");
         return false;
     }
     @Override

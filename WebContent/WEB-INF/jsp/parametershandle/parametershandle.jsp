@@ -126,7 +126,6 @@
                         <li class="icon-search icon-white"></li>
                         查询
                     </button>
-                    <%--合同号--%>
                     <!-- <button onclick="particulars()" type="button" class="btn-info" style="margin-top:-12px;height:25px;">
                         <li class="icon-zoom-in icon-white"></li>
                         详情

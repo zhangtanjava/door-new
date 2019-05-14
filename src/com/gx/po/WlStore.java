@@ -51,4 +51,10 @@ public class WlStore {
     public void setId(Integer id) {
         this.id = id;
     }
+
+	@Override
+	public String toString() {
+		return "WlStore [model=" + model + ", size=" + size + ", outLeft=" + outLeft + ", outRight=" + outRight
+				+ ", id=" + id + "]";
+	}
 }

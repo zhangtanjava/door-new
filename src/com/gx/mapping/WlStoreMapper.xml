@@ -105,8 +105,18 @@
      WHERE model like CONCAT('%',#{model,jdbcType=VARCHAR},'%')
   </select>
   
-  <select id="selectByModelSize" resultType="com.gx.po.WlStore" parameterType="com.gx.po.WlStore">
-    Select * From wlStore Where model = #{model,jdbcType=VARCHAR} and size = #{size,jdbcType=VARCHAR}
+  <select id="selectByModelSize" resultType="java.lang.Integer" parameterType="com.gx.po.WlStore">
+    Select count(*) From wlStore Where model = #{model,jdbcType=VARCHAR} and size = #{size,jdbcType=VARCHAR}
   </select>
   
+  <insert id="batchUpOrInStoreInfo"  parameterType="list" >
+    replace into wlStore
+    (model,size,outLeft,outRight)
+    VALUES
+    <foreach collection="list" item="it" separator=",">
+    ( #{it.model},#{it.size},#{it.outLeft},
+      #{it.outRight}
+    )
+    </foreach>
+  </insert>
 </mapper>

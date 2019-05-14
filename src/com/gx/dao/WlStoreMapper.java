@@ -27,4 +27,6 @@ public interface WlStoreMapper {
     public int countFuzzyselect(WlStore wlStore);
     
     int selectByModelSize(WlStore wlStore);
+    
+    int batchUpOrInStoreInfo(List<WlStore> list);
 }

@@ -14,6 +14,8 @@ import java.util.Date;
 public class DateUtils {
 
     public static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+    public static SimpleDateFormat date16 = new SimpleDateFormat("yyyyMMddHHmmss");
+    
     public static  String getToday(){
         Date date = new Date();
         return  simpleDateFormat.format(date);
@@ -21,5 +23,9 @@ public class DateUtils {
     
     public static  String get8Str(Date date){
         return  simpleDateFormat.format(date);
+    }
+    
+    public static  String get16Str(Date date){
+        return  date16.format(date);
     }
 }

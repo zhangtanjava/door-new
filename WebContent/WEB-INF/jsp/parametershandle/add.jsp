@@ -446,26 +446,6 @@
 	    parent.document.getElementById('Mainid').src='${ctx}/ParametersHandle/tolist.do?userID=${sessionScope.user.id}';
 	} 
 	 
-	function selectAgreementID(value){
-		     if(value!=""){
-		       $.ajax({
-		          cache:false,                                             //是否使用缓存提交 如果为TRUE 会调用浏览器的缓存 而不会提交
-		          type: "POST",                                           //上面3行都是必须要的
-		          url: '${ctx}/ParametersHandle/selectByAgreementID.do',       //地址 type 带参数
-		          data:"agreementID="+value,                         // IDCardValue 自定义的。相当于name把值赋予给 他可以在servlet 获取
-		          async:false,                                          // 是否 异步 提交
-		          success: function (result) {                          // 不出现异常 进行立面方
-		              if(result>=1){
-		                   alert("合同编号已经存在！");                     //提示框
-		                   document.getElementById("agreementID").value="";     //这个id的文本框的值 将会清空
-		                   document.getElementById("agreementID").focus();      // 给这个id的文本框提供焦点
-		                   document.getElementById("agreementID").style.display="block"; //显示
-		              }
-		          },
-		          error: function(data) {  }
-		      });
-		     }
-	}
      
     function verify(){
     	if($("#storeID").val() != 0){

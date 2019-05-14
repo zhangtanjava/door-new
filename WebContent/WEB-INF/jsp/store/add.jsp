@@ -169,14 +169,14 @@
 	      <div class="row-fluid">
 		     <div class="span3">
 				 <label>型号：</label>
-				 <input id="model" name="model"  type="text" style="width:97%;height:27px;float:left;">
+				 <input id="model" name="model"  type="text" style="width:97%;height:27px;float:left;" onblur="checkDupl()">
 				 <div id="divOne" style="float:right;">
 					 <label class="yansered" style="margin-top:7px;">*</label>
 				 </div>
 			 </div>
 		     <div class="span3">
 		        <label>尺寸：</label>
-		        <input id="size" name="size" type="text" style="width:97%;height:27px;float:left;">
+		        <input id="size" name="size" type="text" style="width:97%;height:27px;float:left;" onblur="checkDupl()">
 				 <div id="divTwo" style="float:right;">
 					 <label class="yansered" style="margin-top:7px;">*</label>
 				 </div>
@@ -217,7 +217,9 @@
   </div>
 
  <script type="text/javascript">
+ 	var reg=/^[0-9]*$/;
     function verify(){
+    	checkDupl();//没有触发onblur事件就点击提交，需要再次校验下
 	    if(document.getElementById("model").value==""){
 	       alert("型号  是必填项，不能为空哦！");
 	       document.getElementById("model").focus();
@@ -245,10 +247,12 @@
          }else{
 	       return true;
 	    }
-	    var model = $("#model").val();
+   }
+    function checkDupl(){
+    	var model = $("#model").val();
 	    var size = $("#size").val();
-	    if(model!="" && size!=null){
-		       $.ajax({
+	    if(model!=null && model!="" && size!=null && size!=""){
+	    	$.ajax({
 		          cache:false,                                             //是否使用缓存提交 如果为TRUE 会调用浏览器的缓存 而不会提交
 		          type: "POST",                                           //上面3行都是必须要的
 		          url: '${ctx}/StoreHandle/selectByModelSize.do',       //地址 type 带参数
@@ -257,16 +261,23 @@
 		          success: function (result) {                          // 不出现异常 进行立面方
 		              if(result>=1){
 		                   alert("该型号尺寸已存在！");                     //提示框
-		                   document.getElementById("model").value="";     //这个id的文本框的值 将会清空
+		                   document.getElementById("model").value=""; 
+		                   document.getElementById("size").value="";//这个id的文本框的值 将会清空
 		                   document.getElementById("model").focus();      // 给这个id的文本框提供焦点
 		                   document.getElementById("divOne").style.display="block"; //显示
+		             	   return false;
+		              }else{
+		            	  return true;
 		              }
 		          },
-		          error: function(data) {  }
+		          error: function(result) { 
+		        	  alert("导入数据信息异常！");
+		        	  return false;
+		          }
 		      });
-		     }
-   }
-
+	    }
+    }
+   	
     function deletefunction(){
      parent.document.getElementById('Mainid').src='${ctx}/StoreHandle/tolist.do';
    }

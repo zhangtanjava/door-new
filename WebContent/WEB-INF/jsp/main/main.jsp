@@ -236,7 +236,7 @@
 
 		<!--[if !IE]>-->
 
-		<script src="assets/js/jquery-2.0.3.min.js"></script>
+		<script src="${ctx}/assets/js/jquery-2.0.3.min.js"></script>
         
 		<!--<![endif]-->
 
@@ -279,7 +279,7 @@
 		<script src="${ctx}/assets/js/flot/jquery.flot.pie.min.js"></script>
 		<script src="${ctx}/assets/js/flot/jquery.flot.resize.min.js"></script>
 		
-        <script src="/${ctx}/assets/js/ace-extra.min.js"></script>
+        <script src="${ctx}/assets/js/ace-extra.min.js"></script>
 		
 
 		<!--ace scripts-->
