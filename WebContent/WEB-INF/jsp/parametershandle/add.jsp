@@ -168,13 +168,12 @@
 
 
     <form action="${ctx}/ParametersHandle/add.do" method="post" onsubmit="return verify()" enctype="multipart/form-data">
-    <!--  ———————————————————————————————————————————————————————————————————————————————————————— -->
 		<input type="hidden" name="userID" value="${sessionScope.user.id}" >
 	    <div class="span12">
 	    <div class="row-fluid">
 	   			 <div class="span3">
 				  <label>店面：</label>
-				  <select id="storeID" name="storeID">
+				  <select id="storeID" name="storeID" style="width:97%;height:27px;float:left;">
       					<option value="0" selected="selected">请选择</option>
 					</select>
 			  	</div>
@@ -248,9 +247,7 @@
 			  	</div>
 		  </div>
 		  <div class="row-fluid">
-			  <div class="span3">
-					<label>—————————————————————————————————————————————————————————————————————————</label>
-				</div>
+			  <hr width="100%" />
 			</div>
 		  <div class="row-fluid">
 		 		 <div class="span3">
@@ -265,10 +262,14 @@
 					  <label>门的方向：</label>
 					  <input id="direction" name="direction" type="text" style="width:97%;height:27px;float:left;" >
 				  </div>
-			  		<div class="span3">
+				  <div class="span3">
 						<label>测量图片：</label>
 						<input type="file" id= "surveyorFile" name="surveyorFile" style="width:97%;height:27px;float:left;">
 					</div>
+				  <!-- <div class="span3">
+					  <label>出库数量：</label>
+					  <input id="doorAmount" name="doorAmount" type="text" style="width:97%;height:27px;float:left;" >
+				  </div> -->
 			</div>	
 			<div class="row-fluid">
 				  <div class="span3">
@@ -286,9 +287,7 @@
 				  </div>
 			</div>	 
 			<div class="row-fluid">
-			  <div class="span3">
-					<label>—————————————————————————————————————————————————————————————————————————</label>
-				</div>
+			  <hr width="100%" />
 			</div> 
 			<div class="row-fluid">
 			  <div class="span3">
@@ -310,9 +309,7 @@
 			  </div>
 		  </div>
 		  <div class="row-fluid">
-			  <div class="span3">
-					<label>—————————————————————————————————————————————————————————————————————————</label>
-				</div>
+			  <hr width="100%" />
 		  </div> 
 		  <div class="row-fluid">
 			  <div class="span3">
@@ -334,9 +331,7 @@
 				</div>
 		  </div>
 		  <div class="row-fluid">
-			  <div class="span3">
-					<label>—————————————————————————————————————————————————————————————————————————</label>
-				</div>
+			  <hr width="100%" />
 		  </div> 
 		  <div class="row-fluid">
 			  	<div class="span3">
@@ -448,6 +443,9 @@
 	 
      
     function verify(){
+    	if(!checkDupl()){
+    		return false;
+    	}
     	if($("#storeID").val() != 0){
     		if($("#saler").val() == null || $("#saler").val()==""){
     			alert("销售员不能为空！");
@@ -644,8 +642,70 @@
             alert("售后服务10长度不能超过64位！");
             document.getElementById("fixSmarkShi").focus();
             return false;
-        }else{
+        }else{ 
 	       	return true;
+	    }
+    }
+    function checkDupl(){
+    	var flag = true;
+    	var model = $("#model").val();
+	    var size = $("#doorSize").val();
+	    var direction = $("#direction").val();
+	    /* var doorAmount = $("#doorAmount").val(); */
+	    if(model==null || model==""){
+	    	alert("型号不能为空");
+	    	$("#model").val("");
+	    	$("#model").focus();
+	    	flag = false;
+	    }else if(size==null || size==""){
+	    	alert("门的尺寸不能为空");
+	    	$("#doorSize").val("");
+	    	$("#doorSize").focus();
+	    	flag = false;
+	    }else if(direction==null || direction==""){
+	    	alert("门方向不能为空");
+	    	$("#direction").val("");
+	    	$("#direction").focus();
+	    	flag = false;
+	    }
+	    
+	    if(model!=null && model!="" && size!=null && size!="" && direction!=null && direction!=""){
+	    	$.ajax({
+		          cache:false,                                             //是否使用缓存提交 如果为TRUE 会调用浏览器的缓存 而不会提交
+		          type: "POST",                                           //上面3行都是必须要的
+		          url: '${ctx}/StoreHandle/selectInfoByModelSize.do',       //地址 type 带参数
+		          data:"model="+model+"&size="+size,                         // IDCardValue 自定义的。相当于name把值赋予给 他可以在servlet 获取
+		          async:false,                                          // 是否 异步 提交
+		          success: function (result) {                          // 不出现异常 进行立面方
+		              if(result==null){
+		                   alert("库存中该型号尺寸不存在！");                     //提示框
+		                   document.getElementById("model").focus();      // 给这个id的文本框提供焦点
+		                   document.getElementById("divOne").style.display="block"; //显示
+		                   flag = false;
+		              }else {
+		            	  if(direction.indexOf("右") != -1){
+		            		  if(result.outRight>=1){
+		            			  flag = true;
+		            		  }else{
+		            			  alert("该型号库存不足！");
+		            			  flag = false;
+		            		  }
+		            	  }else if(direction.indexOf("左") != -1){
+							  if(result.outLeft>=1){
+								  flag = true;
+		            		  }else{
+		            			  alert("该型号库存不足！");
+		            			  flag = false;
+		            		  }
+		            	  }
+		              }
+		          },
+		          error: function(result) { 
+		        	  alert("导入数据信息异常！");
+		        	  flag = false;
+		          }
+		      });
+	    	return flag;
 	    }
 	    
 	    function checkTel(){

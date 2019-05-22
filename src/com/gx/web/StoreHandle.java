@@ -115,11 +115,22 @@ public class StoreHandle {
 	@ResponseBody
 	@RequestMapping(value="/selectByModelSize")
 	public Object selectByModelSize(String model,String size){
-		int accout = storeHandleService.selectByModelSize(model,size);
+		WlStore wlStore = storeHandleService.selectByModelSize(model,size);
+		int accout = 0;
+		if (wlStore!=null) {
+			accout = 1;
+		}
 		Gson gson =new Gson();
 		return gson.toJson(accout);
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/selectInfoByModelSize")
+	public Object selectInfoByModelSize(String model,String size){
+		WlStore wlStore = storeHandleService.selectByModelSize(model,size);
+		Gson gson =new Gson();
+		return gson.toJson(wlStore);
+	}
 	@RequestMapping("/addByExcel")
 	@ResponseBody//此注解不能省略 否则ajax无法接受返回值
 	public JSONArray addByExcel(@RequestParam("inputExcel") MultipartFile file,

@@ -178,7 +178,7 @@
 			 </div>
 		     <div class="span3">
 		        <label>尺寸：</label>
-		        <input id="size" name="size" value="${list.model}" type="text" style="width:97%;height:27px;float:left;">
+		        <input id="size" name="size" value="${list.size}" type="text" style="width:97%;height:27px;float:left;">
 				 <div id="divTwo" style="float:right;">
 					 <label class="yansered" style="margin-top:7px;">*</label>
 				 </div>

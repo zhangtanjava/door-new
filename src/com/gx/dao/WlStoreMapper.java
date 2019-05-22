@@ -19,6 +19,7 @@ public interface WlStoreMapper {
 
     int updateByPrimaryKey(WlStore wlStore);
     
+    int updateLeftAndRight(WlStore wlStore);
   //分页模糊查询
     public List<WlStore> pageFuzzyselect(@Param("model")String model,
     		@Param("start")int start,@Param("pageSize")int pageSize);
@@ -26,7 +27,9 @@ public interface WlStoreMapper {
     //分页模糊查询总条数
     public int countFuzzyselect(WlStore wlStore);
     
-    int selectByModelSize(WlStore wlStore);
+    WlStore selectByModelSize(WlStore wlStore);
     
     int batchUpOrInStoreInfo(List<WlStore> list);
+    
+    List<WlStore> selectByConditions(WlStore wlStore);
 }

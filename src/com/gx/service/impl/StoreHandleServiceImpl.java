@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.gx.dao.WlStoreMapper;
 import com.gx.page.Page;
-import com.gx.po.UserPo;
 import com.gx.po.WlStore;
 import com.gx.service.StoreHandleService;
 import com.sun.istack.internal.logging.Logger;
@@ -65,7 +64,7 @@ public class StoreHandleServiceImpl implements StoreHandleService {
 	}
 
 	@Override
-	public int selectByModelSize(String model, String size) {
+	public WlStore selectByModelSize(String model, String size) {
 		WlStore wlStore = new WlStore();
 		wlStore.setModel(model);
 		wlStore.setSize(size);
@@ -75,6 +74,11 @@ public class StoreHandleServiceImpl implements StoreHandleService {
 	@Override
 	public int batchUpOrInStoreInfo(List<WlStore> list) {
 		return wlStoreMapper.batchUpOrInStoreInfo(list);
+	}
+
+	@Override
+	public List<WlStore> selectByConditions(WlStore wlStore) {
+		return wlStoreMapper.selectByConditions(wlStore);
 	}
 
 }

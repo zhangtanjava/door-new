@@ -25,7 +25,9 @@ public interface StoreHandleService {
     public List<WlStore> selectAjaxList(String name);
     
     //form提交验证该型号尺寸是否存在
-    public int selectByModelSize(String model,String size);
+    public WlStore selectByModelSize(String model,String size);
     //批量插入，如果存在就替代更新
     public int batchUpOrInStoreInfo(List<WlStore> list);
+    //根据条件查询
+    List<WlStore> selectByConditions(WlStore wlStore);
 }

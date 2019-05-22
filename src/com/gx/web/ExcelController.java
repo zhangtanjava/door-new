@@ -2,9 +2,9 @@ package com.gx.web;
 
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
-import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.druid.util.StringUtils;
 import com.gx.po.ParametersInfoSepChild;
+import com.gx.po.WlStore;
 import com.gx.service.ParametersHandleService;
+import com.gx.service.StoreHandleService;
 import com.gx.utils.ExcelUtil;
 
 
@@ -29,6 +31,9 @@ public class ExcelController {
 	
 	@Autowired
 	private ParametersHandleService parametersHandleService;
+	@Autowired
+	private StoreHandleService storeHandleService;
+	
     @RequestMapping(value = "/exportfeedback")
     @ResponseBody
     public String exportFeedBack(HttpServletResponse response,
@@ -134,6 +139,48 @@ public class ExcelController {
             values[i][38] = obj.getFixSmarkBa();
             values[i][39] = obj.getFixSmarkJiu();
             values[i][40] = obj.getFixSmarkShi();
+        }
+        
+        HSSFWorkbook wb = ExcelUtil.getHSSFWorkbook(sheetName, title, values, null);
+        
+        //将文件存到指定位置  
+        try {  
+             this.setResponseHeader(response, fileName);  
+             OutputStream os = response.getOutputStream();  
+             wb.write(os);  
+             os.flush();  
+             os.close();  
+        } catch (Exception e) {  
+             e.printStackTrace();  
+        }  
+        return "ok";
+    }
+    
+    @RequestMapping(value = "/exportWlStore")
+    @ResponseBody
+    public String exportWlStore(HttpServletResponse response,
+            @RequestParam(value="model", required=false) String model) throws UnsupportedEncodingException{
+    	
+        String fileName = "库存信息"+System.currentTimeMillis()+".xls"; //文件名 
+        String sheetName = "库存信息";//sheet名
+        
+        String []title = new String[]{"型号","尺寸","外左","外右"};//标题
+        
+        WlStore wlStore = new WlStore();
+        wlStore.setModel(model);
+        logger.info("生成excel表格所需要的查询条件参数："+wlStore.toString());
+        List<WlStore> list = storeHandleService.selectByConditions(wlStore);
+        
+        String [][]values = new String[list.size()][];
+        for(int i=0;i<list.size();i++){
+            values[i] = new String[title.length];
+            //将对象内容转换成string
+            WlStore obj = list.get(i);
+            values[i][0] = obj.getModel();
+            values[i][1] = obj.getSize();
+            values[i][2] = String.valueOf(obj.getOutLeft());
+            values[i][3] = String.valueOf(obj.getOutRight());
+            
         }
         
         HSSFWorkbook wb = ExcelUtil.getHSSFWorkbook(sheetName, title, values, null);

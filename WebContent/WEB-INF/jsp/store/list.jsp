@@ -125,6 +125,9 @@
 						<li class="icon-remove icon-white"></li>删除
 					</button>
 				</div>
+				<div>
+                	<button id="js-export" type="button" class="btn btn-info btn-small textone">导出Excel</button>
+                </div>
 			</div>
 		</div>
 		<br>
@@ -162,6 +165,10 @@
 	</div>
 
 	<script type="text/javascript">
+	$('#js-export').click(function(){
+		window.location.href="${ctx}/excel/exportWlStore.do?model="+$('#txtmodelid').val();
+	});
+	
 	function importExcel(){
 		var file = $('#inputExcel').val();
 	    //判断文件上传是否为空
@@ -171,7 +178,7 @@
 	    }
 	    //分割文件的类型
 	    var file_typename = file.substring(file.lastIndexOf('.'), file.length);
-	    if (file_typename == '.xlsx' || file_typename == 'xls') {
+	    if (file_typename == '.xlsx' || file_typename == '.xls') {
 	    	var form = document.getElementById('inputExcelForm'), 
 			    formData = new FormData(form); 
 			  $.ajax({ 

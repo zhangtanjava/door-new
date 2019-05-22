@@ -18,6 +18,19 @@
     from wlStore
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectByConditions" parameterType="com.gx.po.WlStore" resultMap="BaseResultMap">
+    SELECT * from wlStore
+        <where>
+            <if test="model != null and model != '' ">
+                and model like CONCAT('%',#{model},'%') 
+            </if>
+            <if test="size != null  and size != '' ">
+                AND size = #{size}
+            </if>
+        </where>
+        order by model
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from wlStore
     where id = #{id,jdbcType=INTEGER}
@@ -92,11 +105,24 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   
+  <update id="updateLeftAndRight" parameterType="com.gx.po.WlStore">
+    update wlStore
+    <set>
+      <if test="outLeft != null">
+        outLeft = outLeft + #{outLeft,jdbcType=INTEGER},
+      </if>
+      <if test="outRight != null">
+        outRight = outRight + #{outRight,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
   <!--   分页模糊查询 -->
    <select id="pageFuzzyselect"  resultType="com.gx.po.WlStore">
        SELECT * from wlStore
      WHERE model like CONCAT('%',#{model,jdbcType=VARCHAR},'%') 
-     order by model DESC
+     order by model
      limit #{start},#{pageSize}
   </select>
   
@@ -105,8 +131,8 @@
      WHERE model like CONCAT('%',#{model,jdbcType=VARCHAR},'%')
   </select>
   
-  <select id="selectByModelSize" resultType="java.lang.Integer" parameterType="com.gx.po.WlStore">
-    Select count(*) From wlStore Where model = #{model,jdbcType=VARCHAR} and size = #{size,jdbcType=VARCHAR}
+  <select id="selectByModelSize" resultType="com.gx.po.WlStore" parameterType="com.gx.po.WlStore">
+    Select * From wlStore Where model = #{model,jdbcType=VARCHAR} and size = #{size,jdbcType=VARCHAR}
   </select>
   
   <insert id="batchUpOrInStoreInfo"  parameterType="list" >

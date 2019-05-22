@@ -239,7 +239,7 @@
 	    <div class="row-fluid">
 	   			 <div class="span3">
 				  <label>店面：</label>
-				  <select id="storeId" name="storeId">
+				  <select id="storeId" name="storeId" style="width:97%;height:27px;float:left;">
 				  		<option value="0">请选择</option>
 					</select>
 			  	</div>
@@ -294,7 +294,7 @@
 			  	<div class="span3">
 				  <label>型号：</label>
 				  <input value="${list.model}" id="model" name="model" type="text" style="width:97%;height:27px;float:left;" 
-				  <c:if test="${sessionScope.user.roleID ==1}">readonly="readonly"</c:if>>
+				  readonly="readonly">
 			  	</div>
 			  	<div class="span3">
 				  <label>价格：</label>
@@ -336,9 +336,7 @@
 			  	</div>
 		  </div>
 		  <div class="row-fluid">
-			  <div class="span3">
-					<label>—————————————————————————————————————————————————————————————————————————</label>
-				</div>
+			  		<hr width="100%" />
 			</div>
 		  <div class="row-fluid">
 		 		 <div class="span3">
@@ -347,11 +345,13 @@
 				  </div>
 				  <div class="span3">
 					  <label>门的尺寸：</label>
-					  <input value="${list.doorSize}" id="doorSize" name="doorSize" type="text" style="width:97%;height:27px;float:left;" >
+					  <input value="${list.doorSize}" id="doorSize" name="doorSize" type="text" style="width:97%;height:27px;float:left;" 
+					  readonly="readonly">
 				  </div>
 				  <div class="span3">
 					  <label>门的方向：</label>
-					  <input value="${list.direction}"  id="direction" name="direction" type="text" style="width:97%;height:27px;float:left;" >
+					  <input value="${list.direction}"  id="direction" name="direction" type="text" style="width:97%;height:27px;float:left;" 
+					  readonly="readonly">
 				  </div>
 			  		<div class="span3">
 						<label>测量图片：</label>
@@ -380,9 +380,7 @@
 				  </div>
 			</div>	 
 			<div class="row-fluid">
-			  <div class="span3">
-					<label>—————————————————————————————————————————————————————————————————————————</label>
-				</div>
+			  <hr width="100%" />
 			</div> 
 			<div class="row-fluid">
 			  <div class="span3">
@@ -410,9 +408,7 @@
 			  </div>
 		  </div>
 		  <div class="row-fluid">
-			  <div class="span3">
-					<label>—————————————————————————————————————————————————————————————————————————</label>
-				</div>
+			  <hr width="100%" />
 		  </div> 
 		  <div class="row-fluid">
 			  <div class="span3">
@@ -440,9 +436,7 @@
 			</div>
 		  </div>
 		  <div class="row-fluid">
-			  <div class="span3">
-					<label>—————————————————————————————————————————————————————————————————————————</label>
-				</div>
+			  <hr width="100%" />
 		  </div> 
 		  <div class="row-fluid">
 			  	<div class="span3">

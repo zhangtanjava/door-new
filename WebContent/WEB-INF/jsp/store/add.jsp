@@ -219,7 +219,9 @@
  <script type="text/javascript">
  	var reg=/^[0-9]*$/;
     function verify(){
-    	checkDupl();//没有触发onblur事件就点击提交，需要再次校验下
+    	if(!checkDupl()){//没有触发onblur事件就点击提交，需要再次校验下
+    		return false;
+    	}
 	    if(document.getElementById("model").value==""){
 	       alert("型号  是必填项，不能为空哦！");
 	       document.getElementById("model").focus();

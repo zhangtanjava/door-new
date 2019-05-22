@@ -116,7 +116,8 @@
 							</ul>
 
 						</li>
-						<li>
+						<li
+						<c:if test="${sessionScope.user.roleID ==1}">style="display:none"</c:if>>
 							<a id="storeManageId" class="dropdown-toggle">
 								<%--<i class="icon-move"></i>--%>
 								<i class="icon-home"></i>

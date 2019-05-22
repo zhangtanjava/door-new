@@ -12,15 +12,15 @@ public interface ParametersInfoSepMapper {
     /**
      * 自动生成部分
      */
-    int deleteByPrimaryKey(Integer id);//最终版
+    int deleteByPrimaryKey(Integer id);
 
     int insert(ParametersInfoSepChild record);
 
-    int insertSelective(ParametersInfoSepChild record);//最终版
+    int insertSelective(ParametersInfoSepChild record);
 
-    ParametersInfoSepChild selectByPrimaryKey(Integer id);//最终版
+    ParametersInfoSepChild selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(ParametersInfoSepChild record);//最终版
+    int updateByPrimaryKeySelective(ParametersInfoSepChild record);
 
     int updateByPrimaryKey(ParametersInfoSepChild record);
     
