@@ -5,9 +5,9 @@ public class WlStore {
 
     private String size;
 
-    private Integer outLeft;
+    private Integer outLeft = 0;
 
-    private Integer outRight;
+    private Integer outRight = 0;
 
     private Integer id;
 

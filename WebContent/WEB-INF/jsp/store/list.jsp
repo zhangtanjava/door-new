@@ -174,7 +174,7 @@
 	    //判断文件上传是否为空
 	    if (file == null || file == "") {
 	        alert('请选择将要上传的文件!');
-	        return;
+	        return false;
 	    }
 	    //分割文件的类型
 	    var file_typename = file.substring(file.lastIndexOf('.'), file.length);
@@ -189,7 +189,6 @@
 			   contentType:false, 
 			   async:false,
 			   success:function(res){ 
-				alert(res);
 			    if(res){ 
 			     alert("上传成功！"); 
 				 $('#inputExcel').val()="";

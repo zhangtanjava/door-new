@@ -260,7 +260,11 @@
 				  </div>
 				  <div class="span3">
 					  <label>门的方向：</label>
-					  <input id="direction" name="direction" type="text" style="width:97%;height:27px;float:left;" >
+					  <select id="direction" name="direction" style="width:97%;height:27px;float:left;">
+      					<option value="外左" selected="selected">外左</option>
+      					<option value="外右" selected="selected">外右</option>
+						</select>
+					  <!-- <input id="direction" name="direction" type="text" style="width:97%;height:27px;float:left;" > -->
 				  </div>
 				  <div class="span3">
 						<label>测量图片：</label>
@@ -679,22 +683,20 @@
 		          success: function (result) {                          // 不出现异常 进行立面方
 		              if(result==null){
 		                   alert("库存中该型号尺寸不存在！");                     //提示框
-		                   document.getElementById("model").focus();      // 给这个id的文本框提供焦点
-		                   document.getElementById("divOne").style.display="block"; //显示
 		                   flag = false;
 		              }else {
 		            	  if(direction.indexOf("右") != -1){
 		            		  if(result.outRight>=1){
 		            			  flag = true;
 		            		  }else{
-		            			  alert("该型号库存不足！");
+		            			  alert("该型号外右库存不足！");
 		            			  flag = false;
 		            		  }
 		            	  }else if(direction.indexOf("左") != -1){
 							  if(result.outLeft>=1){
 								  flag = true;
 		            		  }else{
-		            			  alert("该型号库存不足！");
+		            			  alert("该型号外左库存不足！");
 		            			  flag = false;
 		            		  }
 		            	  }

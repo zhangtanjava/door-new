@@ -350,7 +350,11 @@
 				  </div>
 				  <div class="span3">
 					  <label>门的方向：</label>
-					  <input value="${list.direction}"  id="direction" name="direction" type="text" style="width:97%;height:27px;float:left;" 
+					  <!-- <select id="direction" name="direction" style="width:97%;height:27px;float:left;">
+      					<option value="外左" selected="selected">外左</option>
+      					<option value="外右" selected="selected">外右</option>
+					</select> -->
+					<input value="${list.direction}"  id="direction" name="direction" type="text" style="width:97%;height:27px;float:left;" 
 					  readonly="readonly">
 				  </div>
 			  		<div class="span3">
