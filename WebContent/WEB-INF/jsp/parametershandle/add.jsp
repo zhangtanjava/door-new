@@ -259,12 +259,12 @@
 					  <input id="doorSize" name="doorSize" type="text" style="width:97%;height:27px;float:left;" >
 				  </div>
 				  <div class="span3">
-					  <label>门的方向：</label>
-					  <select id="direction" name="direction" style="width:97%;height:27px;float:left;">
+					  <label>开向：</label>
+					  <!-- <select id="direction" name="direction" style="width:97%;height:27px;float:left;">
       					<option value="外左" selected="selected">外左</option>
       					<option value="外右" selected="selected">外右</option>
-						</select>
-					  <!-- <input id="direction" name="direction" type="text" style="width:97%;height:27px;float:left;" > -->
+						</select> -->
+					  <input id="direction" name="direction" type="text" style="width:97%;height:27px;float:left;" >
 				  </div>
 				  <div class="span3">
 						<label>测量图片：</label>
@@ -373,17 +373,17 @@
 				  </div>
 			  	</div>
 			  	<div class="span3">
-				  <label>售后服务8：</label>
+				  <label>垭口安装时间：</label>
 				  <input id="fixSmarkBa" name="fixSmarkBa" type="text" style="width:97%;height:27px;float:left;" >
 			  </div>
 			</div>
 		  <div class="row-fluid">
 			  <div class="span3">
-				  <label>售后服务9：</label>
+				  <label>库存：</label>
 				  <input id="fixSmarkJiu" name="fixSmarkJiu" type="text" style="width:97%;height:27px;float:left;" >
 			  </div>
 			  <div class="span3">
-				  <label>售后服务10：</label>
+				  <label>下单：</label>
 				  <input id="fixSmarkShi" name="fixSmarkShi" type="text" style="width:97%;height:27px;float:left;" >
 			  </div>
 		</div>
@@ -500,7 +500,7 @@
     			return false;
     		}
     		if($("#direction").val() == null || $("#direction").val()==""){
-    			alert("门的方向不能为空！");
+    			alert("开向不能为空！");
     			return false;
     		}
     		if($("#surveyorFile").val() == null || $("#surveyorFile").val()==""){
@@ -579,7 +579,7 @@
 	     document.getElementById("doorSize").focus();
 	     return false;
         }else if(document.getElementById("direction").value.length>16){
-	       alert("门的方向长度不能超过16位！");
+	       alert("开向长度不能超过16位！");
 	       document.getElementById("direction").focus();
 	       return false;
 	    }else if(document.getElementById("surveyor").value.length>16){
@@ -667,13 +667,14 @@
 	    	$("#doorSize").focus();
 	    	flag = false;
 	    }else if(direction==null || direction==""){
-	    	alert("门方向不能为空");
+	    	alert("开向不能为空");
 	    	$("#direction").val("");
 	    	$("#direction").focus();
 	    	flag = false;
 	    }
-	    
-	    if(model!=null && model!="" && size!=null && size!="" && direction!=null && direction!=""){
+	    return flag;
+
+	    /* if(model!=null && model!="" && size!=null && size!="" && direction!=null && direction!=""){
 	    	$.ajax({
 		          cache:false,                                             //是否使用缓存提交 如果为TRUE 会调用浏览器的缓存 而不会提交
 		          type: "POST",                                           //上面3行都是必须要的
@@ -706,9 +707,9 @@
 		        	  alert("导入数据信息异常！");
 		        	  flag = false;
 		          }
-		      });
+		      }); 
 	    	return flag;
-	    }
+	    } */
 	    
 	    function checkTel(){
 		     var shouji = /^1\d{10}$/;

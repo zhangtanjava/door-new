@@ -54,23 +54,24 @@ public class ParametersHandleServiceImpl implements com.gx.service.ParametersHan
 	@Transactional
 	public int insertAll(ParametersInfoSepChild parametersinfo) {
 		int n = parametersInfoSepMapper.insertSelective(parametersinfo);
-		WlStore wlStore = new WlStore();
-		wlStore.setModel(parametersinfo.getModel());
-		wlStore.setSize(parametersinfo.getDoorSize());
-		List<WlStore> list = wlStoreMapper.selectByConditions(wlStore);
-		logger.info("查出的List<WlStore>数量："+list.size());
-		if (list!=null && list.size()==1) {
-			WlStore upStore = new WlStore();
-			upStore.setId(list.get(0).getId());
-			if (!StringUtils.isEmpty(parametersinfo.getDirection())) {
-				if (parametersinfo.getDirection().contains("左")) {
-					upStore.setOutLeft(-1);
-				}else if(parametersinfo.getDirection().contains("右")){
-					upStore.setOutRight(-1);
-				}
-				wlStoreMapper.updateLeftAndRight(upStore);
-			}
-		}
+		// 去掉库存逻辑
+//		WlStore wlStore = new WlStore();
+//		wlStore.setModel(parametersinfo.getModel());
+//		wlStore.setSize(parametersinfo.getDoorSize());
+//		List<WlStore> list = wlStoreMapper.selectByConditions(wlStore);
+//		logger.info("查出的List<WlStore>数量："+list.size());
+//		if (list!=null && list.size()==1) {
+//			WlStore upStore = new WlStore();
+//			upStore.setId(list.get(0).getId());
+//			if (!StringUtils.isEmpty(parametersinfo.getDirection())) {
+//				if (parametersinfo.getDirection().contains("左")) {
+//					upStore.setOutLeft(-1);
+//				}else if(parametersinfo.getDirection().contains("右")){
+//					upStore.setOutRight(-1);
+//				}
+//				wlStoreMapper.updateLeftAndRight(upStore);
+//			}
+//		}
 		return n;
 	}
 
