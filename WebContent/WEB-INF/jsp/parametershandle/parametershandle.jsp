@@ -198,15 +198,19 @@
                 <thead class="theadone">
                 <tr>
                     <th>选择</th>
-                    <th>订货日期</th>
                     <th>店铺</th>
+                    <th>订货日期</th>
                     <th>客户住址</th>
                     <th>联系电话1</th>
                     <th>型号</th>
                     <th>尺寸</th>
                     <th>方向</th>
                     <th>价格</th>
-                    <th>安装师傅</th>
+                    <th>定金</th>
+                    <th>尾款</th>
+                    <th>备注</th>
+                    <th>库存</th>
+                    <th>下单</th>
                     <th>定金</th>
                     <th>合同1</th>
                     <th>合同2</th>
@@ -219,15 +223,19 @@
                 <c:forEach items="${list.result}" var="item">
                     <tr>
                         <td><input type="radio" name="id" value="${item.id}"></td>
-                        <td><fmt:formatDate value="${item.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                         <td>${item.storeID}</td>
+                        <td><fmt:formatDate value="${item.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                         <td>${item.unitsOrAddress}</td>
                         <td>${item.contactPhoneNumber}</td>
                         <td>${item.model}</td>
                         <td>${item.doorSize}</td>
                         <td>${item.direction}</td>
                         <td>${item.price}</td>
-                        <td>${item.installPerson}</td>
+                        <td>${item.deposit}</td>
+                        <td>${item.jjrAmt}</td>
+                        <td>${item.installPerSmark}</td>
+                        <td>${item.fixSmarkJiu}</td>
+                        <td>${item.fixSmarkShi}</td>
                         <td>
                             <a id="downloadsurvery" href="${ctx}/Download/download.do?filepath=${item.frontMoneyFilePath}" onclick="downloadSurVal()">
                                     <c:if test="${not empty item.frontMoneyFileName}">下载</c:if>

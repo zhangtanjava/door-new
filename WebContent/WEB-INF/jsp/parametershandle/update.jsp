@@ -316,24 +316,28 @@
 		  		</div>
 		  </div>
 		  <div class="row-fluid">
-			  	<div class="span3">
+			  	<%-- <div class="span3">
 				  <label>智能锁：</label>
 				  <input value="${list.smartLock}" id="smartLock" name="smartLock" type="text" style="width:97%;height:27px;float:left;" >
+			  	</div> --%>
+			  	<div class="span3">
+				  <label>尾款：</label>
+				  <input value="${list.jjrAmt}" id="jjrAmt" name="jjrAmt" type="text" style="width:97%;height:27px;float:left;" >
 			  	</div>
 			  	<div class="span3">
-				  <label>销售备注：</label>
-				  <input value="${list.saleRemarks}" id="saleRemarks" name="saleRemarks" type="text" style="width:97%;height:27px;float:left;" >
-			  	</div>
-			  	<div class="span3">
-				  <label>交居然日期：</label>
+				  <label>交尾款日期：</label>
 				  <input value="<fmt:formatDate value="${list.payDate}" pattern="yyyy-MM-dd HH:mm:ss"/>"
 				  style="width:97%;height:27px;float:left;" type="text" id="payDateStr" name="payDateStr" class="input-text Wdate"
 						 onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})">
 			  	</div>
 			  	<div class="span3">
-				  <label>交居然金额：</label>
-				  <input value="${list.jjrAmt}" id="jjrAmt" name="jjrAmt" type="text" style="width:97%;height:27px;float:left;" >
-			  	</div>
+				  <label>安装备注：</label>
+				  <input value="${list.installPerSmark}" id="installPerSmark" name="installPerSmark" type="text" style="width:97%;height:27px;float:left;" >
+			    </div>
+			  	<%-- <div class="span3">
+				  <label>安装备注：</label>
+				  <input value="${list.saleRemarks}" id="saleRemarks" name="saleRemarks" type="text" style="width:97%;height:27px;float:left;" >
+			  	</div> --%>
 		  </div>
 		  <div class="row-fluid">
 			  		<hr width="100%" />
@@ -396,10 +400,6 @@
 			  <div class="span3">
 				  <label>安装师傅：</label>
 				  <input value="${list.installPerson}" id="installPerson" name="installPerson" type="text" style="width:97%;height:27px;float:left;" >
-			  </div>
-			  <div class="span3">
-				  <label>安装备注：</label>
-				  <input value="${list.installPerSmark}" id="installPerSmark" name="installPerSmark" type="text" style="width:97%;height:27px;float:left;" >
 			  </div>
 					<div class="span3">
 						<label>门安装图片：</label>
@@ -485,11 +485,13 @@
 		  <div class="row-fluid">
 			  <div class="span3">
 				  <label>库存：</label>
-				  <input value="${list.fixSmarkJiu}"  id="fixSmarkJiu" name="fixSmarkJiu" type="text" style="width:97%;height:27px;float:left;" >
+				  <input value="${list.fixSmarkJiu}"  id="fixSmarkJiu" name="fixSmarkJiu" type="text" style="width:97%;height:27px;float:left;" 
+			      <c:if test="${sessionScope.user.roleID ==1}">readonly="readonly"</c:if>>
 			  </div>
 			  <div class="span3">
 				  <label>下单：</label>
-				  <input value="${list.fixSmarkShi}"  id="fixSmarkShi" name="fixSmarkShi" type="text" style="width:97%;height:27px;float:left;" >
+				  <input value="${list.fixSmarkShi}"  id="fixSmarkShi" name="fixSmarkShi" type="text" style="width:97%;height:27px;float:left;" 
+			      <c:if test="${sessionScope.user.roleID ==1}">readonly="readonly"</c:if>>
 			  </div>
 		</div>
 		<div style="display: none;">
