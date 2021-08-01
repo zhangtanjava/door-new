@@ -349,8 +349,9 @@
 				  </div>
 				  <div class="span3">
 					  <label>门的尺寸：</label>
-					  <input value="${list.doorSize}" id="doorSize" name="doorSize" type="text" style="width:97%;height:27px;float:left;" 
-					  readonly="readonly">
+					  <%-- <input value="${list.doorSize}" id="doorSize" name="doorSize" type="text" style="width:97%;height:27px;float:left;" 
+					  readonly="readonly"> --%>
+					  <input value="${list.doorSize}" id="doorSize" name="doorSize" type="text" style="width:97%;height:27px;float:left;">
 				  </div>
 				  <div class="span3">
 					  <label>开向：</label>
@@ -358,8 +359,9 @@
       					<option value="外左" selected="selected">外左</option>
       					<option value="外右" selected="selected">外右</option>
 					</select> -->
-					<input value="${list.direction}"  id="direction" name="direction" type="text" style="width:97%;height:27px;float:left;" 
-					  readonly="readonly">
+					<%-- <input value="${list.direction}"  id="direction" name="direction" type="text" style="width:97%;height:27px;float:left;" 
+					  readonly="readonly"> --%>
+					  <input value="${list.direction}"  id="direction" name="direction" type="text" style="width:97%;height:27px;float:left;">
 				  </div>
 			  		<div class="span3">
 						<label>测量图片：</label>

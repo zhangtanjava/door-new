@@ -173,7 +173,7 @@
 	    <div class="row-fluid">
 	   			 <div class="span3">
 				  <label>店面：</label>
-				  <select id="storeID" name="storeID" style="width:97%;height:27px;float:left;">
+				  <select id="storeID" name="storeID" style="width:97%;height:27px;float:left;" <c:if test="${sessionScope.user.roleID ==1}">readonly="readonly"</c:if>>
       					<option value="0" selected="selected">请选择</option>
 					</select>
 			  	</div>
