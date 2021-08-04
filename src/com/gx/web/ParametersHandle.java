@@ -211,9 +211,14 @@ public class ParametersHandle {
 		photosFileUpdate(parametersinfo, smartLockFile, "smartLockFile", smartLockPath);
 		// 日期格式处理
 		dateStrParse(parametersinfo);
-		//前台如果不选店铺，默认为该员工所属店
+		
+		UserPo userPo = userService.selectById(userID);
+		// 如果是员工1角色，默认为该员工所属店
+		if ("1".equals(userPo.getRoleID())) {
+			parametersinfo.setStoreID(userPo.getStoreID());
+		}
+		// 老板如果没有选店铺，默认为该老板所属店
 		if ("0".equals(parametersinfo.getStoreID())) {
-			UserPo userPo = userService.selectById(userID);
 			parametersinfo.setStoreID(userPo.getStoreID());
 		}
 		parametersHandleService.updateById(parametersinfo);
