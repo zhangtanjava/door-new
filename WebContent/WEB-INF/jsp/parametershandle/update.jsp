@@ -676,7 +676,7 @@ $("#smartLockFile").change(function () {
 	} 
 	 
     function verify(){
-    	if($("#storeId").val() != 0){
+    	if($("#unitsOrAddress").val() != null && $("#unitsOrAddress").val() !=""){
     		if($("#saler").val() == null || $("#saler").val()==""){
     			alert("销售员不能为空！");
     			return false;
@@ -693,10 +693,6 @@ $("#smartLockFile").change(function () {
     			alert("定金图片不能为空！");
     			return false;
     		} */
-    		if($("#unitsOrAddress").val() == null || $("#unitsOrAddress").val()==""){
-    			alert("地址不能为空！");
-    			return false;
-    		}
     		if($("#contactPhoneNumber").val() == null || $("#contactPhoneNumber").val()==""){
     			alert("电话1不能为空！");
     			return false;
