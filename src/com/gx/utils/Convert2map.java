@@ -26,29 +26,19 @@ public class Convert2map {
 		
 		ParametersInfoSepChild parametersinfo = parametersHandleService.selectById(id);
 		
-		UserPo userPo = new UserPo();
-		userPo.setUserName(parametersinfo.getOperatorID());
-		UserPo userRes  = userService.selectByName(userPo);
-		if (userRes != null) {
-			map.put("storeID", userRes.getStoreID()==null?"":userRes.getStoreID());
-		}
-		
+		map.put("storeID", parametersinfo.getStoreID()==null?"":parametersinfo.getStoreID());
 		map.put("installDate", DateUtils.get8Str(parametersinfo.getInstallDate()==null?new Date():parametersinfo.getInstallDate()));
 		map.put("createDate",  DateUtils.get8Str(parametersinfo.getCreateDate()==null?new Date():parametersinfo.getCreateDate()));
-		map.put("doorMod", parametersinfo.getModel()==null?"":parametersinfo.getModel());
-		map.put("price", parametersinfo.getSmartLock()==null?"":parametersinfo.getSmartLock());
-		StringBuffer direction = new StringBuffer();
-		direction.append(parametersinfo.getDoorSize()==null?"":parametersinfo.getDoorSize()).append("|").
-		append(parametersinfo.getDirection()==null?"":parametersinfo.getDirection());
-		map.put("direction", direction.toString());
-		map.put("dm", parametersinfo.getPrice()==null?"":parametersinfo.getPrice());
-		//改动了这个两个
-		map.put("indoorInfo", parametersinfo.getInstallPerSmark()==null?"":parametersinfo.getInstallPerSmark());
-		map.put("payment", parametersinfo.getJjrAmt()==null?"":parametersinfo.getJjrAmt());
+		map.put("model", parametersinfo.getModel()==null?"":parametersinfo.getModel());
+		map.put("price", parametersinfo.getPrice()==null?"":parametersinfo.getPrice());
+		map.put("holeSize", parametersinfo.getHoleSize()==null?"":parametersinfo.getHoleSize());
+		map.put("jjrAmt", parametersinfo.getJjrAmt()==null?"":parametersinfo.getJjrAmt());
+		map.put("doorSize", parametersinfo.getDoorSize()==null?"":parametersinfo.getDoorSize());
+		map.put("direction", parametersinfo.getDirection()==null?"":parametersinfo.getDirection());
 		map.put("unitsOrAddress", parametersinfo.getUnitsOrAddress()==null?"":parametersinfo.getUnitsOrAddress());
 		map.put("contactPhoneNumber", parametersinfo.getContactPhoneNumber()==null?"":parametersinfo.getContactPhoneNumber());
 		map.put("secondPhoneNumber", parametersinfo.getSecondPhoneNumber()==null?"":parametersinfo.getSecondPhoneNumber());
-		map.put("surveySmark", parametersinfo.getSurveyorSmark()==null?"":parametersinfo.getSurveyorSmark());
+		map.put("surveyorSmark", parametersinfo.getSurveyorSmark()==null?"":parametersinfo.getSurveyorSmark());
 		map.put("installPerSmark", parametersinfo.getInstallPerSmark()==null?"":parametersinfo.getInstallPerSmark());
 		return map;
 	}
@@ -56,17 +46,12 @@ public class Convert2map {
 		
 		ParametersInfoSepChild parametersinfo = parametersHandleService.selectById(id);
 		
-		UserPo userPo = new UserPo();
-		userPo.setUserName(parametersinfo.getOperatorID());
-		UserPo userRes  = userService.selectByName(userPo);
-		if (userRes != null) {
-			map.put("storeID", userRes.getStoreID()==null?"":userRes.getStoreID());
-		}
 		map.put("createDate",  DateUtils.get8Str(parametersinfo.getCreateDate()==null?new Date():parametersinfo.getCreateDate()));
-		map.put("doorMod", parametersinfo.getModel()==null?"":parametersinfo.getModel());
+		map.put("storeID", parametersinfo.getStoreID()==null?"":parametersinfo.getStoreID());
+		map.put("model", parametersinfo.getModel()==null?"":parametersinfo.getModel());
 		map.put("price", parametersinfo.getPrice()==null?"":parametersinfo.getPrice());
 		logger.info("定金："+parametersinfo.getDeposit()==null?"":parametersinfo.getDeposit());
-		map.put("deposite", parametersinfo.getDeposit()==null?"":parametersinfo.getDeposit());
+		map.put("deposit", parametersinfo.getDeposit()==null?"":parametersinfo.getDeposit());
 		BigDecimal price = (BigDecimal) (parametersinfo.getPrice()==null?0:parametersinfo.getPrice());
 		BigDecimal deposit = (BigDecimal) (parametersinfo.getDeposit()==null?0:parametersinfo.getDeposit());
 		BigDecimal balance = price.subtract(deposit);//余额 = 价格-定金
@@ -75,7 +60,7 @@ public class Convert2map {
 		map.put("contactPhoneNumber", parametersinfo.getContactPhoneNumber()==null?"":parametersinfo.getContactPhoneNumber());
 		map.put("holeSize", parametersinfo.getHoleSize()==null?"":parametersinfo.getHoleSize());
 		map.put("doorSize", parametersinfo.getDoorSize()==null?"":parametersinfo.getDoorSize());
-		map.put("indoorInfo", parametersinfo.getInstallPerSmark()==null?"":parametersinfo.getInstallPerSmark());
+		map.put("direction", parametersinfo.getDirection()==null?"":parametersinfo.getDirection());
 		//map.put("cutInfo", parametersinfo.getCutInfo()==null?"":parametersinfo.getCutInfo());
 		map.put("cutInfo", "");
 		map.put("surveyorSmark",parametersinfo.getSurveyorSmark()==null?"":parametersinfo.getSurveyorSmark());
