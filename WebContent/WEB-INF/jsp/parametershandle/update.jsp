@@ -293,8 +293,7 @@
 	    <div class="row-fluid">
 			  	<div class="span3">
 				  <label>型号：</label>
-				  <input value="${list.model}" id="model" name="model" type="text" style="width:97%;height:27px;float:left;" 
-				  readonly="readonly">
+				  <input value="${list.model}" id="model" name="model" type="text" style="width:97%;height:27px;float:left;">
 			  	</div>
 			  	<div class="span3">
 				  <label>价格：</label>
