@@ -206,12 +206,12 @@
                     <th>尺寸</th>
                     <th>方向</th>
                     <th>价格</th>
-                    <th>销售图</th>
+                    <th>定金</th>
                     <th>尾款</th>
                     <th>备注</th>
                     <th>库存</th>
                     <th>下单</th>
-                    <th>定金</th>
+                    <th>销售图</th>
                     <th>交款图</th>
                     <th>合同图</th>
                     <th>测量</th>
