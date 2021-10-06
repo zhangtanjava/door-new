@@ -320,7 +320,7 @@
 				  <input value="${list.smartLock}" id="smartLock" name="smartLock" type="text" style="width:97%;height:27px;float:left;" >
 			  	</div> --%>
 			  	<div class="span3">
-				  <label>尾款：</label>
+				  <label>尾款去向：</label>
 				  <input value="${list.jjrAmt}" id="jjrAmt" name="jjrAmt" type="text" style="width:97%;height:27px;float:left;" >
 			  	</div>
 			  	<div class="span3">
